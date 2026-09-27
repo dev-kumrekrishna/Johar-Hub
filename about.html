@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About & Support | Johar Hub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&family=Caveat:wght@600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+   <header class="header">
+    <div class="header-brand">
+        <a href="index.html" class="header-brand-link">
+            <img src="assets/logos/JH-Logo-White.png" class="mini-logo" alt="Logo">
+            <span>JOHAR <b>HUB</b></span>
+        </a>
+    </div>
+    
+    <nav class="header-nav" id="navMenu">
+        <div id="mobileAuthBlock" class="mobile-user-profile" style="display: none;">
+            <img src="" id="mobilePfp" class="user-pfp" alt="User">
+            <div class="user-info">
+                <h4 id="mobileUserName">Loading...</h4>
+                <p id="mobileEmail" class="user-info-email"></p>
+                <a href="profile.html" class="btn-text" style="font-size: 0.85rem; display: flex; align-items: center; gap: 5px;">Manage Profile <i class="ri-arrow-right-line"></i></a>
+            </div>
+        </div>
+
+        <a href="index.html">Home</a>
+        <a href="index.html#products">Shop</a>
+        <a href="about.html">About Us</a> <!-- Replaced Our Story -->
+        <a href="dashboard.html" id="navDashboardLink" class="nav-dashboard-link">Dashboard <i class="ri-settings-3-line"></i></a>
+        
+        <a href="#" id="mobileLogoutBtn" class="mobile-logout-btn" style="display: none;">
+            <i class="ri-logout-circle-line"></i> Logout
+        </a>
+    </nav>
+
+    <div class="header-actions">
+        <i class="ri-search-line icon-btn"></i>
+        <div class="cart-wrapper icon-btn">
+            <i class="ri-shopping-cart-2-line"></i>
+            <span class="cart-badge">0</span>
+        </div>
+        
+        <a href="auth.html" id="loginBtn" class="btn btn-outline">Get Started</a>
+        
+        <a href="profile.html" id="desktopUserBadge" class="user-badge" style="display: none;">
+            <img src="" id="desktopPfp" class="user-pfp-small" alt="Profile">
+            <span id="desktopUserName">Profile</span>
+        </a>
+
+        <i class="ri-menu-line mobile-menu-btn"></i>
+    </div>
+</header>
+
+    <section id="about" class="pt-150 text-center">
+        <div class="container-center">
+            <span class="green-tag">About Johar Hub</span>
+            <h2 class="title-lg">More Than A Brand.<br>An Ecosystem.</h2>
+            <p class="desc-muted">Johar Hub is a modern organisation that unites creativity, technology and community under one identity. Through our ventures, we aim to build meaningful brands that inspire people and create lasting impact.</p>
+        </div>
+    </section>
+
+    <!-- Paste the Universal Footer here -->
+
+    <script type="module" src="js/auth-state.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>

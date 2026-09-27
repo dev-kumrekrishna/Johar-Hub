@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | Johar Hub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&family=Caveat:wght@600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/profile.css"> 
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+
+  <header class="header">
+    <div class="header-brand">
+        <a href="index.html" class="header-brand-link">
+            <img src="assets/logos/JH-Logo-White.png" class="mini-logo" alt="Logo">
+            <span>JOHAR <b>HUB</b></span>
+        </a>
+    </div>
+    
+    <nav class="header-nav" id="navMenu">
+        <div id="mobileAuthBlock" class="mobile-user-profile" style="display: none;">
+            <img src="" id="mobilePfp" class="user-pfp" alt="User">
+            <div class="user-info">
+                <h4 id="mobileUserName">Loading...</h4>
+                <p id="mobileEmail" class="user-info-email"></p>
+                <a href="profile.html" class="btn-text" style="font-size: 0.85rem; display: flex; align-items: center; gap: 5px;">Manage Profile <i class="ri-arrow-right-line"></i></a>
+            </div>
+        </div>
+
+        <a href="index.html">Home</a>
+        <a href="index.html#products">Shop</a>
+        <a href="about.html">About Us</a> <!-- Replaced Our Story -->
+        <a href="dashboard.html" id="navDashboardLink" class="nav-dashboard-link">Dashboard <i class="ri-settings-3-line"></i></a>
+        
+        <a href="#" id="mobileLogoutBtn" class="mobile-logout-btn" style="display: none;">
+            <i class="ri-logout-circle-line"></i> Logout
+        </a>
+    </nav>
+
+    <div class="header-actions">
+        <i class="ri-search-line icon-btn"></i>
+        <div class="cart-wrapper icon-btn">
+            <i class="ri-shopping-cart-2-line"></i>
+            <span class="cart-badge">0</span>
+        </div>
+        
+        <a href="auth.html" id="loginBtn" class="btn btn-outline">Get Started</a>
+        
+        <a href="profile.html" id="desktopUserBadge" class="user-badge" style="display: none;">
+            <img src="" id="desktopPfp" class="user-pfp-small" alt="Profile">
+            <span id="desktopUserName">Profile</span>
+        </a>
+
+        <i class="ri-menu-line mobile-menu-btn"></i>
+    </div>
+</header>
+
+    <main class="profile-wrapper pt-150">
+        <aside class="profile-sidebar glass-panel">
+            <div class="user-summary">
+                <i class="ri-shield-user-fill" style="font-size: 3rem; color: var(--green);"></i>
+                <h3 class="mt-1">JH Admin</h3>
+                <span class="status available mt-1">SYSTEM CONTROLLER</span>
+            </div>
+            <nav class="profile-tabs">
+                <button class="tab-btn active"><i class="ri-dashboard-line"></i> Dashboard</button>
+                <button class="tab-btn" onclick="document.getElementById('productModal').classList.add('active')"><i class="ri-add-box-line"></i> Add Product</button>
+                <a href="profile.html" class="tab-btn"><i class="ri-user-line"></i> Back to Profile</a>
+            </nav>
+        </aside>
+
+        <section class="profile-content glass-panel">
+            <h2>Active Products</h2>
+            <div class="products-grid" id="adminProductsGrid">
+                <p class="desc-muted">Loading products...</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- ADD PRODUCT MODAL WITH PROGRESS BAR -->
+    <div class="modal-overlay" id="productModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="document.getElementById('productModal').classList.remove('active')"><i class="ri-close-line"></i></button>
+            <h2 class="mb-2">Add New Product</h2>
+            <form id="productForm" class="auth-form">
+                
+                <div class="input-group">
+                    <label>Target Branch / Category</label>
+                    <select id="prodBranch" class="admin-select" required>
+                        <option value="" disabled selected>Select branch...</option>
+                        <option value="digitals">Johar Digitals</option>
+                        <option value="fashions">Johar Fashions</option>
+                        <option value="sports">Johar Sports</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <label>Product Name</label>
+                    <input type="text" id="prodName" class="admin-input" placeholder="e.g. Koya Hoodie" required>
+                </div>
+                
+                <div class="input-group">
+                    <label>Price (₹)</label>
+                    <input type="number" id="prodPrice" class="admin-input" placeholder="999" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Main Thumbnail Image</label>
+                    <input type="file" id="prodThumbnail" accept="image/*" class="admin-input" style="padding: 10px;" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Description</label>
+                    <textarea id="prodDesc" rows="3" class="admin-input" placeholder="Product details..."></textarea>
+                </div>
+
+                <!-- Progress Bar Elements -->
+                <div class="progress-container" id="uploadProgressContainer">
+                    <div class="progress-bar" id="uploadProgressBar"></div>
+                </div>
+                <div class="progress-text" id="uploadProgressText">0%</div>
+
+                <button type="submit" class="btn btn-primary mt-1" id="saveProdBtn" style="width: 100%;">Upload Product</button>
+            </form>
+        </div>
+    </div>
+
+    <script type="module" src="js/auth-state.js"></script>
+    <script type="module" src="js/dashboard.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>

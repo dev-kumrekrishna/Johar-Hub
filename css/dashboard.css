@@ -1,0 +1,76 @@
+/* css/dashboard.css */
+.admin-body { display: flex; min-height: 100vh; background: var(--black); }
+.admin-sidebar { width: 250px; padding: 30px 20px; display: flex; flex-direction: column; border-radius: 0; border-right: 1px solid var(--glass-border); }
+.admin-sidebar h2 { color: var(--text); font-size: 1.5rem; margin-bottom: 40px; }
+.admin-sidebar b { color: var(--green); }
+.admin-sidebar nav { display: flex; flex-direction: column; gap: 15px; flex-grow: 1; }
+.admin-sidebar nav a { color: var(--muted); padding: 10px; border-radius: 8px; transition: 0.3s; }
+.admin-sidebar nav a.active, .admin-sidebar nav a:hover { background: rgba(8, 251, 143, 0.1); color: var(--green); }
+.admin-content { flex: 1; padding: 40px; overflow-y: auto; }
+.admin-input, .admin-file { width: 100%; background: rgba(0,0,0,0.3); border: 1px solid var(--glass-border); color: white; padding: 12px; border-radius: 8px; margin-top: 5px; }
+.admin-input:focus { border-color: var(--green); outline: none; }
+.admin-section h2 { margin-bottom: 25px; }
+
+/* css/dashboard.css */
+.admin-body { display: flex; min-height: 100vh; background: var(--black); }
+.admin-sidebar { width: 250px; padding: 30px 20px; display: flex; flex-direction: column; border-radius: 0; border-right: 1px solid var(--glass-border); }
+.admin-sidebar h2 { color: var(--text); font-size: 1.5rem; margin-bottom: 40px; }
+.admin-sidebar b { color: var(--green); }
+.admin-sidebar nav { display: flex; flex-direction: column; gap: 15px; flex-grow: 1; }
+.admin-sidebar nav a { color: var(--muted); padding: 10px; border-radius: 8px; transition: 0.3s; }
+.admin-sidebar nav a.active, .admin-sidebar nav a:hover { background: rgba(8, 251, 143, 0.1); color: var(--green); }
+.admin-content { flex: 1; padding: 40px; overflow-y: auto; }
+
+/* Admin Inputs */
+.admin-input, .admin-file, .admin-select { width: 100%; background: rgba(0,0,0,0.3); border: 1px solid var(--glass-border); color: white; padding: 12px; border-radius: 8px; margin-top: 5px; font-family: inherit; }
+.admin-input:focus, .admin-select:focus { border-color: var(--green); outline: none; }
+.admin-select option { background: var(--dark); color: white; }
+.admin-section h2 { margin-bottom: 25px; }
+
+/* Modal & Progress Bar CSS */
+.modal-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.8); backdrop-filter: blur(5px);
+    display: flex; justify-content: center; align-items: center;
+    z-index: 2000; opacity: 0; visibility: hidden; transition: 0.3s ease;
+}
+.modal-overlay.active { opacity: 1; visibility: visible; }
+.modal-content {
+    background: #0a120f; border: 1px solid var(--green-border);
+    border-radius: 16px; padding: 30px; width: 100%; max-width: 500px;
+    position: relative; transform: translateY(20px); transition: 0.3s ease;
+    max-height: 90vh; overflow-y: auto;
+}
+.modal-overlay.active .modal-content { transform: translateY(0); }
+.modal-close {
+    position: absolute; top: 20px; right: 20px; background: transparent;
+    border: none; color: var(--muted); font-size: 1.5rem; cursor: pointer; transition: 0.3s;
+}
+.modal-close:hover { color: #ff4444; }
+
+/* Progress Bar Styles */
+.progress-container {
+    width: 100%;
+    height: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    margin-top: 15px;
+    display: none; /* Hidden by default */
+    overflow: hidden;
+}
+.progress-bar {
+    width: 0%;
+    height: 100%;
+    background: var(--green);
+    border-radius: 10px;
+    transition: width 0.4s ease;
+    box-shadow: 0 0 10px var(--green);
+}
+.progress-text {
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--green);
+    margin-top: 5px;
+    display: none;
+    font-family: var(--font-mono);
+}

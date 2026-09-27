@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Johar Hub | Authentication</title>
+
+    <!-- Same fonts as Johar Hub -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&family=Caveat:wght@600&display=swap" rel="stylesheet">
+
+    <!-- Remix Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <!-- Global Johar Hub styling -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Authentication page styling -->
+    <link rel="stylesheet" href="css/auth.css">
+</head>
+<body>
+
+    <!-- ========================= BACKGROUND EFFECTS ========================= -->
+    <div class="auth-glow glow-one"></div>
+    <div class="auth-glow glow-two"></div>
+    <div class="auth-grid"></div>
+
+    <!-- ========================= HEADER ========================= -->
+    <header class="header auth-header">
+        <a href="index.html" class="header-brand auth-brand">
+            <img src="assets/logos/JH-Logo-White.png" class="mini-logo" alt="Johar Hub Logo">
+            <span>JOHAR <b>HUB</b></span>
+        </a>
+
+        <div class="auth-header-right">
+            <span class="desktop-only">New to Johar Hub?</span>
+            <button class="header-signup" type="button" data-auth-target="signup">Create Account</button>
+            <a href="index.html" class="back-home" aria-label="Back to home">
+                <i class="ri-arrow-left-line"></i>
+                <span>Home</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- ========================= AUTH ========================= -->
+    <main class="auth-page">
+        <section class="auth-layout">
+
+            <!-- LEFT SIDE / BRAND -->
+            <div class="auth-intro">
+                <div class="auth-kicker">
+                    <span></span>
+                    <p>ONE HUB. MANY PASSIONS.</p>
+                </div>
+
+                <h1>Enter the<br><b>JOHAR HUB.</b></h1>
+
+                <p class="auth-intro-text">
+                    Your space to explore ventures, manage your profile,
+                    save your favourites and stay connected with everything Johar Hub.
+                </p>
+
+                <div class="auth-features">
+                    <div class="auth-feature">
+                        <div class="feature-icon"><i class="ri-layout-grid-line"></i></div>
+                        <div>
+                            <h4>One Connected Hub</h4>
+                            <p>Digital, Sports and Fashion — together.</p>
+                        </div>
+                    </div>
+
+                    <div class="auth-feature">
+                        <div class="feature-icon"><i class="ri-shield-check-line"></i></div>
+                        <div>
+                            <h4>Your Account, Your Space</h4>
+                            <p>Secure access to your Johar experience.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="auth-rooted">
+                    <span>ROOTED IN</span>
+                    <b>KOYA COMMUNITY <i class="ri-leaf-fill"></i></b>
+                </div>
+            </div>
+
+            <!-- RIGHT SIDE / AUTH CARD -->
+            <div class="auth-card-wrap">
+                <div class="auth-card">
+
+                    <!-- Card tabs -->
+                    <div class="auth-tabs">
+                        <button class="auth-tab active" type="button" data-auth-target="login">Login</button>
+                        <button class="auth-tab" type="button" data-auth-target="signup">Create Account</button>
+                    </div>
+
+                    <!-- LOGIN PANEL -->
+                    <div class="auth-panel active" id="login-panel">
+                        <div class="auth-panel-head">
+                            <div class="panel-icon"><i class="ri-login-circle-line"></i></div>
+                            <p class="panel-eyebrow">WELCOME BACK</p>
+                            <h2>Good to see you again.</h2>
+                            <p>Log in and continue your journey with Johar Hub.</p>
+                        </div>
+
+                        <form class="auth-form" id="login-form">
+                            <div class="input-group">
+                                <label for="login-email">Email Address</label>
+                                <div class="input-box">
+                                    <i class="ri-mail-line"></i>
+                                    <input type="email" id="login-email" name="email" placeholder="you@example.com" required>
+                                </div>
+                            </div>
+
+                            <div class="input-group">
+                                <div class="label-row">
+                                    <label for="login-password">Password</label>
+                                    <a href="#" class="forgot-link">Forgot password?</a>
+                                </div>
+                                <div class="input-box password-box">
+                                    <i class="ri-lock-2-line"></i>
+                                    <input type="password" id="login-password" name="password" placeholder="Enter your password" required>
+                                    <button type="button" class="password-toggle" aria-label="Show password">
+                                        <i class="ri-eye-line"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <label class="remember-row">
+                                <input type="checkbox" name="remember">
+                                <span class="checkmark"></span>
+                                <span>Remember me</span>
+                            </label>
+
+                            <button type="submit" class="auth-submit">
+                                <span>Login to Johar Hub</span>
+                                <i class="ri-arrow-right-line"></i>
+                            </button>
+                        </form>
+
+                        <div class="auth-divider"><span>OR CONTINUE WITH</span></div>
+
+                        <div class="social-auth">
+                            <button type="button" class="social-btn"><i class="ri-google-fill"></i> Google</button>
+                        </div>
+
+                        <p class="switch-auth-text">Don't have an account? <button type="button" data-auth-target="signup">Create one</button></p>
+                    </div>
+
+                    <!-- SIGNUP PANEL -->
+                    <div class="auth-panel" id="signup-panel">
+                        <div class="auth-panel-head">
+                            <div class="panel-icon"><i class="ri-user-add-line"></i></div>
+                            <p class="panel-eyebrow">JOIN THE HUB</p>
+                            <h2>Create your account.</h2>
+                            <p>Start your journey and become part of the Johar Hub.</p>
+                        </div>
+
+                        <form class="auth-form" id="signup-form">
+                            <div class="input-group">
+                                <label for="signup-name">Full Name</label>
+                                <div class="input-box">
+                                    <i class="ri-user-3-line"></i>
+                                    <input type="text" id="signup-name" name="name" placeholder="Your full name" required>
+                                </div>
+                            </div>
+
+                            <div class="input-group">
+                                <label for="signup-email">Email Address</label>
+                                <div class="input-box">
+                                    <i class="ri-mail-line"></i>
+                                    <input type="email" id="signup-email" name="email" placeholder="you@example.com" required>
+                                </div>
+                            </div>
+
+                            <div class="input-group">
+                                <label for="signup-password">Create Password</label>
+                                <div class="input-box password-box">
+                                    <i class="ri-lock-2-line"></i>
+                                    <input type="password" id="signup-password" name="password" placeholder="Minimum 6 characters" minlength="6" required>
+                                    <button type="button" class="password-toggle" aria-label="Show password">
+                                        <i class="ri-eye-line"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <label class="terms-row">
+                                <input type="checkbox" required>
+                                <span class="checkmark"></span>
+                                <span>I agree to the <a href="#">Terms</a> and <a href="#">Privacy Policy</a>.</span>
+                            </label>
+
+                            <button type="submit" class="auth-submit">
+                                <span>Create Account</span>
+                                <i class="ri-arrow-right-line"></i>
+                            </button>
+                        </form>
+
+                        <p class="switch-auth-text">Already have an account? <button type="button" data-auth-target="login">Login</button></p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Switch between Login and Signup
+        const authTargets = document.querySelectorAll('[data-auth-target]');
+        const tabs = document.querySelectorAll('.auth-tab');
+        const panels = document.querySelectorAll('.auth-panel');
+
+        function switchAuth(target) {
+            panels.forEach(panel => panel.classList.remove('active'));
+            tabs.forEach(tab => tab.classList.remove('active'));
+
+            document.getElementById(target + '-panel').classList.add('active');
+            document.querySelectorAll(`.auth-tab[data-auth-target="${target}"]`).forEach(tab => tab.classList.add('active'));
+        }
+
+        authTargets.forEach(button => {
+            button.addEventListener('click', () => switchAuth(button.dataset.authTarget));
+        });
+
+        // Password show / hide
+        document.querySelectorAll('.password-toggle').forEach(button => {
+            button.addEventListener('click', () => {
+                const input = button.parentElement.querySelector('input');
+                const icon = button.querySelector('i');
+                const isPassword = input.type === 'password';
+
+                input.type = isPassword ? 'text' : 'password';
+                icon.className = isPassword ? 'ri-eye-off-line' : 'ri-eye-line';
+            });
+        });
+    </script>
+
+</body>
+</html>

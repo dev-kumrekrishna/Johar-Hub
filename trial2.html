@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Johar Hub - Order Sheet</title>
+
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        padding: 25px;
+        background: #111;
+        font-family: Arial, sans-serif;
+        color: white;
+    }
+
+    .container {
+        max-width: 600px;
+        margin: auto;
+    }
+
+    h1 {
+        color: #08fb8f;
+        text-align: center;
+    }
+
+    .form {
+        background: #1b1b1b;
+        padding: 22px;
+        border-radius: 15px;
+        border: 1px solid #08fb8f;
+    }
+
+    input,
+    textarea,
+    select {
+        width: 100%;
+        margin: 7px 0 15px;
+        padding: 12px;
+        border-radius: 7px;
+        border: 1px solid #444;
+        background: #080808;
+        color: white;
+        font-size: 15px;
+    }
+
+    textarea {
+        height: 80px;
+        resize: none;
+    }
+
+    button {
+        width: 100%;
+        padding: 14px;
+        border: none;
+        border-radius: 7px;
+        background: #08fb8f;
+        color: #000;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    /* ORDER SHEET */
+
+    #orderSheet {
+        display: none;
+        margin: 30px auto;
+        background: white;
+        color: #111;
+        width: 100%;
+        max-width: 500px;
+        padding: 30px;
+        border-radius: 5px;
+    }
+
+    .sheet-header {
+        text-align: center;
+        border-bottom: 2px solid #111;
+        padding-bottom: 15px;
+    }
+
+    .sheet-header h2 {
+        margin: 0;
+        font-size: 28px;
+    }
+
+    .sheet-header span {
+        color: #08a968;
+    }
+
+    .order-id {
+        margin-top: 8px;
+        font-size: 13px;
+        color: #555;
+    }
+
+    .section {
+        margin-top: 20px;
+    }
+
+    .section h3 {
+        font-size: 14px;
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 6px;
+    }
+
+    .row {
+        display: flex;
+        justify-content: space-between;
+        gap: 15px;
+        margin: 8px 0;
+        font-size: 14px;
+    }
+
+    .address {
+        line-height: 1.6;
+        font-size: 14px;
+    }
+
+    .total {
+        margin-top: 20px;
+        padding-top: 15px;
+        border-top: 2px solid #111;
+        font-size: 19px;
+        font-weight: bold;
+    }
+
+    .footer {
+        text-align: center;
+        margin-top: 25px;
+        padding-top: 15px;
+        border-top: 1px dashed #aaa;
+        font-size: 12px;
+        color: #555;
+    }
+
+    .print-btn {
+        margin-top: 15px;
+        background: #111;
+        color: white;
+    }
+
+    @media print {
+
+        body {
+            background: white;
+            padding: 0;
+        }
+
+        .form,
+        .container > h1,
+        .print-btn {
+            display: none;
+        }
+
+        #orderSheet {
+            display: block !important;
+            margin: 0;
+            max-width: 100%;
+            box-shadow: none;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>JOHAR HUB</h1>
+
+    <!-- FORM -->
+
+    <div class="form">
+
+        <input id="customer"
+               placeholder="Customer Name">
+
+        <input id="phone"
+               placeholder="Mobile Number">
+
+        <textarea id="address"
+                  placeholder="Full Delivery Address"></textarea>
+
+        <input id="product"
+               placeholder="Product Name / Code">
+
+        <input id="quantity"
+               type="number"
+               value="1"
+               min="1"
+               placeholder="Quantity">
+
+        <input id="price"
+               type="number"
+               placeholder="Product Price">
+
+        <input id="shipping"
+               type="number"
+               value="0"
+               placeholder="Shipping Charges">
+
+        <select id="payment">
+            <option value="PREPAID">PREPAID</option>
+            <option value="COD">COD</option>
+        </select>
+
+        <button onclick="generateOrder()">
+            GENERATE ORDER SHEET
+        </button>
+
+    </div>
+
+
+    <!-- ORDER SHEET -->
+
+    <div id="orderSheet">
+
+        <div class="sheet-header">
+
+            <h2>
+                JOHAR <span>HUB</span>
+            </h2>
+
+            <div class="order-id">
+                ORDER ID: <b id="orderId"></b>
+            </div>
+
+        </div>
+
+
+        <div class="section">
+
+            <h3>DELIVER TO</h3>
+
+            <div class="row">
+                <b>Name</b>
+                <span id="sheetCustomer"></span>
+            </div>
+
+            <div class="row">
+                <b>Phone</b>
+                <span id="sheetPhone"></span>
+            </div>
+
+            <div class="address">
+                <b>Address</b><br>
+                <span id="sheetAddress"></span>
+            </div>
+
+        </div>
+
+
+        <div class="section">
+
+            <h3>ORDER DETAILS</h3>
+
+            <div class="row">
+                <b>Product</b>
+                <span id="sheetProduct"></span>
+            </div>
+
+            <div class="row">
+                <b>Quantity</b>
+                <span id="sheetQuantity"></span>
+            </div>
+
+            <div class="row">
+                <b>Product Price</b>
+                <span>₹<span id="sheetPrice"></span></span>
+            </div>
+
+            <div class="row">
+                <b>Shipping</b>
+                <span>₹<span id="sheetShipping"></span></span>
+            </div>
+
+            <div class="row">
+                <b>Payment</b>
+                <span id="sheetPayment"></span>
+            </div>
+
+            <div class="row total">
+                <b>TOTAL</b>
+                <span>₹<span id="sheetTotal"></span></span>
+            </div>
+
+        </div>
+
+
+        <div class="footer">
+            JOHAR HUB 🌿<br>
+            Built by Kumre Krishna
+        </div>
+
+    </div>
+
+
+    <button
+        class="print-btn"
+        id="printButton"
+        onclick="window.print()"
+        style="display:none;">
+        🖨️ PRINT ORDER SHEET
+    </button>
+
+</div>
+
+
+<script>
+
+function generateOrder() {
+
+    const customer =
+        document.getElementById("customer").value;
+
+    const phone =
+        document.getElementById("phone").value;
+
+    const address =
+        document.getElementById("address").value;
+
+    const product =
+        document.getElementById("product").value;
+
+    const quantity =
+        Number(document.getElementById("quantity").value);
+
+    const price =
+        Number(document.getElementById("price").value);
+
+    const shipping =
+        Number(document.getElementById("shipping").value);
+
+    const payment =
+        document.getElementById("payment").value;
+
+
+    if (!customer || !phone || !address || !product || !price) {
+
+        alert("Please fill all required details.");
+
+        return;
+    }
+
+
+    /* ORDER ID */
+
+    const orderNumber =
+        Math.floor(1000 + Math.random() * 9000);
+
+    document.getElementById("orderId").textContent =
+        "JH-" + orderNumber;
+
+
+    /* CUSTOMER */
+
+    document.getElementById("sheetCustomer").textContent =
+        customer;
+
+    document.getElementById("sheetPhone").textContent =
+        phone;
+
+    document.getElementById("sheetAddress").textContent =
+        address;
+
+
+    /* PRODUCT */
+
+    document.getElementById("sheetProduct").textContent =
+        product;
+
+    document.getElementById("sheetQuantity").textContent =
+        quantity;
+
+    document.getElementById("sheetPrice").textContent =
+        price;
+
+    document.getElementById("sheetShipping").textContent =
+        shipping;
+
+    document.getElementById("sheetPayment").textContent =
+        payment;
+
+
+    /* TOTAL */
+
+    const total =
+        (price * quantity) + shipping;
+
+    document.getElementById("sheetTotal").textContent =
+        total;
+
+
+    /* SHOW SHEET */
+
+    document.getElementById("orderSheet").style.display =
+        "block";
+
+    document.getElementById("printButton").style.display =
+        "block";
+
+
+    /* SCROLL */
+
+    document.getElementById("orderSheet")
+        .scrollIntoView({
+            behavior: "smooth"
+        });
+}
+
+</script>
+
+</body>
+</html>
