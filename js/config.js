@@ -11,21 +11,13 @@ import { getStorage }
 from "https://www.gstatic.com/firebasejs/12.0.0/firebase-storage.js";
 
 const firebaseConfig = {
-    apiKey: "YOUR_API_KEY",
-    authDomain:
-        "YOUR_PROJECT.firebaseapp.com",
-
-    projectId:
-        "YOUR_PROJECT_ID",
-
-    storageBucket:
-        "YOUR_PROJECT.appspot.com",
-
-    messagingSenderId:
-        "XXXX",
-
-    appId:
-        "XXXX"
+    apiKey: "AIzaSyDa2BPadbGoD569ObwKrGR5oWT8guzx5W0",
+  authDomain: "johar-hub.firebaseapp.com",
+  projectId: "johar-hub",
+  storageBucket: "johar-hub.firebasestorage.app",
+  messagingSenderId: "210373758278",
+  appId: "1:210373758278:web:ddeba056f22bd79c89a947",
+  measurementId: "G-E723GPGY65"
 };
 
 const app =
