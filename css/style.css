@@ -217,14 +217,26 @@ a { text-decoration: none; color: inherit; }
 .section-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 40px; }
 .section-label { color: var(--green); font-family: var(--font-mono); font-size: 0.8rem; letter-spacing: 3px; margin-bottom: 10px; }
 .section-header h2 { font-size: 2.5rem; font-weight: 700; }
-.view-all { color: var(--text); font-size: 0.9rem; display: flex; align-items: center; gap: 5px; transition: 0.3s; }
+.view-all { color: #08fb8f;  font-size: 0.9rem; display: flex; align-items: center; gap: 5px; font-size: 0.9rem; transition: 0.3s; }
 .view-all:hover { color: var(--green); }
-.products-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
-.product-card { padding: 20px; position: relative; border-radius: 16px; transition: 0.3s; background: rgba(255, 255, 255, 0.035); border: 1px solid rgba(255, 255, 255, 0.08); }
+.products-carousel {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+}
+
+.products-grid {
+    display: flex;
+    gap: 30px;
+    width: max-content;
+    transition: transform 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
+}
+.product-card { padding: 20px; position: relative; border-radius: 16px; transition: 0.3s; background: rgba(255, 255, 255, 0.035); border: 1px solid rgba(255, 255, 255, 0.08); height: auto; max-width: 300px; min-width: 300px; aspect-ratio: 3/4; }
 .product-card:hover { border-color: rgba(8, 251, 143, 0.45); transform: translateY(-5px); }
 .fav-icon { position: absolute; top: 35px; right: 35px; color: var(--muted); font-size: 1.2rem; cursor: pointer; z-index: 2; transition: 0.3s; }
 .fav-icon:hover { color: var(--green); }
-.product-img { height: 250px; background: linear-gradient(180deg, rgba(255,255,255,0.05) 0%, transparent 100%); border-radius: 12px; margin-bottom: 20px; display: flex; align-items: center; justify-content: center; }
+.product-img { height: 75%; background: linear-gradient(180deg, rgba(255,255,255,0.05) 0%, transparent 100%); border-radius: 12px; margin-bottom: 20px; display: flex; align-items: center; justify-content: center; }
 .img-placeholder { font-family: var(--font-mono); color: rgba(255,255,255,0.1); font-size: 2.5rem; }
 .product-details { display: flex; justify-content: space-between; align-items: flex-end; }
 .product-details h3 { font-size: 1.1rem; font-weight: 500; margin-bottom: 5px; }
