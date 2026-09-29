@@ -391,6 +391,276 @@ a { text-decoration: none; color: inherit; }
     transition: 0.3s ease;
 }
 
+
+/* =========================================
+   JOHAR HUB — ABOUT SECTION
+   ========================================= */
+
+.jh-about {
+    position: relative;
+    overflow: hidden;
+    padding: 150px 20px 120px;
+    background: var(--bg, #0b0d0c);
+    color: #fff;
+}
+
+/* Background glow */
+
+.jh-about-glow {
+    position: absolute;
+    width: 420px;
+    height: 420px;
+    border-radius: 50%;
+    pointer-events: none;
+    filter: blur(100px);
+    opacity: 0.08;
+    background: var(--green, #08fb8f);
+}
+
+.glow-one {
+    top: 50px;
+    left: -220px;
+}
+
+.glow-two {
+    right: -220px;
+    top: 500px;
+}
+
+/* Main container */
+
+.jh-about .container-center {
+    position: relative;
+    z-index: 2;
+    max-width: 1100px;
+    margin: auto;
+}
+
+/* Intro */
+
+.jh-about-title {
+    margin: 25px auto 22px;
+    max-width: 850px;
+    font-size: clamp(2.8rem, 6vw, 5.5rem);
+    line-height: 0.98;
+    letter-spacing: -0.055em;
+    font-weight: 800;
+}
+
+.jh-about-title span {
+    display: block;
+    color: var(--green, #08fb8f);
+}
+
+.jh-about-intro {
+    max-width: 720px;
+    margin: 0 auto;
+    color: var(--muted, #9b9b9b);
+    font-size: 1.08rem;
+    line-height: 1.8;
+}
+
+.jh-about-intro strong {
+    color: #fff;
+    font-weight: 600;
+}
+
+.jh-about-divider {
+    width: 70px;
+    height: 2px;
+    margin: 55px auto 60px;
+    background: var(--green, #08fb8f);
+    box-shadow: 0 0 18px rgba(8, 251, 143, 0.35);
+}
+
+/* Cards */
+
+.jh-about-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    text-align: left;
+}
+
+.jh-about-card {
+    position: relative;
+    padding: 32px;
+    min-height: 250px;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 18px;
+    background: rgba(255,255,255,0.025);
+    backdrop-filter: blur(10px);
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        background 0.3s ease;
+}
+
+.jh-about-card:hover {
+    transform: translateY(-7px);
+    border-color: rgba(8,251,143,0.35);
+    background: rgba(8,251,143,0.035);
+}
+
+.jh-card-icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 28px;
+
+    border-radius: 12px;
+
+    color: var(--green, #08fb8f);
+    background: rgba(8,251,143,0.08);
+
+    font-size: 1.35rem;
+}
+
+.jh-about-card h3 {
+    margin: 0 0 12px;
+    font-size: 1.25rem;
+    color: #fff;
+}
+
+.jh-about-card p {
+    margin: 0;
+    color: var(--muted, #929292);
+    font-size: 0.92rem;
+    line-height: 1.7;
+}
+
+/* Mission */
+
+.jh-mission {
+    margin-top: 90px;
+    padding: 55px 50px;
+    border-radius: 24px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(8,251,143,0.07),
+            rgba(255,255,255,0.015)
+        );
+
+    border: 1px solid rgba(8,251,143,0.15);
+    text-align: left;
+}
+
+.jh-mission-label {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+
+    margin-bottom: 25px;
+
+    color: var(--green, #08fb8f);
+    font-family: "Space Mono", monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+}
+
+.jh-mission h2 {
+    margin: 0 0 22px;
+
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.04em;
+}
+
+.jh-mission p {
+    max-width: 700px;
+    margin: 0;
+
+    color: var(--muted, #999);
+    line-height: 1.8;
+    font-size: 0.98rem;
+}
+
+/* Values */
+
+.jh-values {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+
+    margin-top: 70px;
+
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 18px;
+    overflow: hidden;
+}
+
+.jh-values > div {
+    padding: 32px;
+    background: var(--bg, #0b0d0c);
+}
+
+.jh-values span {
+    display: block;
+    margin-bottom: 25px;
+
+    color: var(--green, #08fb8f);
+    font-family: "Space Mono", monospace;
+    font-size: 0.75rem;
+}
+
+.jh-values h3 {
+    margin: 0 0 8px;
+    font-size: 1.1rem;
+}
+
+.jh-values p {
+    margin: 0;
+    color: var(--muted, #888);
+    font-size: 0.85rem;
+}
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 800px) {
+
+    .jh-about {
+        padding: 120px 18px 80px;
+    }
+
+    .jh-about-title {
+        font-size: clamp(2.6rem, 12vw, 4rem);
+    }
+
+    .jh-about-intro {
+        font-size: 0.95rem;
+    }
+
+    .jh-about-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .jh-about-card {
+        min-height: auto;
+        padding: 27px;
+    }
+
+    .jh-mission {
+        margin-top: 60px;
+        padding: 35px 27px;
+    }
+
+    .jh-values {
+        grid-template-columns: 1fr;
+        margin-top: 50px;
+    }
+
+    .jh-values > div {
+        padding: 27px;
+    }
+}
+
 /* =========================================
    MOBILE RESPONSIVENESS (Exact Match)
 ========================================= */
