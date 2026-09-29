@@ -442,11 +442,7 @@ a { text-decoration: none; color: inherit; }
         display: none;
     }
     
-    .footer-area { padding: 60px 20px 40px; }
-    .footer-grid { grid-template-columns: 1fr; gap: 40px; text-align: center; }
-    .footer-col { align-items: center; }
-    .dev-desc { border-left: none; border-bottom: 2px solid var(--green); padding-left: 0; padding-bottom: 10px; }
-    .footer-link:hover { transform: translateY(-3px); }
+    
 }
 
 @media (max-width: 768px) {

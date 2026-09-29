@@ -1,0 +1,20 @@
+{
+    "name": "Johar Hub",
+    "short_name": "Johar Hub",
+    "description": "A Community E-Commerce platform.",
+    "start_url": "/",
+    "scope": "/",
+    "display": "standalone",
+    "orientation": "portrait-primary",
+    "background_color": "#000000",
+    "theme_color": "#000000",
+    "prefer_related_application": false,
+    "icons": [
+        {
+            "src": "assets/logos/JH-Logo-White.png",
+            "sizes": "192×192, 512×512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ]
+}
