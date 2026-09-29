@@ -1,47 +1,32 @@
 const CACHE_NAME = "johar-hub-cache";
 
-const STATIC_ASSETS = [
-    "/",
-    "/index.html",
-    "/product.html",
-    "/profile.html",
-    "/manifest.json",
-    "/css/style.css",
-    "/js/script.js"
-];
 
-// ==================================================
-// INSTALL
-// ==================================================
+/* =========================================================
+   INSTALL
+   ========================================================= */
 
 self.addEventListener("install", event => {
 
-    event.waitUntil(
-        caches.open(CACHE_NAME)
-            .then(cache => {
+    console.log("[JH SW] Installing...");
 
-                return cache.addAll(STATIC_ASSETS);
-
-            })
-    );
-
-    // New service worker ko waiting mein unnecessarily
-    // mat rakho
+    // New service worker immediately active ho
     self.skipWaiting();
 
 });
 
 
-// ================================
-// ACTIVATE
-// ================================
+/* =========================================================
+   ACTIVATE
+   ========================================================= */
 
 self.addEventListener("activate", event => {
 
     event.waitUntil(
 
-        caches.keys()
-            .then(cacheNames => {
+        Promise.all([
+
+            // Purane Johar Hub caches delete
+            caches.keys().then(cacheNames => {
 
                 return Promise.all(
 
@@ -50,129 +35,129 @@ self.addEventListener("activate", event => {
                             name.startsWith("johar-hub-") &&
                             name !== CACHE_NAME
                         )
-                        .map(name => caches.delete(name))
+                        .map(name =>
+                            caches.delete(name)
+                        )
 
                 );
 
-            })
+            }),
 
-            .then(() => self.clients.claim())
+            // Existing tabs ko immediately control karo
+            self.clients.claim()
+
+        ])
 
     );
 
 });
 
 
-// ================================
-// FETCH
-// ================================
+/* =========================================================
+   FETCH
+   ========================================================= */
 
 self.addEventListener("fetch", event => {
 
     const request = event.request;
 
-    // Sirf GET requests cache hongi
+    // Sirf GET requests
     if (request.method !== "GET") {
         return;
     }
 
     const url = new URL(request.url);
 
-    // Sirf same website ki requests
+    // Sirf apni website ke files handle karo
     if (url.origin !== self.location.origin) {
         return;
     }
 
 
-    // --------------------------------
-    // HTML / PAGE NAVIGATION
-    // Network First
-    // --------------------------------
-
-    if (request.mode === "navigate") {
-
-        event.respondWith(
-
-            fetch(request)
-                .then(response => {
-
-                    // Fresh page cache mein save
-                    const responseClone = response.clone();
-
-                    caches.open(CACHE_NAME)
-                        .then(cache => {
-                            cache.put(request, responseClone);
-                        });
-
-                    return response;
-
-                })
-
-                .catch(() => {
-
-                    // Internet nahi hai
-                    return caches.match(request)
-                        .then(cached => {
-
-                            return cached || caches.match("/index.html");
-
-                        });
-
-                })
-
-        );
-
-        return;
-    }
-
-
-    // --------------------------------
-    // CSS / JS / Images / Fonts etc.
-    // Stale While Revalidate
-    // --------------------------------
-
     event.respondWith(
 
-        caches.match(request)
-            .then(cachedResponse => {
+        caches.open(CACHE_NAME).then(async cache => {
 
-                const networkFetch = fetch(request)
-                    .then(networkResponse => {
-
-                        if (
-                            networkResponse &&
-                            networkResponse.status === 200
-                        ) {
-
-                            const responseClone =
-                                networkResponse.clone();
-
-                            caches.open(CACHE_NAME)
-                                .then(cache => {
-
-                                    cache.put(
-                                        request,
-                                        responseClone
-                                    );
-
-                                });
-
-                        }
-
-                        return networkResponse;
-
-                    })
-                    .catch(() => null);
+            const cachedResponse =
+                await cache.match(request);
 
 
-                // Cached hai?
-                // Immediately return cached.
-                // Network background mein update karta rahega.
+            /* =================================================
+               BACKGROUND UPDATE
+               ================================================= */
 
-                return cachedResponse || networkFetch;
+            const networkUpdate = fetch(request, {
+                cache: "no-store"
+            })
+
+            .then(networkResponse => {
+
+                if (
+                    networkResponse &&
+                    networkResponse.ok
+                ) {
+
+                    // Latest file automatically cache replace
+                    cache.put(
+                        request,
+                        networkResponse.clone()
+                    );
+
+                }
+
+                return networkResponse;
 
             })
 
+            .catch(() => {
+
+                return null;
+
+            });
+
+
+            /* =================================================
+               CACHE AVAILABLE
+               → TURANT CACHE DIKHAO
+               → NETWORK BACKGROUND MEIN UPDATE KARE
+               ================================================= */
+
+            if (cachedResponse) {
+
+                return cachedResponse;
+
+            }
+
+
+            /* =================================================
+               CACHE NAHI HAI
+               → NETWORK KA WAIT
+               ================================================= */
+
+            const freshResponse =
+                await networkUpdate;
+
+            if (freshResponse) {
+
+                return freshResponse;
+
+            }
+
+
+            // Completely offline + uncached
+            return new Response(
+                "Offline",
+                {
+                    status: 503,
+                    headers: {
+                        "Content-Type":
+                            "text/plain"
+                    }
+                }
+            );
+
+        })
+
     );
 
-})
+});

@@ -502,3 +502,150 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
 });
+
+
+/* =========================================================
+   JOHAR HUB PWA
+   SERVICE WORKER REGISTRATION
+   ========================================================= */
+
+if ("serviceWorker" in navigator) {
+
+    window.addEventListener("load", async () => {
+
+        try {
+
+            const registration =
+                await navigator.serviceWorker.register(
+                    "./service-worker.js",
+                    {
+                        updateViaCache: "none"
+                    }
+                );
+
+
+            console.log(
+                "[JH PWA] Service Worker registered:",
+                registration.scope
+            );
+
+
+            /* =================================================
+               CHECK FOR LATEST SERVICE WORKER
+               ================================================= */
+
+            await registration.update();
+
+
+            /* =================================================
+               NEW SERVICE WORKER WAITING
+               ================================================= */
+
+            if (registration.waiting) {
+
+                registration.waiting.postMessage({
+                    type: "SKIP_WAITING"
+                });
+
+            }
+
+
+            /* =================================================
+               NEW SERVICE WORKER FOUND
+               ================================================= */
+
+            registration.addEventListener(
+                "updatefound",
+                () => {
+
+                    const newWorker =
+                        registration.installing;
+
+                    if (!newWorker) {
+                        return;
+                    }
+
+
+                    newWorker.addEventListener(
+                        "statechange",
+                        () => {
+
+                            if (
+                                newWorker.state ===
+                                "installed"
+                            ) {
+
+                                /*
+                                 * Agar already koi SW control
+                                 * kar raha hai, iska matlab
+                                 * naya SW available hai.
+                                 */
+
+                                if (
+                                    navigator
+                                        .serviceWorker
+                                        .controller
+                                ) {
+
+                                    newWorker.postMessage({
+                                        type: "SKIP_WAITING"
+                                    });
+
+                                }
+
+                            }
+
+                        }
+                    );
+
+                }
+            );
+
+
+        } catch (error) {
+
+            console.error(
+                "[JH PWA] Service Worker error:",
+                error
+            );
+
+        }
+
+    });
+
+
+    /* =========================================================
+       SERVICE WORKER CONTROLLER CHANGE
+       ========================================================= */
+
+    let refreshing = false;
+
+
+    navigator.serviceWorker.addEventListener(
+        "controllerchange",
+        () => {
+
+            /*
+             * Page ko baar-baar reload hone se rokta hai
+             */
+
+            if (refreshing) {
+                return;
+            }
+
+
+            refreshing = true;
+
+
+            /*
+             * New Service Worker activate hone ke baad
+             * latest cached files use karne ke liye
+             * page ek baar reload hoga.
+             */
+
+            window.location.reload();
+
+        }
+    );
+
+}
