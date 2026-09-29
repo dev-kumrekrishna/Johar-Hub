@@ -1,57 +1,25 @@
 /* =========================================================
    JOHAR HUB
-   SERVICE WORKER
-   NO CACHE
-   AUTO UPDATE
+   SERVICE WORKER (Valid Lifecycle & Fetch Event)
    ========================================================= */
 
-self.addEventListener("install", event => {
-
-    console.log("[JH SW] Installing...");
-
-    // New service worker ko immediately activate karne ke liye
-    self.skipWaiting();
-
+// 1. Install Event: Jab service worker pehli baar install hota hai
+self.addEventListener('install', (event) => {
+    console.log("[JH PWA] Service Worker installed");
+    self.skipWaiting(); // Naya version turant active karne ke liye
 });
 
-
-self.addEventListener("activate", event => {
-
-    console.log("[JH SW] Activated...");
-
-    event.waitUntil(
-        self.clients.claim()
-    );
-
+// 2. Activate Event: Puraane cache clean karne ya claim karne ke liye
+self.addEventListener('activate', (event) => {
+    console.log("[JH PWA] Service Worker activated");
+    event.waitUntil(self.clients.claim());
 });
 
-
-self.addEventListener("fetch", event => {
-
-    const request = event.request;
-
-    // Sirf GET requests
-    if (request.method !== "GET") {
-        return;
-    }
-
+// 3. Fetch Event: PWA install prompt trigger hone ke liye yeh zaroori hai
+self.addEventListener('fetch', (event) => {
     event.respondWith(
-
-        fetch(request, {
-            cache: "no-store"
+        fetch(event.request).catch((error) => {
+            console.error("[JH PWA] Fetch failed:", error);
         })
-
-        .catch(error => {
-
-            console.error(
-                "[JH SW] Network request failed:",
-                error
-            );
-
-            throw error;
-
-        })
-
     );
-
 });

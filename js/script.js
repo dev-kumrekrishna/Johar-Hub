@@ -505,48 +505,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 /* =========================================================
-   JOHAR HUB PWA
-   SERVICE WORKER
-   AUTO UPDATE
-   NO CACHE
+   JOHAR HUB PWA - SERVICE WORKER REGISTRATION
    ========================================================= */
-
-if ("serviceWorker" in navigator) {
-
-    window.addEventListener("load", async () => {
-
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', async () => {
         try {
-
-            const registration =
-                await navigator.serviceWorker.register(
-                    "/service-worker.js",
-                    {
-                        scope: "/",
-                        updateViaCache: "none"
-                    }
-                );
-
-            console.log(
-                "[JH PWA] Service Worker registered:",
-                registration.scope
-            );
-
-            // Immediately check for a new version
+            const registration = await navigator.serviceWorker.register('/service-worker.js', {
+                scope: '/'
+            });
+            console.log('[JH PWA] Service Worker registered:', registration.scope);
+            
+            // Check for updates
             await registration.update();
-
-            console.log(
-                "[JH PWA] Service Worker update checked."
-            );
-
         } catch (error) {
-
-            console.error(
-                "[JH PWA] Service Worker registration failed:",
-                error
-            );
-
+            console.error('[JH PWA] Service Worker registration failed:', error);
         }
-
     });
-
 }
