@@ -1,26 +1,30 @@
 {
-    "name": "Johar Hub",
-    "short_name": "Johar Hub",
-    "description": "A Community E-Commerce platform.",
-    "start_url": "/",
-    "scope": "/",
-    "display": "standalone",
-    "orientation": "portrait-primary",
-    "background_color": "#000000",
-    "theme_color": "#000000",
-    "prefer_related_application": false,
-    "icons": [
-        {
-            "src": "assets/logos/JH-Logo-White.png",
-            "size": "192×192",
-            "type": "image/png",
-            "purpose": "any maskable"
-        },
-        {
-            "src": "assets/logos/JH-Logo-White.png",
-            "size": "512×512",
-            "type": "image/png",
-            "purpose": "any maskable"
-        }
-    ]
+  "name": "Johar Hub",
+  "short_name": "Johar Hub",
+  "description": "Johar Hub — Identity, Culture, Fashion, Digital & Sports",
+  "id": "/",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#030505",
+  "theme_color": "#030505",
+  "categories": [
+    "shopping",
+    "business"
+  ],
+  "icons": [
+    {
+      "src": "/assets/logos/JH-Logo-White.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/logos/JH-Logo-White.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
 }
