@@ -257,6 +257,7 @@ a { text-decoration: none; color: inherit; }
 .footer-heading { font-family: var(--font-mono); font-size: 0.9rem; color: #fff; margin-bottom: 20px; letter-spacing: 2px; text-transform: uppercase; }
 .dev-name { color: var(--green); font-family: var(--font-mono); font-weight: bold; font-size: 1.1rem; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px; }
 .dev-desc { color: var(--muted); font-size: 0.9rem; font-style: italic; line-height: 1.6; border-left: 2px solid var(--green); padding-left: 10px; }
+.dev-desc span{ color: var(--green); font-family: var(--font-mono); font-weight: bold; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px;  }
 .footer-link { color: var(--muted); font-size: 0.85rem; margin-bottom: 12px; transition: 0.3s; display: flex; align-items: center; gap: 8px; }
 .footer-link:hover { color: var(--green); transform: translateX(5px); }
 .social-icons { display: flex; gap: 15px; }
@@ -271,6 +272,65 @@ a { text-decoration: none; color: inherit; }
     transition: 0.3s ease;
 }
 
+.script-studio-bubble {
+    background: rgba(8, 251, 143, 0.1) !important;
+    color: var(--green) !important;
+    border: 1px solid rgba(8, 251, 143, 0.3);
+    padding: 6px 14px !important;
+    border-radius: 50px;
+    font-size: 0.8rem !important;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: 0.3s ease;
+    margin-left: 5px;
+}
+
+.script-studio-bubble:hover {
+    background: rgba(8, 251, 143, 0.2) !important;
+    border-color: var(--green);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(8, 251, 143, 0.15);
+}
+
+/* =========================================
+   FLOATING JSS ICON
+   ========================================= */
+.floating-jss {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 55px;
+    height: 55px;
+    background: rgba(8, 251, 143, 0.1);
+    border: 1px solid var(--green);
+    color: var(--green);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    z-index: 9999;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 5px 20px rgba(8, 251, 143, 0.15);
+    transition: all 0.3s ease;
+}
+
+.floating-jss:hover {
+    background: var(--green);
+    color: var(--black);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(8, 251, 143, 0.4);
+}
+
+.jss-custom-img {
+    width: 35px;  
+    height: 35px;
+    object-fit: contain;
+    transition: 0.3s ease;
+}
 
 /* =========================================
    MOBILE RESPONSIVENESS (Exact Match)
@@ -401,12 +461,24 @@ a { text-decoration: none; color: inherit; }
     .product-card { min-width: 260px; scroll-snap-align: start; }
     
     .header-nav.mobile-active {
-
-        max-height: 500px;
-
+        display: flex !important;
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        right: 0;          
+        left: auto;          
+        width: 50%;           
+        min-width: 220px;     
+        height: 100vh;        
+        background: #030505; 
+        border-left: 1px solid var(--glass-border);
+        border-bottom: 1px solid var(--glass-border);
+        max-height: none;
         opacity: 1;
-
-        padding: 1rem 0;
+        padding: 1.5rem 0;
+        z-index: 999;
+        box-shadow: -10px 0 30px rgba(0,0,0,0.8);
+        align-items: center;
     }
 
 
@@ -441,8 +513,15 @@ a { text-decoration: none; color: inherit; }
     .header-actions .btn-outline {
         display: none;
     }
+
+    .script-studio-bubble {
+        margin: 5px 20px;
+        justify-content: center;
+    }
     
-    
+    #desktopUserBadge {
+        display: none !important;
+    }
 }
 
 @media (max-width: 768px) {
@@ -571,12 +650,24 @@ a { text-decoration: none; color: inherit; }
     .product-card { min-width: 260px; scroll-snap-align: start; }
     
    .header-nav.mobile-active {
-
-        max-height: 500px;
-
+        display: flex !important;
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        right: 0;          
+        left: auto;          
+        width: 50%;           
+        min-width: 220px;     
+        height: 75vh;        
+        background: #030505; 
+        border-left: 1px solid var(--glass-border);
+        border-bottom: 1px solid var(--glass-border);
+        max-height: none;
         opacity: 1;
-
-        padding: 1rem 0;
+        padding: 1.5rem 0;
+        z-index: 999;
+        box-shadow: -10px 0 30px rgba(0,0,0,0.8);
+        align-items: center;
     }
 
 
@@ -616,5 +707,28 @@ a { text-decoration: none; color: inherit; }
     .footer-grid { grid-template-columns: 1fr; gap: 40px; text-align: center; }
     .footer-col { align-items: center; }
     .dev-desc { border-left: none; border-bottom: 2px solid var(--green); padding-left: 0; padding-bottom: 10px; }
+    .dev-desc span{ color: var(--green); font-family: var(--font-mono); font-weight: bold; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px;
+    }
     .footer-link:hover { transform: translateY(-3px); }
+
+    #loginBtn {
+        display: none !important;
+    }
+
+    .script-studio-bubble {
+        margin: 5px 20px;
+        justify-content: center;
+    }
+
+    .floating-jss {
+        bottom: 20px;
+        right: 20px;
+        width: 45px;
+        height: 45px;
+        font-size: 1.2rem;
+    }
+
+    #desktopUserBadge {
+        display: none !important;
+    }
 }

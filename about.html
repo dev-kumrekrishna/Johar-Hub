@@ -13,33 +13,47 @@
 <body>
 
    <header class="header">
-        <div class="header-brand">
+        <div class="header-brand" href="#">
             <div><img src="assets/logos/JH-Logo-White.png" class="mini-logo"></div>
             <span style="font-weight: bold;">JOHAR <b>HUB</b></span>
         </div>
         
         <nav class="header-nav" id="navMenu">
-            <!-- Mobile Profile Block (Hidden by default) -->
-            <div id="mobileAuthBlock" class="mobile-user-profile" style="display: none;">
-                <img src="" id="mobilePfp" class="user-pfp" alt="User">
-                <div class="user-info">
-                    <h4 id="mobileUserName">Loading...</h4>
-                    <p id="mobileEmail" style="font-size: 0.75rem; color: #8f9694; margin: 0 0 5px 0;"></p>
-                    <a href="profile.html" class="btn-text" style="font-size: 0.85rem; color: var(--green);">Manage Profile <i class="ri-arrow-right-line"></i></a>
-                </div>
-            </div>
-            
-            <a href="#" class="active">Home</a>
-            <a href="#ventures">Ventures <i class="ri-arrow-down-s-line"></i></a>
-            <a href="#products">Products</a>
-            <a href="about.html">About</a>
-            <a href="#contact">Contact</a>
-            
-            <!-- Mobile Logout (Hidden by default) -->
-            <a href="#" id="mobileLogoutBtn" style="display: none; color: #ff4444; margin-top: 10px;">
-                <i class="ri-logout-circle-line"></i> Logout
-            </a>
-        </nav>
+    <!-- Mobile Profile Block -->
+<div id="mobileAuthBlock" class="mobile-user-profile" style="display: none; flex-direction: column; gap: 10px;">
+    <div style="display: flex; align-items: center; gap: 15px;">
+        <img src="" id="mobilePfp" class="user-pfp" alt="User" style="width: 45px; height: 45px; border-radius: 50%;">
+        <div class="user-info" style="text-align: left;">
+            <h4 id="mobileUserName" style="margin: 0; color: var(--green);">Loading...</h4>
+            <p id="mobileEmail" style="font-size: 0.75rem; color: var(--muted); margin: 0;"></p>
+        </div>
+    </div>
+    
+    <!-- Action Links -->
+<div style="display: flex; flex-direction: row; gap: 8px; margin-top: 10px; width: 100%;">
+    <a href="profile.html" class="btn btn-outline" style="flex: 1; height: 40px; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; padding: 0 8px; white-space: nowrap;">
+        <i class="ri-user-settings-line"></i> Manage
+    </a>
+    <a href="profile.html#my-orders" class="btn btn-outline" style="flex: 1; height: 40px; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; padding: 0 8px; white-space: nowrap;">
+        <i class="ri-box-3-line"></i> Orders
+    </a>
+</div>
+
+    <a href="#" class="active">Home</a>
+    <a href="#products">Products</a>
+    <a href="about.html">About</a>
+    <a href="#contact">Contact</a>
+    
+    <!-- Naya Script Studio Bubble Capsule -->
+    <a href="https://joharscriptstudio.netlify.app/index.html" class="script-studio-bubble" target="_blank">
+        Explore Script Studio <i class="ri-arrow-right-up-line"></i>
+    </a>
+
+    <!-- Mobile Logout (As is) -->
+    <a href="#" id="mobileLogoutBtn" style="display: none; color: #ff4444; margin-top: 10px;">
+        <i class="ri-logout-circle-line"></i> Logout
+    </a>
+</nav>
 
         <div class="header-actions">
             <i class="ri-search-line icon-btn"></i>
@@ -68,6 +82,11 @@
             <p class="desc-muted">Johar Hub is a modern organisation that unites creativity, technology and community under one identity. Through our ventures, we aim to build meaningful brands that inspire people and create lasting impact.</p>
         </div>
     </section>
+
+    <!-- Floating Script Studio Button -->
+<a href="https://joharscriptstudio.netlify.app/index.html" class="floating-jss" target="_blank" title="Explore Johar Script Studio">
+    <i class="ri-pen-nib-line"></i>
+</a>
 
     <!-- Paste the Universal Footer here -->
 
