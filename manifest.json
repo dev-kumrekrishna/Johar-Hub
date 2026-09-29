@@ -12,13 +12,13 @@
     "icons": [
         {
             "src": "assets/logos/JH-Logo-White.png",
-            "sizes": "192×192",
+            "size": "192×192",
             "type": "image/png",
             "purpose": "any maskable"
         },
         {
             "src": "assets/logos/JH-Logo-White.png",
-            "sizes": "512×512",
+            "size": "512×512",
             "type": "image/png",
             "purpose": "any maskable"
         }
