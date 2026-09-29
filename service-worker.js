@@ -2,71 +2,38 @@
    JOHAR HUB
    SERVICE WORKER
    NO CACHE
-   NO OFFLINE STORAGE
+   AUTO UPDATE
    ========================================================= */
-
 
 self.addEventListener("install", event => {
 
-    console.log("[JH SW] Installed");
+    console.log("[JH SW] Installing...");
 
-    // Immediately activate
+    // New service worker ko immediately activate karne ke liye
     self.skipWaiting();
 
 });
 
 
-/* =========================================================
-   ACTIVATE
-   ========================================================= */
-
 self.addEventListener("activate", event => {
 
+    console.log("[JH SW] Activated...");
+
     event.waitUntil(
-
-        Promise.all([
-
-            // Delete ALL existing caches
-            caches.keys().then(cacheNames => {
-
-                return Promise.all(
-                    cacheNames.map(cacheName =>
-                        caches.delete(cacheName)
-                    )
-                );
-
-            }),
-
-            // Take control immediately
-            self.clients.claim()
-
-        ])
-
+        self.clients.claim()
     );
 
 });
 
 
-/* =========================================================
-   FETCH
-   NO CACHE
-   ========================================================= */
-
 self.addEventListener("fetch", event => {
 
     const request = event.request;
 
-    // Only GET requests
+    // Sirf GET requests
     if (request.method !== "GET") {
         return;
     }
-
-    /*
-     * Always go directly to network.
-     *
-     * cache: "no-store"
-     * means browser HTTP cache is also bypassed.
-     */
 
     event.respondWith(
 
@@ -80,12 +47,6 @@ self.addEventListener("fetch", event => {
                 "[JH SW] Network request failed:",
                 error
             );
-
-            /*
-             * No offline fallback.
-             * If internet is unavailable,
-             * the browser receives the network error.
-             */
 
             throw error;
 
