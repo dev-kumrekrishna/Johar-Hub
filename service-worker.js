@@ -1,15 +1,16 @@
-const CACHE_NAME = "johar-hub-cache";
-
-
 /* =========================================================
-   INSTALL
+   JOHAR HUB
+   SERVICE WORKER
+   NO CACHE
+   NO OFFLINE STORAGE
    ========================================================= */
+
 
 self.addEventListener("install", event => {
 
-    console.log("[JH SW] Installing...");
+    console.log("[JH SW] Installed");
 
-    // New service worker immediately active ho
+    // Immediately activate
     self.skipWaiting();
 
 });
@@ -25,25 +26,18 @@ self.addEventListener("activate", event => {
 
         Promise.all([
 
-            // Purane Johar Hub caches delete
+            // Delete ALL existing caches
             caches.keys().then(cacheNames => {
 
                 return Promise.all(
-
-                    cacheNames
-                        .filter(name =>
-                            name.startsWith("johar-hub-") &&
-                            name !== CACHE_NAME
-                        )
-                        .map(name =>
-                            caches.delete(name)
-                        )
-
+                    cacheNames.map(cacheName =>
+                        caches.delete(cacheName)
+                    )
                 );
 
             }),
 
-            // Existing tabs ko immediately control karo
+            // Take control immediately
             self.clients.claim()
 
         ])
@@ -55,106 +49,45 @@ self.addEventListener("activate", event => {
 
 /* =========================================================
    FETCH
+   NO CACHE
    ========================================================= */
 
 self.addEventListener("fetch", event => {
 
     const request = event.request;
 
-    // Sirf GET requests
+    // Only GET requests
     if (request.method !== "GET") {
         return;
     }
 
-    const url = new URL(request.url);
-
-    // Sirf apni website ke files handle karo
-    if (url.origin !== self.location.origin) {
-        return;
-    }
-
+    /*
+     * Always go directly to network.
+     *
+     * cache: "no-store"
+     * means browser HTTP cache is also bypassed.
+     */
 
     event.respondWith(
 
-        caches.open(CACHE_NAME).then(async cache => {
+        fetch(request, {
+            cache: "no-store"
+        })
 
-            const cachedResponse =
-                await cache.match(request);
+        .catch(error => {
 
-
-            /* =================================================
-               BACKGROUND UPDATE
-               ================================================= */
-
-            const networkUpdate = fetch(request, {
-                cache: "no-store"
-            })
-
-            .then(networkResponse => {
-
-                if (
-                    networkResponse &&
-                    networkResponse.ok
-                ) {
-
-                    // Latest file automatically cache replace
-                    cache.put(
-                        request,
-                        networkResponse.clone()
-                    );
-
-                }
-
-                return networkResponse;
-
-            })
-
-            .catch(() => {
-
-                return null;
-
-            });
-
-
-            /* =================================================
-               CACHE AVAILABLE
-               → TURANT CACHE DIKHAO
-               → NETWORK BACKGROUND MEIN UPDATE KARE
-               ================================================= */
-
-            if (cachedResponse) {
-
-                return cachedResponse;
-
-            }
-
-
-            /* =================================================
-               CACHE NAHI HAI
-               → NETWORK KA WAIT
-               ================================================= */
-
-            const freshResponse =
-                await networkUpdate;
-
-            if (freshResponse) {
-
-                return freshResponse;
-
-            }
-
-
-            // Completely offline + uncached
-            return new Response(
-                "Offline",
-                {
-                    status: 503,
-                    headers: {
-                        "Content-Type":
-                            "text/plain"
-                    }
-                }
+            console.error(
+                "[JH SW] Network request failed:",
+                error
             );
+
+            /*
+             * No offline fallback.
+             * If internet is unavailable,
+             * the browser receives the network error.
+             */
+
+            throw error;
 
         })
 
