@@ -231,8 +231,8 @@
 }
 
 .philosophy-image img {
-    width: 110%;
-    height: 110%;
+    width: 120%;
+    height: 120%;
     object-fit: contain;
     object-position: right bottom;
 }
@@ -471,7 +471,61 @@
     color: #08fb8f;
 }
 
-@media (max-width: 900px){
+@media (max-width: 1280px){
+
+    .about-hero-image img {
+    width: 170%;
+    height: 170%;
+    object-fit: contain;
+    object-position: right bottom;
+}
+
+.philosophy-image img {
+    width: 170%;
+    height: 170%;
+    object-fit: contain;
+    object-position: right bottom;
+}
+    
+}
+
+@media (max-width: 1024px){
+
+    .about-hero-image img {
+    width: 170%;
+    height: 170%;
+    object-fit: contain;
+    object-position: right bottom;
+}
+
+.philosophy-image img {
+    width: 170%;
+    height: 170%;
+    object-fit: contain;
+    object-position: right bottom;
+}
+    
+}
+
+@media (max-width: 992px){
+
+    .about-hero-image img {
+    width: 170%;
+    height: 170%;
+    object-fit: contain;
+    object-position: right bottom;
+}
+
+.philosophy-image img {
+    width: 170%;
+    height: 170%;
+    object-fit: contain;
+    object-position: right bottom;
+}
+    
+}
+
+@media (max-width: 768px){
 
     .about-hero-image img {
     width: 150%;
