@@ -23,6 +23,9 @@
     let deleteDoc = null;
     let collection = null;
     let onSnapshot = null;
+    let getDocs = null;
+    let query = null;
+    let where = null;
 
     let unsubscribeCart = null;
     let unsubscribeProducts = null;
@@ -68,6 +71,9 @@
             deleteDoc = firestoreModule.deleteDoc;
             collection = firestoreModule.collection;
             onSnapshot = firestoreModule.onSnapshot;
+            getDocs = firestoreModule.getDocs;
+            query = firestoreModule.query;
+            where = firestoreModule.where;
 
             initUI();
             initAuthState();
@@ -820,6 +826,21 @@
                 }
             );
         }
+        const navLoginLink = document.getElementById("navLoginLink"); // Naya element
+
+    onAuthStateChanged(auth, async (user) => {
+        if (user) {
+            // ... (baaki existing hide karne ka code)
+            if (navLoginLink) navLoginLink.style.display = "none";
+            await renderUserHeader(user);
+            restoreWishlistState(); // Real wishlist fetch karega
+        } else {
+            // ... (baaki existing show karne ka code)
+            if (navLoginLink) navLoginLink.style.display = "block";
+            setDefaultProfile();
+        }
+        bindCartButtons(user);
+    });
     }
 
     async function renderUserHeader(user) {
@@ -1215,58 +1236,69 @@
         );
     }
 
-    function toggleWishlist(productId, button) {
-        const list = getWishlist();
+    // ============================================================
+// REAL FIRESTORE WISHLIST STATE
+// ============================================================
+async function toggleWishlist(productId, button) {
+    const user = auth?.currentUser;
+    // Agar user login nahi hai, toh login page par bhejein
+    if (!user) {
+        window.location.href = "auth.html"; 
+        return;
+    }
 
-        const index =
-            list.indexOf(productId);
+    const icon = button.querySelector("i");
+    const wishlistDocId = `${user.uid}_${productId}`;
+    const ref = doc(db, "wishlist", wishlistDocId);
 
-        const icon =
-            button.querySelector("i");
-
-        if (index === -1) {
-            list.push(productId);
-            button.classList.add("active");
-
-            if (icon) {
-                icon.className =
-                    "ri-heart-fill";
-            }
-        } else {
-            list.splice(index, 1);
+    try {
+        const snap = await getDoc(ref);
+        if (snap.exists()) {
+            await deleteDoc(ref); // Wishlist se remove karein
             button.classList.remove("active");
-
-            if (icon) {
-                icon.className =
-                    "ri-heart-line";
+            if (icon) icon.className = "ri-heart-line";
+        } else {
+            // Product details fetch karke Firestore me save karein
+            const productSnap = await getDoc(doc(db, "products", productId));
+            if (productSnap.exists()) {
+                const product = productSnap.data();
+                await setDoc(ref, {
+                    userId: user.uid,
+                    productId: productId,
+                    name: product.name || product.title || "Product",
+                    price: Number(product.price ?? product.salePrice ?? 0),
+                    image: getProductImage(product) || "",
+                    addedAt: new Date()
+                });
+                button.classList.add("active");
+                if (icon) icon.className = "ri-heart-fill";
             }
         }
-
-        saveWishlist(list);
+    } catch (error) {
+        console.error("Wishlist error:", error);
     }
+}
 
-    function restoreWishlistState() {
-        const list = getWishlist();
+async function restoreWishlistState() {
+    const user = auth?.currentUser;
+    if (!user) return;
 
-        document
-            .querySelectorAll("[data-favorite]")
-            .forEach((button) => {
-                const id =
-                    button.dataset.favorite;
+    try {
+        const snap = await getDocs(query(collection(db, "wishlist"), where("userId", "==", user.uid)));
+        const list = snap.docs.map(doc => doc.data().productId);
 
-                const icon =
-                    button.querySelector("i");
-
-                if (list.includes(id)) {
-                    button.classList.add("active");
-
-                    if (icon) {
-                        icon.className =
-                            "ri-heart-fill";
-                    }
-                }
-            });
+        document.querySelectorAll("[data-favorite]").forEach((button) => {
+            const id = button.dataset.favorite;
+            const icon = button.querySelector("i");
+            if (list.includes(id)) {
+                button.classList.add("active");
+                if (icon) icon.className = "ri-heart-fill";
+            }
+        });
+    } catch (error) {
+        console.error("Restore wishlist error:", error);
     }
+}
 
     // ============================================================
     // REAL FIRESTORE CART

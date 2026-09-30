@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Johar Hub | Product View</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&family=Caveat:wght@600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    
+</head>
+<body>
+
+<header class="header">
+        <div class="header-brand" href="#">
+            <div><img src="assets/logos/JH-Logo-White.png" class="mini-logo"></div>
+            <span style="font-weight: bold;">JOHAR <b>HUB</b></span>
+        </div>
+        
+        <nav class="header-nav" id="navMenu">
+    <!-- Mobile Profile Block -->
+<div id="mobileAuthBlock" class="mobile-user-profile" style="display: none; flex-direction: column; gap: 10px;">
+    <div style="display: flex; align-items: center; gap: 15px;">
+        <img src="" id="mobilePfp" class="user-pfp" alt="User" style="width: 45px; height: 45px; border-radius: 50%;">
+        <div class="user-info" style="text-align: left;">
+            <h4 id="mobileUserName" style="margin: 0; color: var(--green);">Loading...</h4>
+            <p id="mobileEmail" style="font-size: 0.75rem; color: var(--muted); margin: 0;"></p>
+        </div>
+    </div>
+    
+    <!-- Action Links -->
+<div style="display: flex; flex-direction: row; gap: 8px; margin-top: 10px; width: 100%;">
+    <a href="profile.html" class="btn btn-outline" style="flex: 1; height: 40px; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; padding: 0 8px; white-space: nowrap;">
+        <i class="ri-user-settings-line"></i> Manage
+    </a>
+    <a href="profile.html#my-orders" class="btn btn-outline" style="flex: 1; height: 40px; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; padding: 0 8px; white-space: nowrap;">
+        <i class="ri-box-3-line"></i> Orders
+    </a>
+</div>
+
+    <a href="index.html" class="active">Home</a>
+    <a href="#">Products</a>
+    <a href="about.html">About</a>
+    <a href="index.html#contact">Contact</a>
+    <a href="auth.html" id="navLoginLink">Login / Sign Up</a>
+    
+    <!-- Naya Script Studio Bubble Capsule -->
+    <a href="https://joharscriptstudio.netlify.app/index.html" class="script-studio-bubble" target="_blank">
+        Explore Script Studio <i class="ri-arrow-right-up-line"></i>
+    </a>
+
+    <!-- Mobile Logout (As is) -->
+    <a href="#" id="mobileLogoutBtn" style="display: none; color: #ff4444; margin-top: 10px;">
+        <i class="ri-logout-circle-line"></i> Logout
+    </a>
+</nav>
+
+        <div class="header-actions">
+            <i class="ri-search-line icon-btn"></i>
+            <div class="cart-wrapper icon-btn">
+                <i class="ri-shopping-cart-2-line"></i>
+                <span class="cart-badge"></span>
+            </div>
+            
+            <!-- Get Started Button Linked to auth.html -->
+            <a href="auth.html" id="loginBtn" class="btn btn-outline">Get Started</a>
+            
+            <!-- Desktop User Badge (Hidden by default) -->
+            <a href="profile.html" id="desktopUserBadge" class="user-badge" style="display: none; align-items: center; gap: 8px;">
+                <img src="" id="desktopPfp" class="user-pfp-small" alt="Profile" style="width: 32px; height: 32px; border-radius: 50%;">
+                <span id="desktopUserName">Profile</span>
+            </a>
+            
+            <i class="ri-menu-line mobile-menu-btn"></i>
+        </div>
+    </header>
+
+    <main class="product-view-container" id="productContainer">
+        <h2 style="grid-column: 1/-1;">Loading Product...</h2>
+    </main>
+
+    <script type="module" src="js/ui.js"></script>
+    <script type="module" src="js/products.js"></script>
+    <script type="module" src="js/config.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>

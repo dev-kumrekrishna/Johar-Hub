@@ -326,3 +326,29 @@ window.addEventListener(
     }
 
 })();
+
+// Automatically highlight the active navigation link
+document.addEventListener("DOMContentLoaded", () => {
+    // Current page ka naam nikalne ke liye (jaise: 'about.html')
+    let currentPath = window.location.pathname.split("/").pop();
+    if (currentPath === "") currentPath = "index.html"; // Default to home
+
+    const navLinks = document.querySelectorAll(".header-nav a:not(.script-studio-bubble)");
+
+    navLinks.forEach(link => {
+        // Sabhi links se pehle active class remove karein
+        link.classList.remove("active");
+
+        // Link ka href attribute check karein
+        const linkHref = link.getAttribute("href");
+        
+        // Agar link ka path current page ke path se match karta hai, toh usko active banayein
+        if (linkHref && linkHref.includes(currentPath)) {
+            // Anchor tag wale links (#products) ko ignore karke sirf main page match karein
+            if (currentPath === "index.html" && linkHref.includes("#") && linkHref !== "index.html") {
+                return; // Homepage ke hash links skip karein jab tak click na ho
+            }
+            link.classList.add("active");
+        }
+    });
+});
