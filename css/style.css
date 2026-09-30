@@ -669,37 +669,744 @@ a { text-decoration: none; color: inherit; }
     grid-template-columns: repeat(3, 1fr);
     gap: 1px;
 
-    margin-top: 70px;
+/* =========================================================
+   JOHAR HUB — ABOUT PAGE
+   Header + Footer intentionally NOT included
+========================================================= */
 
-    background: rgba(255,255,255,0.08);
+.about-page {
+    width: 100%;
+    overflow: hidden;
+    background: #050807;
+    color: #f5f7f6;
+}
+
+
+/* =========================================================
+   COMMON
+========================================================= */
+
+.about-eyebrow {
+    display: inline-block;
+    color: #08fb8f;
+    font-family: "Space Mono", monospace;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 22px;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.about-hero {
+    position: relative;
+    min-height: 560px;
+    display: flex;
+    align-items: center;
+    padding: 80px 5% 60px;
+    background:
+        radial-gradient(
+            circle at 75% 35%,
+            rgba(8, 251, 143, 0.08),
+            transparent 35%
+        ),
+        linear-gradient(
+            90deg,
+            #050807 0%,
+            #07100c 55%,
+            #06100c 100%
+        );
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.about-hero-content {
+    position: relative;
+    z-index: 3;
+    width: 55%;
+    max-width: 700px;
+}
+
+.about-hero h1 {
+    margin: 0;
+    font-size: clamp(42px, 5vw, 76px);
+    line-height: 0.98;
+    letter-spacing: -3px;
+    font-weight: 800;
+}
+
+.about-hero h1 span {
+    color: #08fb8f;
+}
+
+.about-hero p {
+    max-width: 600px;
+    margin: 28px 0;
+    color: #9ca5a1;
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+.about-divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #08fb8f;
+    font-family: "Space Mono", monospace;
+    font-size: 9px;
+    letter-spacing: 3px;
+}
+
+.about-divider span {
+    width: 28px;
+    height: 2px;
+    background: #08fb8f;
+    display: inline-block;
+}
+
+.about-hero-image {
+    position: absolute;
+    right: 2%;
+    bottom: 0;
+    width: 55%;
+    max-width: 760px;
+    height: 100%;
+    z-index: 2;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    pointer-events: none;
+}
+
+.about-hero-image::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(
+            90deg,
+            #050807 0%,
+            transparent 30%
+        ),
+        linear-gradient(
+            0deg,
+            #050807 0%,
+            transparent 25%
+        );
+    z-index: 2;
+}
+
+.about-hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: right bottom;
+}
+
+
+/* =========================================================
+   THREE PILLARS
+========================================================= */
+
+.about-pillars {
+    position: relative;
+    z-index: 5;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    padding: 0 4% 70px;
+    margin-top: -15px;
+}
+
+.pillar-card {
+    min-height: 180px;
+    padding: 30px;
     border: 1px solid rgba(255,255,255,0.08);
     border-radius: 18px;
-    overflow: hidden;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,0.045),
+            rgba(8,251,143,0.025)
+        );
+    backdrop-filter: blur(12px);
 }
 
-.jh-values > div {
-    padding: 32px;
-    background: var(--bg, #0b0d0c);
-}
-
-.jh-values span {
-    display: block;
+.pillar-icon {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
     margin-bottom: 25px;
-
-    color: var(--green, #08fb8f);
-    font-family: "Space Mono", monospace;
-    font-size: 0.75rem;
+    color: #08fb8f;
+    background: rgba(8,251,143,0.08);
+    font-size: 22px;
 }
 
-.jh-values h3 {
-    margin: 0 0 8px;
-    font-size: 1.1rem;
+.pillar-card h3 {
+    margin: 0 0 10px;
+    font-size: 18px;
 }
 
-.jh-values p {
+.pillar-card p {
     margin: 0;
-    color: var(--muted, #888);
-    font-size: 0.85rem;
+    color: #89918d;
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   PHILOSOPHY
+========================================================= */
+
+.about-philosophy {
+    position: relative;
+    min-height: 420px;
+    margin: 0 4% 80px;
+    padding: 60px 5%;
+    overflow: hidden;
+    border: 1px solid rgba(8,251,143,0.22);
+    border-radius: 20px;
+    background:
+        radial-gradient(
+            circle at 80% 50%,
+            rgba(8,251,143,0.08),
+            transparent 35%
+        ),
+        #07100c;
+}
+
+.philosophy-content {
+    position: relative;
+    z-index: 3;
+    max-width: 560px;
+}
+
+.philosophy-content h2 {
+    margin: 0 0 22px;
+    font-size: clamp(38px, 4vw, 58px);
+    line-height: 1;
+    letter-spacing: -2px;
+}
+
+.philosophy-content p {
+    max-width: 600px;
+    color: #9ba39f;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.story-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 15px;
+    padding: 11px 18px;
+    border: 1px solid #08fb8f;
+    border-radius: 50px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 12px;
+    transition: 0.3s ease;
+}
+
+.story-button:hover {
+    background: #08fb8f;
+    color: #000;
+}
+
+.philosophy-image {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+
+.philosophy-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: right bottom;
+}
+
+
+/* =========================================================
+   VALUES
+========================================================= */
+
+.about-values {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    padding: 0 4% 70px;
+    align-items: center;
+}
+
+.values-list {
+    padding-left: 20px;
+}
+
+.value-item {
+    position: relative;
+    display: grid;
+    grid-template-columns: 35px 52px 1fr;
+    gap: 15px;
+    align-items: center;
+    min-height: 92px;
+}
+
+.value-number {
+    align-self: start;
+    padding-top: 8px;
+    color: #08fb8f;
+    font-family: "Space Mono", monospace;
+    font-size: 10px;
+}
+
+.value-icon {
+    width: 46px;
+    height: 46px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    color: #08fb8f;
+    background: rgba(8,251,143,0.08);
+    font-size: 22px;
+}
+
+.value-item h3 {
+    margin: 0 0 6px;
+    font-size: 16px;
+}
+
+.value-item p {
+    margin: 0;
+    color: #858d89;
+    font-size: 12px;
+}
+
+.values-gallery {
+    position: relative;
+    min-height: 430px;
+}
+
+.value-photo {
+    position: absolute;
+    object-fit: cover;
+    filter: grayscale(100%);
+    border: 5px solid #111;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+}
+
+.value-photo-one {
+    width: 63%;
+    height: 220px;
+    top: 0;
+    left: 0;
+    transform: rotate(-3deg);
+}
+
+.value-photo-two {
+    width: 65%;
+    height: 210px;
+    bottom: 0;
+    left: 7%;
+    transform: rotate(3deg);
+}
+
+.value-photo-three {
+    width: 35%;
+    height: 200px;
+    top: 30px;
+    right: 0;
+    transform: rotate(2deg);
+}
+
+.values-handwriting {
+    position: absolute;
+    right: 0;
+    bottom: 15px;
+    color: #fff;
+    font-family: "Caveat", cursive;
+    font-size: 24px;
+    line-height: 1.05;
+    transform: rotate(-5deg);
+}
+
+.values-handwriting span {
+    color: #08fb8f;
+}
+
+
+/* =========================================================
+   STATS
+========================================================= */
+
+.about-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin: 0 4% 60px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.stat-item {
+    min-height: 110px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    border-right: 1px solid rgba(255,255,255,0.08);
+}
+
+.stat-item:last-child {
+    border-right: none;
+}
+
+.stat-item strong {
+    color: #08fb8f;
+    font-size: 32px;
+    font-weight: 700;
+}
+
+.stat-item span {
+    color: #a4aba7;
+    font-family: "Space Mono", monospace;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+}
+
+
+/* =========================================================
+   FINAL BANNER
+========================================================= */
+
+.about-final {
+    position: relative;
+    min-height: 300px;
+    margin: 0 4% 80px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 20px;
+    background:
+        radial-gradient(
+            circle at 80% 50%,
+            rgba(8,251,143,0.07),
+            transparent 40%
+        ),
+        #070b09;
+}
+
+.final-content {
+    position: relative;
+    z-index: 3;
+    padding: 55px 5%;
+}
+
+.final-content h2 {
+    margin: 0;
+    font-size: clamp(30px, 4vw, 50px);
+    line-height: 1.05;
+    letter-spacing: -1.5px;
+}
+
+.final-content h2 span {
+    color: #08fb8f;
+}
+
+.final-line {
+    width: 80px;
+    height: 2px;
+    margin-top: 25px;
+    background: #08fb8f;
+}
+
+.final-content small {
+    display: block;
+    margin-top: 12px;
+    color: #aaa;
+    font-family: "Space Mono", monospace;
+    font-size: 8px;
+    letter-spacing: 3px;
+}
+
+.final-character {
+    position: absolute;
+    right: 10%;
+    bottom: -10px;
+    width: 42%;
+    height: 110%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.final-character img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center bottom;
+}
+
+.final-notes {
+    position: absolute;
+    z-index: 4;
+    right: 3%;
+    top: 25%;
+    color: #fff;
+    font-family: "Caveat", cursive;
+    font-size: 20px;
+    line-height: 1.15;
+    transform: rotate(-5deg);
+}
+
+.final-notes span {
+    color: #08fb8f;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .about-hero {
+        min-height: 500px;
+    }
+
+    .about-hero-content {
+        width: 62%;
+    }
+
+    .about-hero-image {
+        width: 55%;
+    }
+
+    .about-pillars {
+        grid-template-columns: 1fr;
+    }
+
+    .about-philosophy {
+        min-height: 500px;
+    }
+
+    .philosophy-content {
+        max-width: 52%;
+    }
+
+    .about-values {
+        grid-template-columns: 1fr;
+    }
+
+    .values-gallery {
+        min-height: 450px;
+    }
+
+    .about-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .stat-item:nth-child(2) {
+        border-right: none;
+    }
+
+    .stat-item:nth-child(-n+2) {
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .about-hero {
+        min-height: 620px;
+        padding: 55px 7% 0;
+        display: block;
+    }
+
+    .about-hero-content {
+        width: 100%;
+    }
+
+    .about-hero h1 {
+        font-size: 42px;
+        letter-spacing: -2px;
+    }
+
+    .about-hero p {
+        font-size: 12px;
+        line-height: 1.7;
+    }
+
+    .about-divider {
+        font-size: 7px;
+        letter-spacing: 1.5px;
+    }
+
+    .about-hero-image {
+        width: 100%;
+        height: 330px;
+        right: 0;
+        bottom: 0;
+    }
+
+    .about-hero-image::after {
+        background:
+            linear-gradient(
+                0deg,
+                #050807 0%,
+                transparent 35%
+            );
+    }
+
+
+    .about-pillars {
+        padding: 0 4% 55px;
+        margin-top: -5px;
+    }
+
+    .pillar-card {
+        padding: 24px;
+    }
+
+
+    .about-philosophy {
+        min-height: 570px;
+        margin: 0 4% 60px;
+        padding: 35px 7%;
+    }
+
+    .philosophy-content {
+        max-width: 100%;
+    }
+
+    .philosophy-content h2 {
+        font-size: 38px;
+    }
+
+    .philosophy-content p {
+        font-size: 12px;
+    }
+
+    .philosophy-image {
+        width: 100%;
+        height: 300px;
+        right: 0;
+        bottom: 0;
+    }
+
+
+    .about-values {
+        gap: 30px;
+        padding: 0 6% 55px;
+    }
+
+    .values-list {
+        padding-left: 0;
+    }
+
+    .value-item {
+        grid-template-columns: 28px 44px 1fr;
+        gap: 10px;
+    }
+
+    .value-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .value-item h3 {
+        font-size: 14px;
+    }
+
+    .value-item p {
+        font-size: 10px;
+    }
+
+    .values-gallery {
+        min-height: 300px;
+    }
+
+    .value-photo-one {
+        height: 155px;
+    }
+
+    .value-photo-two {
+        height: 145px;
+    }
+
+    .value-photo-three {
+        height: 135px;
+    }
+
+    .values-handwriting {
+        font-size: 17px;
+    }
+
+
+    .about-stats {
+        margin: 0 5% 45px;
+    }
+
+    .stat-item {
+        min-height: 90px;
+        gap: 8px;
+    }
+
+    .stat-item strong {
+        font-size: 25px;
+    }
+
+    .stat-item span {
+        font-size: 7px;
+    }
+
+
+    .about-final {
+        min-height: 390px;
+        margin: 0 4% 60px;
+    }
+
+    .final-content {
+        padding: 35px 7%;
+    }
+
+    .final-content h2 {
+        font-size: 29px;
+        max-width: 75%;
+    }
+
+    .final-character {
+        width: 75%;
+        height: 65%;
+        right: -10%;
+        bottom: 0;
+    }
+
+    .final-notes {
+        right: 4%;
+        top: 12%;
+        font-size: 15px;
+    }
+
+    .final-content small {
+        font-size: 7px;
+    }
 }
 
 .product-view-container { padding: 120px 40px; max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 50px; }
