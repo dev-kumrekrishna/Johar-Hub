@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&family=Caveat:wght@600&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/about.css">
 </head>
 <body>
 
@@ -19,42 +20,43 @@
         </div>
         
         <nav class="header-nav" id="navMenu">
-    <!-- Mobile Profile Block -->
-<div id="mobileAuthBlock" class="mobile-user-profile" style="display: none; flex-direction: column; gap: 10px;">
-    <div style="display: flex; align-items: center; gap: 15px;">
-        <img src="" id="mobilePfp" class="user-pfp" alt="User" style="width: 45px; height: 45px; border-radius: 50%;">
-        <div class="user-info" style="text-align: left;">
-            <h4 id="mobileUserName" style="margin: 0; color: var(--green);">Loading...</h4>
-            <p id="mobileEmail" style="font-size: 0.75rem; color: var(--muted); margin: 0;"></p>
-        </div>
-    </div>
-    
-    <!-- Action Links -->
-<div style="display: flex; flex-direction: row; gap: 8px; margin-top: 10px; width: 100%;">
-    <a href="profile.html" class="btn btn-outline" style="flex: 1; height: 40px; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; padding: 0 8px; white-space: nowrap;">
-        <i class="ri-user-settings-line"></i> Manage
-    </a>
-    <a href="profile.html#my-orders" class="btn btn-outline" style="flex: 1; height: 40px; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; padding: 0 8px; white-space: nowrap;">
-        <i class="ri-box-3-line"></i> Orders
-    </a>
-</div>
+            <!-- Mobile Profile Block -->
+            <div id="mobileAuthBlock" class="mobile-user-profile" style="display: none; flex-direction: column; gap: 10px;">
+                <div style="display: flex; align-items: center; gap: 15px;">
+                    <img src="" id="mobilePfp" class="user-pfp" alt="User" style="width: 45px; height: 45px; border-radius: 50%;">
+                    <div class="user-info" style="text-align: left;">
+                        <h4 id="mobileUserName" style="margin: 0; color: var(--green);">Loading...</h4>
+                        <p id="mobileEmail" style="font-size: 0.75rem; color: var(--muted); margin: 0;"></p>
+                    </div>
+                </div>
+                
+                <!-- Action Links -->
+                <div style="display: flex; flex-direction: row; gap: 8px; margin-top: 10px; width: 100%;">
+                    <a href="profile.html" class="btn btn-outline" style="flex: 1; height: 40px; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; padding: 0 8px; white-space: nowrap;">
+                        <i class="ri-user-settings-line"></i> Manage
+                    </a>
+                    <a href="profile.html#my-orders" class="btn btn-outline" style="flex: 1; height: 40px; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; padding: 0 8px; white-space: nowrap;">
+                        <i class="ri-box-3-line"></i> Orders
+                    </a>
+                </div>
 
-    <a href="index.html" class="active">Home</a>
-    <a href="products.html">Products</a>
-    <a href="about.html">About</a>
-    <a href="index.html#contact">Contact</a>
-    <a href="auth.html" id="navLoginLink">Login / Sign Up</a>
-    
-    <!-- Naya Script Studio Bubble Capsule -->
-    <a href="https://joharscriptstudio.netlify.app/index.html" class="script-studio-bubble" target="_blank">
-        Explore Script Studio <i class="ri-arrow-right-up-line"></i>
-    </a>
+                <a href="index.html" class="active">Home</a>
+                <a href="products.html">Products</a>
+                <a href="about.html">About</a>
+                <a href="index.html#contact">Contact</a>
+                <a href="auth.html" id="navLoginLink">Login / Sign Up</a>
+                
+                <!-- Naya Script Studio Bubble Capsule -->
+                <a href="https://joharscriptstudio.netlify.app/index.html" class="script-studio-bubble" target="_blank">
+                    Explore Script Studio <i class="ri-arrow-right-up-line"></i>
+                </a>
 
-    <!-- Mobile Logout (As is) -->
-    <a href="#" id="mobileLogoutBtn" style="display: none; color: #ff4444; margin-top: 10px;">
-        <i class="ri-logout-circle-line"></i> Logout
-    </a>
-</nav>
+                <!-- Mobile Logout (As is) -->
+                <a href="#" id="mobileLogoutBtn" style="display: none; color: #ff4444; margin-top: 10px;">
+                    <i class="ri-logout-circle-line"></i> Logout
+                </a>
+            </div>
+        </nav>
 
         <div class="header-actions">
             <i class="ri-search-line icon-btn"></i>
@@ -63,10 +65,8 @@
                 <span class="cart-badge">3</span>
             </div>
             
-            <!-- Get Started Button Linked to auth.html -->
             <a href="auth.html" id="loginBtn" class="btn btn-outline">Get Started</a>
             
-            <!-- Desktop User Badge (Hidden by default) -->
             <a href="profile.html" id="desktopUserBadge" class="user-badge" style="display: none; align-items: center; gap: 8px;">
                 <img src="" id="desktopPfp" class="user-pfp-small" alt="Profile" style="width: 32px; height: 32px; border-radius: 50%;">
                 <span id="desktopUserName">Profile</span>
@@ -76,64 +76,6 @@
         </div>
     </header>
 
-   <section id="about" class="jh-about">
-
-    <div class="jh-about-glow glow-one"></div>
-    <div class="jh-about-glow glow-two"></div>
-
-    <div class="container-center">
-
-        <span class="green-tag">About Johar Hub</span>
-
-        <h1 class="jh-about-title">
-            Inspired by Culture.
-            <span>Built for Tomorrow.</span>
-        </h1>
-
-        <p class="jh-about-intro">
-            Johar Hub is an independent creative business inspired by
-            <strong>Adivasi culture, heritage and identity.</strong>
-            We turn that inspiration into modern products, digital
-            experiences and creative ventures.
-        </p>
-
-        <div class="jh-about-divider"></div>
-
-        <div class="jh-about-grid">
-
-            <div class="jh-about-card">
-                <div class="jh-card-icon">
-                    <i class="ri-ancient-gate-line"></i>
-                </div>
-
-                <h3>Inspired by Heritage</h3>
-
-                <p>
-                    Adivasi traditions, stories, symbols and ways of life
-                    influence the ideas and creative direction behind
-                    many of our projects.
-                </p>
-            </div>
-
-            <div class="jh-about-card">
-                <div class="jh-card-icon">
-                    <i class="ri-palette-line"></i>
-                </div>
-
-                <h3>Modern Creativity</h3>
-
-                <p>
-                    We combine cultural inspiration with contemporary
-                    design, technology and creativity to create something
-                    that belongs to the present.
-                </p>
-            </div>
-
-            <div class="jh-about-card">
-                <div class="jh-card-icon">
-                    <i class="ri-rocket-line"></i>
-<main class="about-page">
-
     <!-- =========================
          ABOUT HERO
     ========================== -->
@@ -142,16 +84,16 @@
         <div class="about-hero-content">
             <span class="about-eyebrow">◉ ABOUT JOHAR HUB</span>
 
-            <h1>
+            <h2>
                 Inspired by Culture.<br>
                 <span>Built for Tomorrow.</span>
-            </h1>
+            </h2>
 
-            <p>
+            <h5>
                 Johar Hub is an independent creative business inspired by
                 Adivasi culture, heritage and identity. We turn that inspiration
                 into modern products, digital experiences and creative ventures.
-            </p>
+            </h5>
 
             <div class="about-divider">
                 <span></span>
@@ -159,325 +101,195 @@
             </div>
         </div>
 
-        <!-- Upload: images/about/about-hero-character.png -->
         <div class="about-hero-image">
-            <img
-                src="images/about/about-hero-character.png"
-                alt="Johar Hub character wearing Roots T-shirt"
-            >
+            <img src="assets/icons/hero-character.png" alt="Johar Hub character wearing Roots T-shirt">
         </div>
 
     </section>
-
 
     <!-- =========================
          THREE PILLARS
     ========================== -->
     <section class="about-pillars">
-
         <article class="pillar-card">
-            <div class="pillar-icon">⌂</div>
-
+            <div class="pillar-icon"><i class="ri-ancient-gate-line"></i></div>
             <h3>Inspired by Heritage</h3>
-
-            <p>
-                Adivasi traditions, stories, symbols and ways of life influence
-                the ideas and creative direction behind many of our projects.
-            </p>
+            <p>Adivasi traditions, stories, symbols and ways of life influence the ideas and creative direction behind many of our projects.</p>
         </article>
 
-
         <article class="pillar-card">
-            <div class="pillar-icon">◉</div>
-
+            <div class="pillar-icon"><i class="ri-palette-line"></i></div>
             <h3>Modern Creativity</h3>
-
-            <p>
-                We combine cultural inspiration with contemporary design,
-                technology and creativity to create something that belongs to
-                the present.
-            </p>
+            <p>We combine cultural inspiration with contemporary design, technology and creativity to create something that belongs to the present.</p>
         </article>
-
 
         <article class="pillar-card">
-            <div class="pillar-icon">♧</div>
-
+            <div class="pillar-icon"><i class="ri-rocket-line"></i></div>
             <h3>Built as a Business</h3>
-
-            <p>
-                Johar Hub is an independent business. Our work may be rooted in
-                culture, but our goal is to build sustainable products, brands
-                and ventures.
-            </p>
+            <p>Johar Hub is an independent business. Our work may be rooted in culture, but our goal is to build sustainable products, brands and ventures.</p>
         </article>
-
     </section>
-
 
     <!-- =========================
          PHILOSOPHY
     ========================== -->
     <section class="about-philosophy">
-
         <div class="philosophy-content">
-
             <span class="about-eyebrow">◉ OUR PHILOSOPHY</span>
-
             <h2>
-                Rooted in identity.<br>
-                Moving forward.
+                Rooted in identity.<span>
+                Moving forward. </span>
             </h2>
-
-            <p>
+            <h5>
                 We believe culture doesn't have to remain in the past. Johar Hub
                 explores how Adivasi identity and heritage can inspire modern
                 design, technology, products and creative work — while building
                 a business that can grow into something much bigger.
-            </p>
-
+            </h5>
             <a href="#" class="story-button">
                 Our Story <span>→</span>
             </a>
-
         </div>
-
-        <!-- Upload: images/about/about-philosophy-character.png -->
         <div class="philosophy-image">
-            <img
-                src="images/about/about-philosophy-character.png"
-                alt="Johar Hub character sitting"
-            >
+            <img src="assets/icons/philosophy-character.png" alt="Johar Hub character sitting">
         </div>
-
     </section>
-
 
     <!-- =========================
          OUR VALUES
     ========================== -->
     <section class="about-values">
-
         <div class="values-list">
-
             <span class="about-eyebrow">◉ OUR VALUES</span>
-
             <div class="value-item">
                 <span class="value-number">01</span>
-
                 <div class="value-icon">⌁</div>
-
                 <div>
                     <h3>Culture</h3>
                     <p>Our inspiration begins with identity and heritage.</p>
                 </div>
             </div>
-
-
             <div class="value-item">
                 <span class="value-number">02</span>
-
                 <div class="value-icon">✦</div>
-
                 <div>
                     <h3>Creativity</h3>
                     <p>We turn ideas into modern creative work.</p>
                 </div>
             </div>
-
-
             <div class="value-item">
                 <span class="value-number">03</span>
-
                 <div class="value-icon">♧</div>
-
                 <div>
                     <h3>Community</h3>
                     <p>We support and grow with our people.</p>
                 </div>
             </div>
-
-
             <div class="value-item">
                 <span class="value-number">04</span>
-
                 <div class="value-icon">↗</div>
-
                 <div>
                     <h3>Future</h3>
                     <p>We build with a long-term, sustainable vision.</p>
                 </div>
             </div>
-
         </div>
 
-
-        <!-- =========================
-             VALUES IMAGE COLLAGE
-        ========================== -->
         <div class="values-gallery">
-
-            <!-- Upload:
-                 images/about/values-mountains.jpg
-            -->
-            <img
-                class="value-photo value-photo-one"
-                src="images/about/values-mountains.jpg"
-                alt="Mountain landscape"
-            >
-
-            <!-- Upload:
-                 images/about/values-community.jpg
-            -->
-            <img
-                class="value-photo value-photo-two"
-                src="images/about/values-community.jpg"
-                alt="Community"
-            >
-
-            <!-- Upload:
-                 images/about/values-symbol.jpg
-            -->
-            <img
-                class="value-photo value-photo-three"
-                src="images/about/values-symbol.jpg"
-                alt="Cultural symbol"
-            >
-
+            <img class="value-photo value-photo-one" src="assets/icons/mountains.png" alt="Mountain landscape">
+            <img class="value-photo value-photo-two" src="assets/icons/community.png" alt="Community">
+            <img class="value-photo value-photo-three" src="assets/icons/cultural-symbol.png" alt="Cultural symbol">
             <div class="values-handwriting">
                 Same<br>
                 Roots<br>
                 <span>New<br>Possibilities</span>
             </div>
-
         </div>
-
     </section>
-
 
     <!-- =========================
          STATS
     ========================== -->
     <section class="about-stats">
-
         <div class="stat-item">
             <strong>3</strong>
             <span>VENTURES</span>
         </div>
-
         <div class="stat-item">
             <strong>∞</strong>
             <span>POSSIBILITIES</span>
         </div>
-
         <div class="stat-item">
             <strong>♧</strong>
             <span>BIGGER<br>COMMUNITY</span>
         </div>
-
         <div class="stat-item">
             <strong>⌁</strong>
             <span>BRIGHTER<br>TOMORROW</span>
         </div>
-
     </section>
-
 
     <!-- =========================
          FINAL BRAND BANNER
     ========================== -->
     <section class="about-final">
-
         <div class="final-content">
-
             <h2>
                 Culture isn't just<br>
                 something we wear.<br>
                 It's something <span>we carry.</span>
             </h2>
-
             <div class="final-line"></div>
-
             <small>JOHAR HUB</small>
-
         </div>
-
-
-        <!-- Upload:
-             images/about/about-final-character.png
-        -->
         <div class="final-character">
-            <img
-                src="images/about/about-final-character.png"
-                alt="Johar Hub character wearing black hoodie and cap"
-            >
+            <img src="assets/icons/final-character.png" alt="Johar Hub character wearing black hoodie and cap">
         </div>
-
-
         <div class="final-notes">
             Ideas<br>
             Products<br>
             People<br>
             <span>A Bigger Tomorrow</span>
         </div>
-
     </section>
 
-</main>
-   <!-- Floating Script Studio Button -->
-<a href="https://joharscriptstudio.netlify.app/index.html" class="floating-jss" target="_blank" title="Explore Johar Script Studio">
-    <img src="assets/logos/JSS-Logo.png" alt="JSS Icon" class="jss-custom-img">
-</a>
+    <a href="https://joharscriptstudio.netlify.app/index.html" class="floating-jss" target="_blank" title="Explore Johar Script Studio">
+        <img src="assets/logos/JSS-Logo.png" alt="JSS Icon" class="jss-custom-img">
+    </a>
 
     <!-- ========================= PROFESSIONAL FOOTER ========================= -->
     <footer class="footer-area">
         <div class="footer-grid">
-            
-            <!-- Column 1: Brand & Copyright -->
             <div class="footer-col brand-col">
                 <div class="footer-logo"><img src="assets/logos/JH-Logo-White.png" class="footer-logo" alt="Johar Hub Logo"></div>
                 <h2 class="footer-brand-name">JOHAR <span>HUB</span></h2>
                 <p class="copyright">&copy; 2026 Johar Hub.<br>All rights reserved.</p>
             </div>
-
-            <!-- Column 2: About Developer -->
             <div class="footer-col dev-col">
                 <h3 class="footer-heading">About Developer</h3>
                 <p class="dev-name">Koitur Kumre Krishna</p>
                 <p class="dev-desc">"An unemployed guy with some badass skills from <span>Koyadhana, Pandhurna, Madhya Pradesh</span>" <i class="ri-fire-fill" style="color: var(--green);"></i></p>
-                
-                <!-- Developer Social -->
                 <a href="https://instagram.com/kumre_krishna_11" target="_blank" class="footer-link" style="margin-top: 15px; color: var(--green);">
                     <i class="ri-instagram-line" style="font-size: 1.2rem;"></i> @kumre_krishna_11
                 </a>
-
                 <a href="https://instagram.com/pro.krishh11" target="_blank" class="footer-link" style="margin-top: 0px; color: var(--green);">
                     <i class="ri-instagram-line" style="font-size: 1.2rem;"></i> @pro.krishh11
                 </a>
             </div>
-
-            <!-- Column 3: Community & Links -->
             <div class="footer-col links-col">
                 <h3 class="footer-heading">Community</h3>
-                
-                <!-- Koya Community Links -->
                 <a href="https://youtube.com/@KoyaCommunity" target="_blank" class="footer-link">
                     <i class="ri-youtube-fill" style="color: #ff0000; font-size: 1.2rem;"></i> KOYA COMMUNITY
                 </a>
                 <a href="https://instagram.com/official_koya_community" target="_blank" class="footer-link">
                     <i class="ri-instagram-line" style="font-size: 1.2rem;"></i> @official_koya_community
                 </a>
-                
                 <a href="#products" class="footer-link" style="margin-top: 10px;">
                     <i class="ri-shopping-bag-line" style="font-size: 1.2rem;"></i> Johar Shop
                 </a>
             </div>
-
-            <!-- Column 4: Connect (Johar Hub Tree) -->
             <div class="footer-col links-col">
                 <h3 class="footer-heading">Connect</h3>
-                
-                <!-- Johar Hub Branches IG -->
                 <a href="https://instagram.com/joharhub.in" target="_blank" class="footer-link">
                     <i class="ri-instagram-line" style="font-size: 1.2rem;"></i> Johar Hub
                 </a>
@@ -491,10 +303,8 @@
                     <i class="ri-github-fill" style="font-size: 1.2rem;"></i> GitHub
                 </a>
             </div>
-
         </div>
     </footer>
-
     <script src="js/script.js"></script>
     <script type="module" src="js/ui.js"></script>
 </body>
