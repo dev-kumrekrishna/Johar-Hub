@@ -57,7 +57,7 @@
     color: #08fb8f;
 }
 
-.about-hero h5 {
+.about-hero h4 {
     max-width: calc(600 * clamp(0px, 100vw, 1200px) / 1200);
     margin: calc(28 * clamp(0px, 100vw, 1200px) / 1200) 0;
     color: #9ca5a1;
@@ -189,7 +189,7 @@
     color:#08fb8f;
 }
 
-.philosophy-content h5 {
+.philosophy-content h4 {
     max-width: calc(600 * clamp(0px, 100vw, 1200px) / 1200);
     color: #9ba39f;
     font-size: calc(14 * clamp(0px, 100vw, 1200px) / 1200);
