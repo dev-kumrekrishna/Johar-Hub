@@ -47,7 +47,7 @@
 
 .about-hero h2 {
     margin: 0;
-    font-size: calc(76 * clamp(0px, 100vw, 1200px) / 1200); 
+    font-size: calc(60 * clamp(0px, 100vw, 1200px) / 1200); 
     line-height: 0.98;
     letter-spacing: calc(-3 * clamp(0px, 100vw, 1200px) / 1200);
     font-weight: 800;
@@ -61,7 +61,7 @@
     max-width: calc(600 * clamp(0px, 100vw, 1200px) / 1200);
     margin: calc(28 * clamp(0px, 100vw, 1200px) / 1200) 0;
     color: #9ca5a1;
-    font-size: calc(15 * clamp(0px, 100vw, 1200px) / 1200);
+    font-size: calc(20 * clamp(0px, 100vw, 1200px) / 1200);
     line-height: 1.8;
 }
 
@@ -141,15 +141,15 @@
     font-size: calc(22 * clamp(0px, 100vw, 1200px) / 1200);
 }
 
-.pillar-card h3 {
+.pillar-card h4 {
     margin: 0 0 calc(10 * clamp(0px, 100vw, 1200px) / 1200);
-    font-size: calc(18 * clamp(0px, 100vw, 1200px) / 1200);
+    font-size: calc(20 * clamp(0px, 100vw, 1200px) / 1200);
 }
 
-.pillar-card p {
+.pillar-card h5 {
     margin: 0;
     color: #89918d;
-    font-size: calc(13 * clamp(0px, 100vw, 1200px) / 1200);
+    font-size: calc(15 * clamp(0px, 100vw, 1200px) / 1200);
     line-height: 1.7;
 }
 
