@@ -530,6 +530,18 @@
         padding-top: 60px;
    }
 
+   .about-hero h2 {
+    margin: 0;
+    font-size: calc(40 * clamp(0px, 100vw, 1200px) / 1200); 
+    line-height: 0.98;
+    letter-spacing: calc(-3 * clamp(0px, 100vw, 1200px) / 1200);
+    font-weight: 800;
+}
+
+.about-hero h2 span {
+    color: #08fb8f;
+}
+
     .about-hero-image img {
     width: 150%;
     height: 150%;
