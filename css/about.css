@@ -526,6 +526,9 @@
 }
 
 @media (max-width: 768px){
+   main {
+        padding-top: 120px;
+   }
 
     .about-hero-image img {
     width: 150%;
