@@ -1093,14 +1093,6 @@ a { text-decoration: none; color: inherit; }
         display: none;
     } 
     
-    .footer-area { padding: 60px 20px 40px; }
-    .footer-grid { grid-template-columns: 1fr; gap: 40px; text-align: center; }
-    .footer-col { align-items: center; }
-    .dev-desc { border-left: none; border-bottom: 2px solid var(--green); padding-left: 0; padding-bottom: 10px; }
-    .dev-desc span{ color: var(--green); font-family: var(--font-mono); font-weight: bold; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px;
-    }
-    .footer-link:hover { transform: translateY(-3px); }
-
     #loginBtn {
         display: none !important;
     }
