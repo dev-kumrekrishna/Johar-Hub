@@ -17,10 +17,11 @@
     display: inline-block;
     color: #08fb8f;
     font-family: "Space Mono", monospace;
-    font-size: calc(11 * clamp(0px, 100vw, 1200px) / 1200);
+    font-size: calc(25 * clamp(0px, 100vw, 1200px) / 1200);
     font-weight: 700;
     letter-spacing: calc(2 * clamp(0px, 100vw, 1200px) / 1200);
     margin-bottom: calc(22 * clamp(0px, 100vw, 1200px) / 1200);
+    
 }
 
 /* =========================================================
@@ -42,6 +43,7 @@
     position: relative;
     z-index: 3; 
     width: 60%;
+    height: calc(300 * clamp(0px, 100vw, 1200px) / 1200);
     max-width: calc(700 * clamp(0px, 100vw, 1200px) / 1200);
 }
 
@@ -71,7 +73,7 @@
     gap: calc(12 * clamp(0px, 100vw, 1200px) / 1200);
     color: #08fb8f;
     font-family: "Space Mono", monospace;
-    font-size: calc(9 * clamp(0px, 100vw, 1200px) / 1200);
+    font-size: calc(16 * clamp(0px, 100vw, 1200px) / 1200);
     letter-spacing: calc(3 * clamp(0px, 100vw, 1200px) / 1200);
 }
 
@@ -129,8 +131,8 @@
 }
 
 .pillar-icon {
-    width: calc(44 * clamp(0px, 100vw, 1200px) / 1200);
-    height: calc(44 * clamp(0px, 100vw, 1200px) / 1200);
+    width: calc(74 * clamp(0px, 100vw, 1200px) / 1200);
+    height: calc(74 * clamp(0px, 100vw, 1200px) / 1200);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -138,18 +140,18 @@
     margin-bottom: calc(25 * clamp(0px, 100vw, 1200px) / 1200);
     color: #08fb8f;
     background: rgba(8,251,143,0.08);
-    font-size: calc(22 * clamp(0px, 100vw, 1200px) / 1200);
+    font-size: calc(32 * clamp(0px, 100vw, 1200px) / 1200);
 }
 
 .pillar-card h4 {
     margin: 0 0 calc(10 * clamp(0px, 100vw, 1200px) / 1200);
-    font-size: calc(20 * clamp(0px, 100vw, 1200px) / 1200);
+    font-size: calc(25 * clamp(0px, 100vw, 1200px) / 1200);
 }
 
 .pillar-card h5 {
     margin: 0;
     color: #89918d;
-    font-size: calc(15 * clamp(0px, 100vw, 1200px) / 1200);
+    font-size: calc(20 * clamp(0px, 100vw, 1200px) / 1200);
     line-height: 1.7;
 }
 
@@ -192,7 +194,7 @@
 .philosophy-content h4 {
     max-width: calc(600 * clamp(0px, 100vw, 1200px) / 1200);
     color: #9ba39f;
-    font-size: calc(14 * clamp(0px, 100vw, 1200px) / 1200);
+    font-size: calc(20 * clamp(0px, 100vw, 1200px) / 1200);
     line-height: 1.8;
 }
 
@@ -267,30 +269,30 @@
     padding-top: calc(8 * clamp(0px, 100vw, 1200px) / 1200);
     color: #08fb8f;
     font-family: "Space Mono", monospace;
-    font-size: calc(10 * clamp(0px, 100vw, 1200px) / 1200);
+    font-size: calc(20 * clamp(0px, 100vw, 1200px) / 1200);
 }
 
 .value-icon {
-    width: calc(46 * clamp(0px, 100vw, 1200px) / 1200);
-    height: calc(46 * clamp(0px, 100vw, 1200px) / 1200);
+    width: calc(64 * clamp(0px, 100vw, 1200px) / 1200);
+    height: calc(64 * clamp(0px, 100vw, 1200px) / 1200);
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: calc(10 * clamp(0px, 100vw, 1200px) / 1200);
     color: #08fb8f;
     background: rgba(8,251,143,0.08);
-    font-size: calc(22 * clamp(0px, 100vw, 1200px) / 1200);
+    font-size: calc(46 * clamp(0px, 100vw, 1200px) / 1200);
 }
 
 .value-item h3 {
     margin: 0 0 calc(6 * clamp(0px, 100vw, 1200px) / 1200);
-    font-size: calc(16 * clamp(0px, 100vw, 1200px) / 1200);
+    font-size: calc(25 * clamp(0px, 100vw, 1200px) / 1200);
 }
 
 .value-item p {
     margin: 0;
     color: #858d89;
-    font-size: calc(12 * clamp(0px, 100vw, 1200px) / 1200);
+    font-size: calc(25 * clamp(0px, 100vw, 1200px) / 1200);
 }
 
 .values-gallery {
@@ -375,14 +377,14 @@
 
 .stat-item strong {
     color: #08fb8f;
-    font-size: calc(32 * clamp(0px, 100vw, 1200px) / 1200);
+    font-size: calc(46 * clamp(0px, 100vw, 1200px) / 1200);
     font-weight: 700;
 }
 
 .stat-item span {
     color: #a4aba7;
     font-family: "Space Mono", monospace;
-    font-size: calc(9 * clamp(0px, 100vw, 1200px) / 1200);
+    font-size: calc(28 * clamp(0px, 100vw, 1200px) / 1200);
     letter-spacing: calc(1.5 * clamp(0px, 100vw, 1200px) / 1200);
 }
 
@@ -429,7 +431,7 @@
     margin-top: calc(12 * clamp(0px, 100vw, 1200px) / 1200);
     color: #aaa;
     font-family: "Space Mono", monospace;
-    font-size: calc(8 * clamp(0px, 100vw, 1200px) / 1200);
+    font-size: calc(32 * clamp(0px, 100vw, 1200px) / 1200);
     letter-spacing: calc(3 * clamp(0px, 100vw, 1200px) / 1200);
 }
 
@@ -471,41 +473,6 @@
     color: #08fb8f;
 }
 
-@media (max-width: 1280px){
-
-    .about-hero-image img {
-    width: 170%;
-    height: 170%;
-    object-fit: contain;
-    object-position: right bottom;
-}
-
-.philosophy-image img {
-    width: 170%;
-    height: 170%;
-    object-fit: contain;
-    object-position: right bottom;
-}
-    
-}
-
-@media (max-width: 1024px){
-
-    .about-hero-image img {
-    width: 170%;
-    height: 170%;
-    object-fit: contain;
-    object-position: right bottom;
-}
-
-.philosophy-image img {
-    width: 170%;
-    height: 170%;
-    object-fit: contain;
-    object-position: right bottom;
-}
-    
-}
 
 @media (max-width: 992px){
 
@@ -550,8 +517,8 @@
 }
 
 .philosophy-image img {
-    width: 170%;
-    height: 170%;
+    width: 200%;
+    height: 200%;
     object-fit: contain;
     object-position: right bottom;
 }
