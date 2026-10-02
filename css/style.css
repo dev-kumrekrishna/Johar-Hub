@@ -1115,6 +1115,79 @@ a { text-decoration: none; color: inherit; }
     }
 
     .product-view-container { grid-template-columns: 1fr; padding: 100px 15px 40px; }
+
+   .footer-area {
+        padding: 55px 20px 40px;
+        margin-top: 30px;
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .footer-grid {
+        width: 100%;
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .footer-col {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+    }
+
+    .footer-logo {
+        width: 45px;
+        height: 45px;
+    }
+
+    .footer-brand-name {
+        font-size: 1.35rem;
+    }
+
+    .copyright {
+        font-size: 0.75rem;
+        max-width: 100%;
+    }
+
+    .footer-heading {
+        font-size: 0.8rem;
+        margin-bottom: 15px;
+    }
+
+    .dev-name {
+        font-size: 0.95rem;
+        max-width: 100%;
+        overflow-wrap: anywhere;
+    }
+
+    .dev-desc {
+        font-size: 0.8rem;
+        max-width: 100%;
+        overflow-wrap: anywhere;
+    }
+
+    .footer-link {
+        font-size: 0.8rem;
+        max-width: 100%;
+        overflow-wrap: anywhere;
+    }
+
+    .social-icons {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .social-icons a {
+        width: 42px;
+        height: 42px;
+        font-size: 1.15rem;
+    }
+
+    /* Prevent long content from creating horizontal overflow */
+    .footer-area * {
+        max-width: 100%;
+    }
+
 }
 /* Hide mobile profile block and logout button on desktop/tablet */
 @media (min-width: 901px) {
