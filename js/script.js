@@ -1243,7 +1243,13 @@ async function toggleWishlist(productId, button) {
     const user = auth?.currentUser;
     // Agar user login nahi hai, toh login page par bhejein
     if (!user) {
-        window.location.href = "auth.html"; 
+       window.showCustomPopup(
+            "Login Required", 
+            "Please login to save your favorite products to your wishlist.", 
+            "assets/pop-up/login-required.png", 
+            "Login / Sign Up", 
+            "auth.html"
+        );
         return;
     }
 
@@ -1679,18 +1685,14 @@ async function restoreWishlistState() {
 
         if (!currentItems.length) {
             list.innerHTML = `
-                <p style="
-                    color:#87918c;
-                    text-align:center;
-                    padding:50px 10px;
-                ">
-                    Your cart is empty.
-                </p>
+                <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; padding: 60px 20px; text-align:center; height:100%;">
+                    <img src="assets/pop-up/empty-cart.png" alt="Empty Cart" style="width:160px; margin-bottom:20px; opacity:0.9;">
+                    <h3 style="color:#fff; margin-bottom:10px; font-size:1.2rem;">Your cart is empty</h3>
+                    <p style="color:#87918c; font-size:0.9rem;">Looks like you haven't added anything to your cart yet.</p>
+                </div>
             `;
-
             totalEl.textContent = "₹0";
             updateBadge(0);
-
             return;
         }
 
@@ -1904,122 +1906,68 @@ async function restoreWishlistState() {
             );
         }
     }
+async function addProductToCart(productId) {
+        const user = auth?.currentUser;
 
-    async function addProductToCart(
-        productId
-    ) {
-        const user =
-            auth?.currentUser;
-
+        // Yahan 'if' missing tha
         if (!user) {
-            window.location.href =
-                "auth.html";
+            window.showCustomPopup(
+                "Login Required", 
+                "Please login or create an account to add products to your cart.", 
+                "assets/pop-up/login-required.png", 
+                "Login / Sign Up", 
+                "auth.html"
+            );
             return;
         }
 
         try {
-            const productSnap =
-                await getDoc(
-                    doc(
-                        db,
-                        "products",
-                        productId
-                    )
-                );
+            const productSnap = await getDoc(doc(db, "products", productId));
 
             if (!productSnap.exists()) {
-                alert(
-                    "Product not found."
-                );
+                alert("Product not found.");
                 return;
             }
 
-            const product =
-                productSnap.data();
+            const product = productSnap.data();
 
             if (product.active === false) {
-                alert(
-                    "This product is unavailable."
-                );
+                alert("This product is unavailable.");
                 return;
             }
 
             const stock =
-                product.stock === undefined ||
-                product.stock === null
+                product.stock === undefined || product.stock === null
                     ? null
                     : Number(product.stock);
 
-            if (
-                stock !== null &&
-                stock <= 0
-            ) {
-                alert(
-                    "This product is out of stock."
-                );
+            if (stock !== null && stock <= 0) {
+                alert("This product is out of stock.");
                 return;
             }
 
-            const ref =
-                doc(
-                    db,
-                    "carts",
-                    user.uid,
-                    "items",
-                    productId
-                );
+            const ref = doc(db, "carts", user.uid, "items", productId);
+            const old = await getDoc(ref);
 
-            const old =
-                await getDoc(ref);
+            const oldQty = old.exists() ? Number(old.data().quantity || 0) : 0;
+            const newQty = oldQty + 1;
 
-            const oldQty =
-                old.exists()
-                    ? Number(
-                        old.data()
-                            .quantity || 0
-                    )
-                    : 0;
-
-            const newQty =
-                oldQty + 1;
-
-            if (
-                stock !== null &&
-                newQty > stock
-            ) {
-                alert(
-                    `Only ${stock} item(s) available.`
-                );
+            if (stock !== null && newQty > stock) {
+                alert(`Only ${stock} item(s) available.`);
                 return;
             }
 
-            const image =
-                getProductImage(product);
+            const image = getProductImage(product);
 
             await setDoc(
                 ref,
                 {
                     productId,
-                    name:
-                        product.name ||
-                        product.title ||
-                        "",
-
-                    price:
-                        Number(
-                            product.price ??
-                            product.salePrice ??
-                            0
-                        ),
-
-                    image:
-                        image || "",
-
-                    quantity:
-                        newQty,
-
-                    updatedAt:
-                        new Date()
+                    name: product.name || product.title || "",
+                    price: Number(product.price ?? product.salePrice ?? 0),
+                    image: image || "",
+                    quantity: newQty,
+                    updatedAt: new Date()
                 },
                 { merge: true }
             );
@@ -2027,78 +1975,159 @@ async function restoreWishlistState() {
             openCart();
 
         } catch (error) {
-            console.error(
-                "[JH] Add to cart error:",
-                error
-            );
-
-            alert(
-                "Could not add this product to cart."
-            );
+            console.error("[JH] Add to cart error:", error);
+            alert("Could not add this product to cart.");
         }
     }
 
     function bindCartButtons(user) {
         ensureCartDrawer();
 
-        document
-            .querySelectorAll(".cart-wrapper")
-            .forEach((button) => {
-                if (
-                    button.dataset.jhCartReady ===
-                    "true"
-                ) {
+        document.querySelectorAll(".cart-wrapper").forEach((button) => {
+            if (button.dataset.jhCartReady === "true") {
+                return;
+            }
+
+            button.dataset.jhCartReady = "true";
+            button.setAttribute("role", "button");
+            button.setAttribute("tabindex", "0");
+            button.setAttribute("aria-label", "Shopping cart");
+
+            // Event listeners jo missing the
+            button.addEventListener("click", (event) => {
+                event.preventDefault();
+                if (!auth?.currentUser) {
+                    window.showCustomPopup(
+                        "Login Required", 
+                        "You need to be logged in to view your shopping cart.", 
+                        "assets/pop-up/login-required.png", 
+                        "Login / Sign Up", 
+                        "auth.html"
+                    );
                     return;
                 }
-
-                button.dataset.jhCartReady =
-                    "true";
-
-                button.setAttribute(
-                    "role",
-                    "button"
-                );
-
-                button.setAttribute(
-                    "tabindex",
-                    "0"
-                );
-
-                button.setAttribute(
-                    "aria-label",
-                    "Shopping cart"
-                );
-
-                button.addEventListener(
-                    "click",
-                    (event) => {
-                        event.preventDefault();
-
-                        if (!auth?.currentUser) {
-                            window.location.href =
-                                "auth.html";
-                            return;
-                        }
-
-                        openCart();
-                    }
-                );
-
-                button.addEventListener(
-                    "keydown",
-                    (event) => {
-                        if (
-                            event.key === "Enter" ||
-                            event.key === " "
-                        ) {
-                            event.preventDefault();
-                            button.click();
-                        }
-                    }
-                );
+                openCart();
             });
 
-        startCartListener(user);
+            button.addEventListener("keydown", (event) => {
+                if (event.key === "Enter" || event.key === " ") {
+                    event.preventDefault();
+                    button.click();
+                }
+            });
+        });
+    }
+
+    async function addProductToCart(productId) {
+        const user = auth?.currentUser;
+
+        // Yahan 'if' missing tha
+        if (!user) {
+            window.showCustomPopup(
+                "Login Required", 
+                "Please login or create an account to add products to your cart.", 
+                "assets/pop-up/login-required.png", 
+                "Login / Sign Up", 
+                "auth.html"
+            );
+            return;
+        }
+
+        try {
+            const productSnap = await getDoc(doc(db, "products", productId));
+
+            if (!productSnap.exists()) {
+                alert("Product not found.");
+                return;
+            }
+
+            const product = productSnap.data();
+
+            if (product.active === false) {
+                alert("This product is unavailable.");
+                return;
+            }
+
+            const stock =
+                product.stock === undefined || product.stock === null
+                    ? null
+                    : Number(product.stock);
+
+            if (stock !== null && stock <= 0) {
+                alert("This product is out of stock.");
+                return;
+            }
+
+            const ref = doc(db, "carts", user.uid, "items", productId);
+            const old = await getDoc(ref);
+
+            const oldQty = old.exists() ? Number(old.data().quantity || 0) : 0;
+            const newQty = oldQty + 1;
+
+            if (stock !== null && newQty > stock) {
+                alert(`Only ${stock} item(s) available.`);
+                return;
+            }
+
+            const image = getProductImage(product);
+
+            await setDoc(
+                ref,
+                {
+                    productId,
+                    name: product.name || product.title || "",
+                    price: Number(product.price ?? product.salePrice ?? 0),
+                    image: image || "",
+                    quantity: newQty,
+                    updatedAt: new Date()
+                },
+                { merge: true }
+            );
+
+            openCart();
+
+        } catch (error) {
+            console.error("[JH] Add to cart error:", error);
+            alert("Could not add this product to cart.");
+        }
+    }
+
+    function bindCartButtons(user) {
+        ensureCartDrawer();
+
+        document.querySelectorAll(".cart-wrapper").forEach((button) => {
+            if (button.dataset.jhCartReady === "true") {
+                return;
+            }
+
+            button.dataset.jhCartReady = "true";
+            button.setAttribute("role", "button");
+            button.setAttribute("tabindex", "0");
+            button.setAttribute("aria-label", "Shopping cart");
+
+            // Event listeners jo missing the
+            button.addEventListener("click", (event) => {
+                event.preventDefault();
+                if (!auth?.currentUser) {
+                    window.showCustomPopup(
+                        "Login Required", 
+                        "You need to be logged in to view your shopping cart.", 
+                        "assets/pop-up/login-required.png", 
+                        "Login / Sign Up", 
+                        "auth.html"
+                    );
+                    return;
+                }
+                openCart();
+            });
+
+            button.addEventListener("keydown", (event) => {
+                if (event.key === "Enter" || event.key === " ") {
+                    event.preventDefault();
+                    button.click();
+                }
+            });
+        });
     }
 
     function startCartListener(user) {
@@ -2171,6 +2200,33 @@ async function restoreWishlistState() {
         window.closeJoharCart =
             closeCart;
     }
+
+    // ============================================================
+    // CUSTOM POPUP SYSTEM
+    // ============================================================
+    window.showCustomPopup = function(title, message, imageSrc, btnText, redirectUrl) {
+        let overlay = document.getElementById("customPopupOverlay");
+        if (!overlay) {
+            overlay = document.createElement("div");
+            overlay.id = "customPopupOverlay";
+            overlay.className = "custom-popup-overlay";
+            document.body.appendChild(overlay);
+        }
+        
+        overlay.innerHTML = `
+            <div class="custom-popup-box">
+                <i class="ri-close-line custom-popup-close" onclick="document.getElementById('customPopupOverlay').classList.remove('active')"></i>
+                <img src="${imageSrc}" alt="Popup Icon" class="custom-popup-img">
+                <h3 class="custom-popup-title">${title}</h3>
+                <p class="custom-popup-msg">${message}</p>
+                <a href="${redirectUrl}" class="custom-popup-btn">${btnText} <i class="ri-arrow-right-line"></i></a>
+            </div>
+        `;
+        
+        setTimeout(() => {
+            overlay.classList.add("active");
+        }, 10);
+    };
 
     // ============================================================
     // FLOATING JSS BUTTON
