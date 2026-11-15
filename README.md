@@ -1,8 +1,8 @@
-# Johar Hub
+# Johar Horizonsizons
 
 > **Connecting Community. Preserving Identity.**
 
-Johar Hub is a community-focused digital platform created to celebrate Adivasi culture, local identity, creativity, and community initiatives.
+Johar Horizons is a community-focused digital platform created to celebrate Adivasi culture, local identity, creativity, and community initiatives.
 
 The platform brings cultural content, community resources, products, stories, and local initiatives together in one place.
 
@@ -10,9 +10,9 @@ The platform brings cultural content, community resources, products, stories, an
 
 ---
 
-## 🌱 About Johar Hub
+## 🌱 About Johar Horizons
 
-Johar Hub is built with the idea that culture should not only be remembered — it should be documented, shared, and carried forward.
+Johar Horizons is built with the idea that culture should not only be remembered — it should be documented, shared, and carried forward.
 
 The platform aims to create a digital space where people can discover and engage with:
 
@@ -57,7 +57,7 @@ The platform aims to create a digital space where people can discover and engage
 
 ## 🚀 Deployment
 
-Johar Hub uses automated deployment.
+Johar Horizons uses automated deployment.
 
 Every update pushed to the main GitHub branch can trigger the deployment workflow and publish the latest version to Firebase Hosting.
 
