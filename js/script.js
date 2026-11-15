@@ -302,18 +302,18 @@
     }
 
     // ============================================================
-    // HERO SLIDER
+    // HERO SLIDER (Updated for 3 Venture Background Images)
     // ============================================================
-
     function initHeroSlider() {
         const slides = Array.from(
             document.querySelectorAll(".hero-text.slide")
         );
-
+        const bgSlides = Array.from(
+            document.querySelectorAll(".hero-bg-slide")
+        );
         const dots = Array.from(
             document.querySelectorAll(".hero-dots span")
         );
-
         const sidebarNums = Array.from(
             document.querySelectorAll(
                 ".hero-sidebar span:not(.line)"
@@ -327,63 +327,44 @@
 
         let currentSlide = 0;
         let slideInterval = null;
-
         const AUTOPLAY_TIME = 5000;
 
         function showSlide(index) {
             if (index < 0) {
                 index = slides.length - 1;
             }
-
             if (index >= slides.length) {
                 index = 0;
             }
 
             slides.forEach((slide, i) => {
-                slide.classList.toggle(
-                    "active",
-                    i === index
-                );
+                slide.classList.toggle("active", i === index);
+                slide.setAttribute("aria-hidden", i === index ? "false" : "true");
+            });
 
-                slide.setAttribute(
-                    "aria-hidden",
-                    i === index ? "false" : "true"
-                );
+            // Background image switch
+            bgSlides.forEach((bg, i) => {
+                bg.classList.toggle("active", i === index);
             });
 
             dots.forEach((dot, i) => {
-                dot.classList.toggle(
-                    "active",
-                    i === index
-                );
-
-                dot.setAttribute(
-                    "aria-current",
-                    i === index ? "true" : "false"
-                );
+                dot.classList.toggle("active", i === index);
+                dot.setAttribute("aria-current", i === index ? "true" : "false");
             });
 
             sidebarNums.forEach((num, i) => {
-                num.classList.toggle(
-                    "active",
-                    i === index
-                );
+                num.classList.toggle("active", i === index);
             });
 
             currentSlide = index;
         }
 
         function nextSlide() {
-            showSlide(
-                (currentSlide + 1) % slides.length
-            );
+            showSlide((currentSlide + 1) % slides.length);
         }
 
         function previousSlide() {
-            showSlide(
-                (currentSlide - 1 + slides.length) %
-                slides.length
-            );
+            showSlide((currentSlide - 1 + slides.length) % slides.length);
         }
 
         function stopAutoplay() {
@@ -395,12 +376,8 @@
 
         function startAutoplay() {
             stopAutoplay();
-
             if (slides.length > 1) {
-                slideInterval = setInterval(
-                    nextSlide,
-                    AUTOPLAY_TIME
-                );
+                slideInterval = setInterval(nextSlide, AUTOPLAY_TIME);
             }
         }
 
@@ -411,20 +388,14 @@
         dots.forEach((dot, index) => {
             dot.setAttribute("role", "button");
             dot.setAttribute("tabindex", "0");
-
             dot.addEventListener("click", (event) => {
                 event.preventDefault();
                 event.stopPropagation();
-
                 showSlide(index);
                 restartAutoplay();
             });
-
             dot.addEventListener("keydown", (event) => {
-                if (
-                    event.key === "Enter" ||
-                    event.key === " "
-                ) {
+                if (event.key === "Enter" || event.key === " ") {
                     event.preventDefault();
                     showSlide(index);
                     restartAutoplay();
@@ -435,20 +406,14 @@
         sidebarNums.forEach((num, index) => {
             num.setAttribute("role", "button");
             num.setAttribute("tabindex", "0");
-
             num.addEventListener("click", (event) => {
                 event.preventDefault();
                 event.stopPropagation();
-
                 showSlide(index);
                 restartAutoplay();
             });
-
             num.addEventListener("keydown", (event) => {
-                if (
-                    event.key === "Enter" ||
-                    event.key === " "
-                ) {
+                if (event.key === "Enter" || event.key === " ") {
                     event.preventDefault();
                     showSlide(index);
                     restartAutoplay();
@@ -460,41 +425,31 @@
             if (
                 event.target &&
                 typeof event.target.matches === "function" &&
-                event.target.matches(
-                    "input, textarea, select, [contenteditable='true']"
-                )
+                event.target.matches("input, textarea, select, [contenteditable='true']")
             ) {
                 return;
             }
-
             if (event.key === "ArrowRight") {
                 nextSlide();
                 restartAutoplay();
             }
-
             if (event.key === "ArrowLeft") {
                 previousSlide();
                 restartAutoplay();
             }
         });
 
-        document.addEventListener(
-            "visibilitychange",
-            () => {
-                if (document.hidden) {
-                    stopAutoplay();
-                } else {
-                    startAutoplay();
-                }
+        document.addEventListener("visibilitychange", () => {
+            if (document.hidden) {
+                stopAutoplay();
+            } else {
+                startAutoplay();
             }
-        );
+        });
 
         showSlide(0);
         startAutoplay();
-
-        console.log(
-            `[JH] Hero slider initialized: ${slides.length} slides`
-        );
+        console.log(`[JH] Hero slider initialized: ${slides.length} slides`);
     }
 
     // ============================================================

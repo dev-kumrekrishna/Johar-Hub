@@ -204,11 +204,6 @@ a { text-decoration: none; color: inherit; }
 .center-col { border-left: 1px solid var(--glass-border); border-right: 1px solid var(--glass-border); background: rgba(0,0,0,0.2); }
 .v-icon { width: 55px; height: 55px; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-size: 1.2rem; font-weight: bold; margin-bottom: 20px; }
 
-.venture-col h3 { font-family: var(--font-mono); font-size: 0.85rem; letter-spacing: 2px; margin-bottom: 10px; }
-.venture-col p { color: var(--muted); font-size: 0.75rem; line-height: 1.6; margin-bottom: 20px; flex-grow: 1; }
-.status { padding: 6px 12px; border-radius: 4px; font-family: var(--font-mono); font-size: 0.65rem; display: inline-flex; align-items: center; gap: 5px; letter-spacing: 1px; }
-.status.available { background: var(--green); color: var(--black); }
-.status.coming { background: rgba(255, 255, 255, 0.05); color: var(--muted); }
 
 /* =========================================
    PRODUCTS SECTION
@@ -1299,4 +1294,206 @@ a { text-decoration: none; color: inherit; }
     #mobileLogoutBtn {
         display: none !important;
     }
+}
+
+
+/* =========================================
+   STRICT 16:9 HERO OVERRIDES (ALL SCREENS)
+========================================= */
+.hero-section {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9 !important;
+    height: auto !important;
+    min-height: unset !important;
+    margin-top: 70px; /* Fixed header ke neeche se start hoga */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: var(--black);
+}
+
+/* Background Slider Images Crossfade + Zoom Effect */
+.hero-bg-wrapper img.hero-bg-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    opacity: 0;
+    transform: scale(1.04);
+    transition: opacity 0.9s ease-in-out, transform 1.2s ease-out;
+    pointer-events: none;
+}
+
+.hero-bg-wrapper img.hero-bg-slide.active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* 16:9 Fluid Content Wrapper */
+.hero-content-wrapper {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 4% 5% !important;
+}
+
+/* Left Sidebar scaled to 16:9 */
+.hero-sidebar {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    transform: none !important;
+    width: clamp(24px, 3.5vw, 55px);
+    height: 65%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: clamp(6px, 1.2vw, 16px);
+    font-size: clamp(0.55rem, 0.9vw, 0.85rem);
+    padding-top: 0 !important;
+    margin-right: clamp(10px, 2.5vw, 40px);
+}
+
+.hero-sidebar .line {
+    width: 1px;
+    flex-grow: 1;
+    max-height: clamp(25px, 6vw, 80px);
+    background: var(--glass-border);
+}
+
+/* Main Content Area */
+.hero-main {
+    flex: 1;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+}
+
+.hero-top {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between;
+    align-items: center !important;
+    width: 100%;
+    height: auto !important;
+    margin: auto 0;
+}
+
+.hero-text-slider {
+    flex: 1;
+    max-width: 62%;
+    margin-top: 0 !important;
+    padding-left: 0 !important;
+    text-align: left !important;
+}
+
+/* Fluid Typography according to 16:9 box */
+.hero-text .eyebrow {
+    font-size: clamp(0.45rem, 0.85vw, 0.85rem) !important;
+    letter-spacing: clamp(1.5px, 0.3vw, 4px) !important;
+    margin-bottom: clamp(4px, 1vw, 14px) !important;
+}
+
+.hero-title {
+    font-size: clamp(1.35rem, 5.2vw, 5.5rem) !important;
+    line-height: 1.05 !important;
+    letter-spacing: clamp(-0.5px, -0.15vw, -2px) !important;
+    margin-bottom: clamp(4px, 1vw, 15px) !important;
+}
+
+.hero-subtitle {
+    font-size: clamp(0.65rem, 1.4vw, 1.4rem) !important;
+    margin-bottom: clamp(4px, 1vw, 14px) !important;
+}
+
+.hero-desc {
+    font-size: clamp(0.5rem, 0.95vw, 0.95rem) !important;
+    line-height: 1.5 !important;
+    margin-bottom: clamp(8px, 2vw, 28px) !important;
+    padding: 0 !important;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.hero-buttons {
+    justify-content: flex-start !important;
+    gap: clamp(8px, 1.5vw, 20px) !important;
+}
+
+.hero-buttons .btn {
+    padding: clamp(5px, 0.9vw, 12px) clamp(10px, 1.8vw, 24px) !important;
+    font-size: clamp(0.5rem, 0.9vw, 0.9rem) !important;
+}
+
+/* Floating Right Tags inside 16:9 */
+.hero-tags {
+    position: relative !important;
+    top: auto !important;
+    right: auto !important;
+    width: 35% !important;
+    height: clamp(90px, 22vw, 320px) !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.tag-rooted {
+    position: relative !important;
+    top: auto !important;
+    right: auto !important;
+    text-align: right !important;
+    font-size: clamp(0.42rem, 0.7vw, 0.7rem) !important;
+}
+
+.tag-signature {
+    position: relative !important;
+    top: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    font-size: clamp(0.9rem, 2.5vw, 2.6rem) !important;
+    transform: rotate(-8deg) !important;
+    margin-bottom: 0 !important;
+}
+
+/* Bottom Dots inside 16:9 */
+.hero-bottom {
+    position: absolute !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    display: flex;
+    justify-content: center !important;
+    align-items: center;
+}
+
+.hero-dots {
+    margin-bottom: 0 !important;
+    gap: clamp(5px, 0.8vw, 10px) !important;
+}
+
+.hero-dots span {
+    width: clamp(5px, 0.6vw, 8px) !important;
+    height: clamp(5px, 0.6vw, 8px) !important;
+}
+
+.hero-dots span.active {
+    width: clamp(14px, 1.8vw, 24px) !important;
 }

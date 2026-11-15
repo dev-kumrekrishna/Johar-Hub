@@ -94,30 +94,40 @@
     <div class="bg-glow glow-top"></div>
     <div class="bg-glow glow-bottom"></div>
 
-    <!-- ========================= HERO SECTION ========================= -->
+
+    <!-- ========================= HERO SECTION (STRICT 16:9) ========================= -->
     <section class="hero-section">
         
+        <!-- 3 Alag Background Images for 3 Ventures -->
         <div class="hero-bg-wrapper">
-            <img src="assets/icons/HERO.png" alt="Johar Hub Background">
+            <!-- Slide 1 BG: Main Hub -->
+            <img src="assets/icons/HERO.png" alt="Johar Hub Background" class="hero-bg-slide active">
+            
+            <!-- Slide 2 BG: Johar Digitals (Apni image ka path yahan daalna) -->
+            <img src="assets/icons/HERO-DIGITALS.png" onerror="this.src='assets/icons/HERO.png'" alt="Johar Digitals Background" class="hero-bg-slide">
+            
+            <!-- Slide 3 BG: Johar Fashions (Apni image ka path yahan daalna) -->
+            <img src="assets/icons/HERO-FASHIONS.png" onerror="this.src='assets/icons/HERO.png'" alt="Johar Fashions Background" class="hero-bg-slide">
+
             <!-- Dark Overlay taaki text clear padha jaye -->
-            <div class="bg-overlay"></div> 
+            <div class="bg-overlay"></div>
         </div>
 
-        <!-- Content Container -->
+        <!-- 16:9 Scaled Content Container -->
         <div class="hero-content-wrapper">
             
             <!-- Left Sidebar Navigation -->
             <div class="hero-sidebar">
-                 <span id="side-0" class="active">01</span>
-                 <div class="line"></div>
-                 <span id="side-1">02</span>
-                 <span id="side-2">03</span>
-             </div>
+                <span id="side-0" class="active">01</span>
+                <div class="line"></div>
+                <span id="side-1">02</span>
+                <span id="side-2">03</span>
+            </div>
 
             <!-- Main Hero Content -->
             <div class="hero-main">
                 
-                <!-- TOP ROW: Text Slider & Tags -->
+                <!-- TOP/CENTER ROW: Text Slider & Floating Tags -->
                 <div class="hero-top">
                     
                     <!-- Text Content SLIDER -->
@@ -128,7 +138,7 @@
                             <p class="eyebrow">IDEAS INTO IMPACT</p>
                             <h1 class="hero-title">JOHAR <b>HUB</b></h1>
                             <p class="hero-subtitle">One Hub. Many Passions. One Mission.</p>
-                            <p class="hero-desc">Building digital solutions, empowering sports talent,<br>and creating a bold fashion identity — for a brighter tomorrow.</p>
+                            <p class="hero-desc">Building digital solutions, empowering sports talent,<br>and creating a bold fashion identity for a brighter tomorrow.</p>
                             <div class="hero-buttons">
                                 <a href="about.html" class="btn btn-primary">About Us <i class="ri-arrow-right-line"></i></a>
                                 <a href="products.html" class="btn btn-outline">View Products</a>
@@ -142,16 +152,16 @@
                             <p class="hero-subtitle">Crafting Seamless Digital Experiences.</p>
                             <p class="hero-desc">Custom web applications, stunning UI/UX designs,<br>and robust software architecture tailored for your success.</p>
                             <div class="hero-buttons">
-                                <a href="#contact" class="btn btn-outline">Hire Us</a>
+                                <a href="#contact" class="btn btn-primary">Hire Us <i class="ri-send-plane-fill"></i></a>
                             </div>
                         </div>
 
-                        <!-- Slide 3: Johar Fashion & Sports -->
+                        <!-- Slide 3: Johar Fashions -->
                         <div class="hero-text slide">
                             <p class="eyebrow">WEAR YOUR IDENTITY</p>
                             <h1 class="hero-title">JOHAR <b>FASHIONS</b></h1>
                             <p class="hero-subtitle">Bold Styles. Unmatched Talent.</p>
-                            <p class="hero-desc">Fusing tribal heritage with modern streetwear.</p>
+                            <p class="hero-desc">Fusing tribal heritage with modern streetwear.<br>Designed for those who carry their roots with pride.</p>
                             <div class="hero-buttons">
                                 <a href="products.html" class="btn btn-primary">Shop Now <i class="ri-shopping-cart-2-line"></i></a>
                             </div>
@@ -163,7 +173,7 @@
                     <div class="hero-tags">
                         <div class="tag-rooted">
                             <p>ROOTED IN</p>
-                            <p class="highlight">Adivasi Culture<i class="ri-leaf-fill"></i></p>
+                            <p class="highlight">Adivasi Culture <i class="ri-leaf-fill"></i></p>
                         </div>
                         <div class="tag-signature">
                             More<br>Than A Brand
@@ -171,60 +181,15 @@
                     </div>
                 </div>
 
-                <!-- BOTTOM ROW: Stats & Ventures Glass Box -->
+                <!-- BOTTOM ROW: Only Carousel Dots -->
                 <div class="hero-bottom">
-                    
-                    <!-- Hero Carousel Dots (Visible on Desktop & Mobile) -->
                     <div class="hero-dots">
                         <span class="active"></span>
                         <span></span>
                         <span></span>
                     </div>
-
-                    <!-- Glass Panel -->
-                    <div class="hero-glass-panel">
-                        <!-- DIGITAL -->
-                        <div class="venture-col">
-                            <div class="v-icon green-fill"><img src="assets/logos/JD-Logo.png" alt="Digital Logo"  class="v-icon green-fill" style="background-color: #070707;"></div>
-                            <h3>DIGITALS</h3>
-                            <p>Design • Web Development<br>Digital Services</p>
-                            <span class="status available">AVAILABLE <i class="ri-check-line"></i></span>
-                        </div>
-                        <!-- SPORTS -->
-                        <div class="venture-col center-col">
-                            <div class="v-icon dark-fill"><img src="assets/logos/JS-Logo.png" alt="Sports Logo" class="v-icon dark-fill" style="background-color: hsl(0, 0%, 100%);"></div>
-                            <h3>SPORTS</h3>
-                            <p>Training • Events<br>Building Talent</p>
-                            <span class="status coming">COMING SOON <i class="ri-hourglass-line"></i></span>
-                        </div>
-                        <!-- FASHION -->
-                        <div class="venture-col">
-                            <div class="v-icon green-fill"><img src="assets/logos/JF-Logo-Golden.png" alt="Fashion Logo" class="v-icon green-fill" style="background-color: #070707;"></div>
-                            <h3>FASHIONS</h3>
-                            <p>Clothing • Design • Style<br>Wear Your Identity</p>
-                            <span class="status available">AVAILABLE <i class="ri-check-line"></i></span>
-                        </div>
-                    </div>
-
-                    <!-- Stats -->
-                    <div class="hero-stats">
-                        <div class="stat-box">
-                            <h2>3</h2>
-                            <p>VENTURES</p>
-                        </div>
-                        <div class="stat-box">
-                            <h2>∞</h2>
-                            <p>POSSIBILITIES</p>
-                        </div>
-                        <div class="stat-box flex-stat">
-                            <i class="ri-team-line"></i>
-                            <div style="text-align: left;">
-                                <p>BIGGER</p>
-                                <p>COMMUNITY</p>
-                            </div>
-                        </div>
-                    </div>
                 </div>
+
             </div>
         </div>
     </section>

@@ -1,582 +1,185 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!DOCTYPE html> 
+<html lang="en"> 
+<head>     
+    <meta charset="UTF-8">     
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">     
+    <title>Our Story | Johar Hub</title>     
+    <meta name="description" content="The story of Johar Hub from the original Johar Cyber Cafe digital-workspace idea to Johar Digitals and an independent creative umbrella rooted in identity, culture and community.">     
+    <link rel="stylesheet" href="css/style.css">     
+    <link rel="stylesheet" href="css/our-story.css">     
+    <link rel="preconnect" href="https://fonts.googleapis.com">     
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>     
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">     
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet"> 
+</head> 
+<body>     
+    <header class="header">         
+        <div class="header-brand" href="#">             
+            <div><img src="assets/logos/JH-Logo-White.png" class="mini-logo" alt="Johar Hub"></div>             
+            <span style="font-weight: bold;">JOHAR <b>HUB</b></span>         
+        </div>                  
+        <nav class="header-nav" id="navMenu">             
+            <div id="mobileAuthBlock" class="mobile-user-profile" style="display: none; flex-direction: column; gap: 10px;">                 
+                <div style="display: flex; align-items: center; gap: 15px;">                     
+                    <img src="" id="mobilePfp" class="user-pfp" alt="User" style="width: 45px; height: 45px; border-radius: 50%;">                     
+                    <div class="user-info" style="text-align: left;">                         
+                        <h4 id="mobileUserName" style="margin: 0; color: var(--green);">Loading...</h4>                         
+                        <p id="mobileEmail" style="font-size: 0.75rem; color: var(--muted); margin: 0;"></p>                     
+                    </div>                 
+                </div>                                  
+                <div style="display: flex; flex-direction: row; gap: 8px; margin-top: 10px; width: 100%;">                     
+                    <a href="profile.html" class="btn btn-outline" style="flex: 1; height: 40px; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; padding: 0 8px; white-space: nowrap;">                         
+                        <i class="ri-user-settings-line"></i> Manage                     
+                    </a>                     
+                    <a href="profile.html#my-orders" class="btn btn-outline" style="flex: 1; height: 40px; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; padding: 0 8px; white-space: nowrap;">                         
+                        <i class="ri-box-3-line"></i> Orders                     
+                    </a>                 
+                </div>                 
+                <a href="index.html">Home</a>                 
+                <a href="products.html">Products</a>                 
+                <a href="about.html">About</a>                 
+                <a href="index.html#contact">Contact</a>                 
+                <a href="auth.html" id="navLoginLink">Login / Sign Up</a>                                  
+                <a href="https://joharscriptstudio.netlify.app/index.html" class="script-studio-bubble" target="_blank">                     
+                    Explore Script Studio <i class="ri-arrow-right-up-line"></i>                 
+                </a>                 
+                <a href="#" id="mobileLogoutBtn" style="display: none; color: #ff4444; margin-top: 10px;">                     
+                    <i class="ri-logout-circle-line"></i> Logout                 
+                </a>             
+            </div>         
+        </nav>         
+        <div class="header-actions">             
+            <i class="ri-search-line icon-btn"></i>             
+            <div class="cart-wrapper icon-btn">                 
+                <i class="ri-shopping-cart-2-line"></i>                 
+                <span class="cart-badge"></span>             
+            </div>                          
+            <a href="auth.html" id="loginBtn" class="btn btn-outline">Get Started</a>                          
+            <a href="profile.html" id="desktopUserBadge" class="user-badge" style="display: none; align-items: center; gap: 8px;">                 
+                <img src="" id="desktopPfp" class="user-pfp-small" alt="Profile" style="width: 32px; height: 32px; border-radius: 50%;">                 
+                <span id="desktopUserName">Profile</span>             
+            </a>                          
+            <i class="ri-menu-line mobile-menu-btn"></i>         
+        </div>     
+    </header> 
 
-    <title>Our Story — Johar Hub</title>
+    <!-- ========================= BACKGROUND EFFECTS ========================= -->     
+    <div class="bg-glow glow-top"></div>     
+    <div class="bg-glow glow-bottom"></div>     
 
-    <meta
-        name="description"
-        content="The story of Johar Hub — from the original Johar Cyber Cafe digital-workspace idea to Johar Digitals and an independent creative umbrella rooted in identity, culture and community."
-    >
-
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/our-story.css">
-
-
-    <!-- Optional: your existing font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-        rel="stylesheet"
-    >
-
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
-</head>
-
-<body>
-
-    <header class="header">
-        <div class="header-brand" href="#">
-            <div><img src="assets/logos/JH-Logo-White.png" class="mini-logo"></div>
-            <span style="font-weight: bold;">JOHAR <b>HUB</b></span>
-        </div>
+    <!-- ========================= MAIN CONTENT ========================= -->     
+    <main class="story-page" style="padding: 130px 5% 80px; max-width: 800px; margin: 0 auto;">
         
-        <nav class="header-nav" id="navMenu">
-    <!-- Mobile Profile Block -->
-<div id="mobileAuthBlock" class="mobile-user-profile" style="display: none; flex-direction: column; gap: 10px;">
-    <div style="display: flex; align-items: center; gap: 15px;">
-        <img src="" id="mobilePfp" class="user-pfp" alt="User" style="width: 45px; height: 45px; border-radius: 50%;">
-        <div class="user-info" style="text-align: left;">
-            <h4 id="mobileUserName" style="margin: 0; color: var(--green);">Loading...</h4>
-            <p id="mobileEmail" style="font-size: 0.75rem; color: var(--muted); margin: 0;"></p>
-        </div>
-    </div>
-    
-    <!-- Action Links -->
-<div style="display: flex; flex-direction: row; gap: 8px; margin-top: 10px; width: 100%;">
-    <a href="profile.html" class="btn btn-outline" style="flex: 1; height: 40px; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; padding: 0 8px; white-space: nowrap;">
-        <i class="ri-user-settings-line"></i> Manage
-    </a>
-    <a href="profile.html#my-orders" class="btn btn-outline" style="flex: 1; height: 40px; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; padding: 0 8px; white-space: nowrap;">
-        <i class="ri-box-3-line"></i> Orders
-    </a>
-</div>
-
-    <a href="index.html">Home</a>
-    <a href="products.html">Products</a>
-    <a href="about.html">About</a>
-    <a href="#contact">Contact</a>
-    <a href="auth.html" id="navLoginLink">Login / Sign Up</a>
-    
-    <!-- Naya Script Studio Bubble Capsule -->
-    <a href="https://joharscriptstudio.netlify.app/index.html" class="script-studio-bubble" target="_blank">
-        Explore Script Studio <i class="ri-arrow-right-up-line"></i>
-    </a>
-
-    <!-- Mobile Logout (As is) -->
-    <a href="#" id="mobileLogoutBtn" style="display: none; color: #ff4444; margin-top: 10px;">
-        <i class="ri-logout-circle-line"></i> Logout
-    </a>
-</nav>
-
-        <div class="header-actions">
-            <i class="ri-search-line icon-btn"></i>
-            <div class="cart-wrapper icon-btn">
-                <i class="ri-shopping-cart-2-line"></i>
-                <span class="cart-badge"></span>
-            </div>
-            
-            <!-- Get Started Button Linked to auth.html -->
-            <a href="auth.html" id="loginBtn" class="btn btn-outline">Get Started</a>
-            
-            <!-- Desktop User Badge (Hidden by default) -->
-            <a href="profile.html" id="desktopUserBadge" class="user-badge" style="display: none; align-items: center; gap: 8px;">
-                <img src="" id="desktopPfp" class="user-pfp-small" alt="Profile" style="width: 32px; height: 32px; border-radius: 50%;">
-                <span id="desktopUserName">Profile</span>
-            </a>
-            
-            <i class="ri-menu-line mobile-menu-btn"></i>
-        </div>
-    </header>
-
-    <!-- ========================= BACKGROUND EFFECTS ========================= -->
-    <div class="bg-glow glow-top"></div>
-    <div class="bg-glow glow-bottom"></div>
-
-
-    <!-- =====================================================
-         MAIN CONTENT
-         ===================================================== -->
-
-    <main class="story-page">
-
         <!-- HERO -->
-        <section class="story-hero">
-
-            <div class="hero-content">
-
-                <span class="section-label">
-                    ● OUR STORY
-                </span>
-
-                <h1>
-                    From a simple idea.
-                    <span>To something bigger.</span>
-                </h1>
-
-                <p>
-                    Johar Hub began with a simple digital-workspace idea.
-                    What started as Johar Cyber Cafe gradually evolved
-                    into a broader vision — bringing technology, fashion,
-                    creativity and community projects under one identity.
-                </p>
-
-            </div>
-
-        </section>
-
-
-        <!-- =================================================
-             BEGINNING
-             ================================================= -->
-
-        <section class="story-section">
-
-            <div class="story-number">
-                01
-            </div>
-
-            <div class="story-text">
-
-                <span class="section-label">
-                    THE BEGINNING
-                </span>
-
-                <h2>
-                    It started with
-                    <span>Johar Cyber Cafe.</span>
-                </h2>
-
-                <p>
-                    The earliest version of the idea was called
-                    <strong>Johar Cyber Cafe</strong>. The vision was to
-                    create a digital workspace where people could access
-                    computers, internet and everyday digital services.
-                </p>
-
-                <p>
-                    It was imagined as a practical local workspace — a place
-                    for online forms, document work, printing-related needs,
-                    internet access and other useful digital services. The
-                    goal was not just to run a shop, but to build something
-                    useful that people could rely on.
-                </p>
-
-                <p>
-                    At that stage, the idea was focused on one physical
-                    space and the services it could offer. The larger Johar
-                    Hub ecosystem had not taken shape yet; the first goal
-                    was simply to create an independent workspace of my own.
-                </p>
-
-            </div>
-
-        </section>
-
-
-        <!-- =================================================
-             JOHAR DIGITALS → JOHAR HUB
-             ================================================= -->
-
-        <section class="story-section reverse">
-
-            <div class="story-number">
-                02
-            </div>
-
-            <div class="story-text">
-
-                <span class="section-label">
-                    THE NAME
-                </span>
-
-                <h2>
-                    From Cyber Cafe
-                    <span>to Johar Hub.</span>
-                </h2>
-
-                <p>
-                    As the idea developed, the name and direction evolved
-                    from <strong>Johar Cyber Cafe</strong> to
-                    <strong>Johar Digitals</strong> — a name that put more
-                    emphasis on digital services and technology.
-                </p>
-
-                <p>
-                    Over time, my interests grew beyond a digital-service
-                    workspace. Fashion, design, technology, creative work
-                    and community projects all became part of the bigger
-                    picture. They needed room to develop in their own ways.
-                </p>
-
-                <p>
-                    That is when <strong>Johar Hub</strong> took shape as
-                    the umbrella identity — a home for different ventures
-                    and creative directions, without forcing every project
-                    to use the same branch name.
-                </p>
-
-                <div class="quote-box">
-                    <span>JOHAR</span>
-                    <p>
-                        A greeting. A simple word of connection
-                        and respect.
-                    </p>
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =================================================
-             IDENTITY
-             ================================================= -->
-
-        <section class="identity-section">
-
-            <div class="identity-content">
-
-                <span class="section-label">
-                    ROOTED IN IDENTITY
-                </span>
-
-                <h2>
-                    Built from
-                    <span>where I come from.</span>
-                </h2>
-
-                <p>
-                    Adivasi identity became a natural part of Johar Hub
-                    because its creator comes from an Adivasi community.
-                </p>
-
-                <p>
-                    What started as personal identity gradually became
-                    a creative direction — the desire to build an
-                    Adivasi-inspired brand and bring that identity into
-                    modern products, design and creative work.
-                </p>
-
-                <div class="identity-points">
-
-                    <div>
-                        <strong>01</strong>
-                        <span>Identity</span>
-                    </div>
-
-                    <div>
-                        <strong>02</strong>
-                        <span>Culture</span>
-                    </div>
-
-                    <div>
-                        <strong>03</strong>
-                        <span>Creativity</span>
-                    </div>
-
-                    <div>
-                        <strong>04</strong>
-                        <span>Community</span>
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =================================================
-             CURRENT VENTURES
-             ================================================= -->
-
-        <section class="ventures-section">
-
-            <div class="section-heading">
-
-                <span class="section-label">
-                    WHERE WE ARE NOW
-                </span>
-
-                <h2>
-                    This is only
-                    <span>the beginning.</span>
-                </h2>
-
-                <p>
-                    Johar Hub is still being built. The original digital
-                    workspace idea has expanded into a broader umbrella,
-                    with early ventures and community projects taking shape.
-                </p>
-
-            </div>
-
-
-            <div class="ventures-grid">
-
-                <!-- JOHAR FASHIONS -->
-                <article class="venture-card">
-
-                    <span class="venture-number">
-                        01
-                    </span>
-
-                    <div class="venture-icon">
-                        <i class="ri-shirt-line"></i>
-                    </div>
-
-                    <h3>
-                        Johar Fashions
-                    </h3>
-
-                    <p>
-                        A fashion venture exploring Adivasi-inspired
-                        identity through modern clothing and products.
-                    </p>
-
-                </article>
-
-
-                <!-- JOHAR DIGITALS -->
-                <article class="venture-card">
-
-                    <span class="venture-number">
-                        02
-                    </span>
-
-                    <div class="venture-icon">
-                        <i class="ri-computer-line"></i>
-                    </div>
-
-                    <h3>
-                        Johar Digitals
-                    </h3>
-
-                    <p>
-                        The digital-services direction that grew out of
-                        the original Johar Cyber Cafe workspace idea.
-                    </p>
-
-                </article>
-
-
-                <!-- JOHAR SCRIPT STUDIO -->
-                <article class="venture-card">
-
-                    <span class="venture-number">
-                        03
-                    </span>
-
-                    <div class="venture-icon">
-                        <i class="ri-pencil-line"></i>
-                    </div>
-
-                    <h3>
-                        Johar Script Studio
-                    </h3>
-
-                    <p>
-                        A community-focused language project where
-                        users can type in English and explore translations
-                        into native Adivasi language scripts.
-                    </p>
-
-                    <span class="venture-tag">
-                        COMMUNITY PROJECT
-                    </span>
-
-                </article>
-
-            </div>
-
-        </section>
-
-
-        <!-- =================================================
-             FUTURE
-             ================================================= -->
-
-        <section class="future-section">
-
-            <div class="future-content">
-
-                <span class="section-label">
-                    WHAT'S NEXT
-                </span>
-
-                <h2>
-                    Still building.
-                    <span>Still exploring.</span>
-                </h2>
-
-                <p>
-                    Johar Hub is still at the beginning of its journey.
-                    If everything grows in the right direction, more
-                    ventures may become part of the umbrella in the future.
-                </p>
-
-            </div>
-
-
-            <div class="future-ideas">
-
-                <div class="future-card">
-                    <span>04</span>
-                    <h3>Johar Sports</h3>
-                    <p>
-                        A possible future venture around sports,
-                        football and community.
-                    </p>
-                </div>
-
-                <div class="future-card">
-                    <span>05</span>
-                    <h3>Johar Prints</h3>
-                    <p>
-                        A possible future venture around printing
-                        and creative physical products.
-                    </p>
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =================================================
-             NO GRAND STORY
-             ================================================= -->
-
-        <section class="closing-section">
-
-            <div class="closing-line"></div>
-
-            <span class="section-label">
-                THE REAL STORY
-            </span>
-
-            <h2>
-                No grand turning point.
-                <br>
-                Just an <span>obsession.</span>
-            </h2>
-
-            <p>
-                There wasn't one dramatic moment that created
-                Johar Hub.
+        <div style="text-align: center; margin-bottom: 60px;">
+            <span class="section-label">OUR STORY</span>
+            <h1 style="font-size: clamp(2.5rem, 6vw, 4rem); margin: 20px 0; line-height: 1.1; letter-spacing: -1.5px;">
+                From a simple idea.<br>
+                <span style="color: var(--green);">To something bigger.</span>
+            </h1>
+            <p style="color: var(--muted); font-size: 1.1rem; line-height: 1.8;">
+                Johar Hub began with a simple digital-workspace idea. What started as Johar Cyber Cafe gradually evolved into a broader vision bringing technology, fashion, creativity and community projects under one identity.
             </p>
+        </div>
 
-            <p>
-                Just a persistent obsession with building something
-                of my own — something creative, independent and
-                rooted in where I come from.
-            </p>
+        <!-- NARRATIVE CONTENT -->
+        <article class="glass-panel" style="padding: clamp(20px, 5vw, 50px); border-radius: 16px; border: 1px solid var(--glass-border); background: rgba(255,255,255,0.02);">
+            
+            <div style="margin-bottom: 40px;">
+                <span style="color: var(--green); font-family: var(--font-mono); font-size: 0.9rem;">01. THE BEGINNING</span>
+                <h2 style="font-size: 2rem; margin: 10px 0 20px;">It started with Johar Cyber Cafe.</h2>
+                <p style="color: var(--muted); margin-bottom: 15px; font-size: 1.05rem; line-height: 1.7;">The earliest version of the idea was called <strong>Johar Cyber Cafe</strong>. The vision was to create a digital workspace where people could access computers, internet and everyday digital services.</p>
+                <p style="color: var(--muted); font-size: 1.05rem; line-height: 1.7;">It was imagined as a practical local workspace. The goal was not just to run a shop, but to build something useful that people could rely on before the larger ecosystem took shape.</p>
+            </div>
 
-        </section>
+            <hr style="border: 0; border-top: 1px solid var(--glass-border); margin: 40px 0;">
 
+            <div style="margin-bottom: 40px;">
+                <span style="color: var(--green); font-family: var(--font-mono); font-size: 0.9rem;">02. THE EVOLUTION</span>
+                <h2 style="font-size: 2rem; margin: 10px 0 20px;">From Cyber Cafe to Johar Hub.</h2>
+                <p style="color: var(--muted); margin-bottom: 15px; font-size: 1.05rem; line-height: 1.7;">As the idea developed, the direction evolved into <strong>Johar Digitals</strong>. Over time, my interests grew beyond a digital-service workspace. Fashion, design, technology, and community projects needed room to develop.</p>
+                <p style="color: var(--muted); font-size: 1.05rem; line-height: 1.7;">That is when <strong>Johar Hub</strong> took shape as the umbrella identity a home for different ventures and creative directions.</p>
+                
+                <div style="margin-top: 25px; padding: 20px; border-left: 3px solid var(--green); background: rgba(8, 251, 143, 0.05); border-radius: 0 8px 8px 0;">
+                    <strong style="color: var(--green); font-family: var(--font-mono);">JOHAR</strong>
+                    <p style="margin-top: 5px; font-size: 0.95rem; color: #fff;">A greeting. A simple word of connection and respect.</p>
+                </div>
+            </div>
 
-        <!-- =================================================
-             END
-             ================================================= -->
+            <hr style="border: 0; border-top: 1px solid var(--glass-border); margin: 40px 0;">
 
-        <section class="story-end">
+            <div style="margin-bottom: 40px;">
+                <span style="color: var(--green); font-family: var(--font-mono); font-size: 0.9rem;">03. ROOTED IN IDENTITY</span>
+                <h2 style="font-size: 2rem; margin: 10px 0 20px;">Built from where I come from.</h2>
+                <p style="color: var(--muted); margin-bottom: 15px; font-size: 1.05rem; line-height: 1.7;">Adivasi identity became a natural part of Johar Hub because its creator comes from an Adivasi community. What started as personal identity gradually became a creative direction.</p>
+                
+                <div style="display: flex; flex-wrap: wrap; gap: 15px; margin-top: 20px;">
+                    <span class="btn-outline" style="padding: 8px 16px; border-radius: 20px; font-size: 0.85rem; border: 1px solid var(--glass-border);">Identity</span>
+                    <span class="btn-outline" style="padding: 8px 16px; border-radius: 20px; font-size: 0.85rem; border: 1px solid var(--glass-border);">Culture</span>
+                    <span class="btn-outline" style="padding: 8px 16px; border-radius: 20px; font-size: 0.85rem; border: 1px solid var(--glass-border);">Creativity</span>
+                    <span class="btn-outline" style="padding: 8px 16px; border-radius: 20px; font-size: 0.85rem; border: 1px solid var(--glass-border);">Community</span>
+                </div>
+            </div>
 
-            <span class="section-label">
-                JOHAR HUB
-            </span>
-
-            <h2>
-                The story isn't finished.
-            </h2>
-
-            <p>
-                We're just getting started.
-            </p>
-
-            <a href="index.html" class="story-button">
-                Explore Johar Hub
-                <span>→</span>
-            </a>
-
-        </section>
-
+            <div style="text-align: center; margin-top: 60px; padding-top: 40px; border-top: 1px dashed var(--glass-border);">
+                <h2 style="font-size: 2.2rem; margin-bottom: 15px;">No grand turning point.<br><span style="color: var(--green);">Just an obsession.</span></h2>
+                <p style="color: var(--muted); margin-bottom: 30px;">There wasn't one dramatic moment that created Johar Hub. Just a persistent obsession with building something of my own something creative, independent and rooted in where I come from.</p>
+                <a href="index.html" class="btn btn-primary">Explore Johar Hub <i class="ri-arrow-right-line"></i></a>
+            </div>
+        </article>
     </main>
 
-
-   <!-- ========================= PROFESSIONAL FOOTER ========================= -->
-    <footer class="footer-area">
-        <div class="footer-grid">
-            
-            <!-- Column 1: Brand & Copyright -->
-            <div class="footer-col brand-col">
-                <div class="footer-logo"><img src="assets/logos/JH-Logo-White.png" class="footer-logo" alt="Johar Hub Logo"></div>
-                <h2 class="footer-brand-name">JOHAR <span>HUB</span></h2>
-                <p class="copyright">&copy; 2026 Johar Hub.<br>All rights reserved.</p>
-            </div>
-
-            <!-- Column 2: About Developer -->
-            <div class="footer-col dev-col">
-                <h3 class="footer-heading">About Developer</h3>
-                <p class="dev-name">Koitur Kumre Krishna</p>
-                <p class="dev-desc">"An unemployed guy with some badass skills from <span>Koyadhana, Pandhurna, Madhya Pradesh</span>" <i class="ri-fire-fill" style="color: var(--green);"></i></p>
-                
-                <!-- Developer Social -->
-                <a href="https://instagram.com/kumre_krishna_11" target="_blank" class="footer-link" style="margin-top: 15px; color: var(--green);">
-                    <i class="ri-instagram-line" style="font-size: 1.2rem;"></i> @kumre_krishna_11
-                </a>
-
-                <a href="https://instagram.com/pro.krishh11" target="_blank" class="footer-link" style="margin-top: 0px; color: var(--green);">
-                    <i class="ri-instagram-line" style="font-size: 1.2rem;"></i> @pro.krishh11
-                </a>
-            </div>
-
-            <!-- Column 3: Community & Links -->
-            <div class="footer-col links-col">
-                <h3 class="footer-heading">Community</h3>
-                
-                <!-- Koya Community Links -->
-                <a href="https://youtube.com/@KoyaCommunity" target="_blank" class="footer-link">
-                    <i class="ri-youtube-fill" style="color: #ff0000; font-size: 1.2rem;"></i> KOYA COMMUNITY
-                </a>
-                <a href="https://instagram.com/official_koya_community" target="_blank" class="footer-link">
-                    <i class="ri-instagram-line" style="font-size: 1.2rem;"></i> @official_koya_community
-                </a>
-                
-                <a href="products.html" class="footer-link" style="margin-top: 10px;">
-                    <i class="ri-shopping-bag-line" style="font-size: 1.2rem;"></i> Johar Shop
-                </a>
-            </div>
-
-            <!-- Column 4: Connect (Johar Hub Tree) -->
-            <div class="footer-col links-col">
-                <h3 class="footer-heading">Connect</h3>
-                
-                <!-- Johar Hub Branches IG -->
-                <a href="https://instagram.com/joharhub.in" target="_blank" class="footer-link">
-                    <i class="ri-instagram-line" style="font-size: 1.2rem;"></i> Johar Hub
-                </a>
-                <a href="https://instagram.com/johar.fashions_" target="_blank" class="footer-link">
-                    <i class="ri-instagram-line" style="font-size: 1.2rem;"></i> Johar Fashions
-                </a>
-                <a href="https://instagram.com/johar.digitals_" target="_blank" class="footer-link">
-                    <i class="ri-instagram-line" style="font-size: 1.2rem;"></i> Johar Digitals
-                </a>
-                <a href="https://github.com/dev-kumrekrishna" target="_blank" class="footer-link" style="margin-top: 10px;">
-                    <i class="ri-github-fill" style="font-size: 1.2rem;"></i> GitHub
-                </a>
-            </div>
-
-        </div>
-    </footer>
-
-    <script type="module" src="js/auth-state.js"></script>
-    <script type="module" src="js/ui.js"></script>
-    <script type="module" src="js/config.js"></script>
-    <script src="js/script.js"></script>
-
-</body>
+    <!-- ========================= PROFESSIONAL FOOTER ========================= -->     
+    <footer class="footer-area">         
+        <div class="footer-grid">                          
+            <div class="footer-col brand-col">                 
+                <div class="footer-logo"><img src="assets/logos/JH-Logo-White.png" class="footer-logo" alt="Johar Hub Logo"></div>                 
+                <h2 class="footer-brand-name">JOHAR <span>HUB</span></h2>                 
+                <p class="copyright">&copy; 2026 Johar Hub.<br>All rights reserved.</p>             
+            </div>             
+            <div class="footer-col dev-col">                 
+                <h3 class="footer-heading">About Developer</h3>                 
+                <p class="dev-name">Koitur Kumre Krishna</p>                 
+                <p class="dev-desc">"An unemployed guy with some badass skills from <span>Koyadhana, Pandhurna, Madhya Pradesh</span>" <i class="ri-fire-fill" style="color: var(--green);"></i></p>                                  
+                <a href="https://instagram.com/kumre_krishna_11" target="_blank" class="footer-link" style="margin-top: 15px; color: var(--green);">                     
+                    <i class="ri-instagram-line" style="font-size: 1.2rem;"></i> @kumre_krishna_11                 
+                </a>                 
+                <a href="https://instagram.com/pro.krishh11" target="_blank" class="footer-link" style="margin-top: 0px; color: var(--green);">                     
+                    <i class="ri-instagram-line" style="font-size: 1.2rem;"></i> @pro.krishh11                 
+                </a>             
+            </div>             
+            <div class="footer-col links-col">                 
+                <h3 class="footer-heading">Community</h3>                                  
+                <a href="https://youtube.com/@KoyaCommunity" target="_blank" class="footer-link">                     
+                    <i class="ri-youtube-fill" style="color: #ff0000; font-size: 1.2rem;"></i> KOYA COMMUNITY                 
+                </a>                 
+                <a href="https://instagram.com/official_koya_community" target="_blank" class="footer-link">                     
+                    <i class="ri-instagram-line" style="font-size: 1.2rem;"></i> @official_koya_community                 
+                </a>                                  
+                <a href="products.html" class="footer-link" style="margin-top: 10px;">                     
+                    <i class="ri-shopping-bag-line" style="font-size: 1.2rem;"></i> Johar Shop                 
+                </a>             
+            </div>             
+            <div class="footer-col links-col">                 
+                <h3 class="footer-heading">Connect</h3>                                  
+                <a href="https://instagram.com/joharhub.in" target="_blank" class="footer-link">                     
+                    <i class="ri-instagram-line" style="font-size: 1.2rem;"></i> Johar Hub                 
+                </a>                 
+                <a href="https://instagram.com/johar.fashions_" target="_blank" class="footer-link">                     
+                    <i class="ri-instagram-line" style="font-size: 1.2rem;"></i> Johar Fashions                 
+                </a>                 
+                <a href="https://instagram.com/johar.digitals_" target="_blank" class="footer-link">                     
+                    <i class="ri-instagram-line" style="font-size: 1.2rem;"></i> Johar Digitals                 
+                </a>                 
+                <a href="https://github.com/dev-kumrekrishna" target="_blank" class="footer-link" style="margin-top: 10px;">                     
+                    <i class="ri-github-fill" style="font-size: 1.2rem;"></i> GitHub                 
+                </a>             
+            </div>         
+        </div>     
+    </footer>     
+    <script type="module" src="js/auth-state.js"></script>     
+    <script type="module" src="js/ui.js"></script>     
+    <script type="module" src="js/config.js"></script>     
+    <script src="js/script.js"></script> 
+</body> 
 </html>
