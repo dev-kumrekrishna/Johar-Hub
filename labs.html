@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Johar Labs — Apps &amp; Tools | Johar Hub</title>
+  <link rel="icon" type="image/png" href="assets/icons/favicon.png" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Orbitron:wght@600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Existing Global Styles + Labs Specific Styles -->
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/labs.css" />
+</head>
+<body class="labs-body">
+
+  <!-- Top Navigation (Apne index.html ke header/hamburger se replace kar sakte hain) -->
+  <header class="labs-header">
+    <div class="labs-header-inner">
+      <a href="index.html" class="labs-brand">
+        <img src="assets/logos/JH-Logo-V2-White.png" alt="Johar Hub Logo" class="labs-brand-logo" />
+        <span>JOHAR <strong>LABS</strong></span>
+      </a>
+      <a href="index.html" class="labs-back-btn">← Back to Hub</a>
+    </div>
+  </header>
+
+  <main class="labs-main">
+    <!-- Hero Section -->
+    <section class="labs-hero">
+      <span class="labs-pill">Apps &amp; Tools Ecosystem</span>
+      <h1 class="labs-title">Johar <span>Labs</span></h1>
+      <p class="labs-subtitle">
+        Dedicated web apps, utilities, aur digital tools — built for speed, culture, and everyday productivity.
+      </p>
+    </section>
+
+    <!-- Apps & Tools Grid -->
+    <section class="labs-grid" aria-label="Johar Labs Applications">
+
+      <!-- App Card: Johar Script Studio -->
+      <article class="app-card">
+        <div class="app-card-top">
+          <div class="app-logo-wrap">
+            <img
+              src="assets/logos/JSS-Logo.png"
+              alt="Johar Script Studio Logo"
+              class="app-logo"
+              loading="lazy"
+            />
+          </div>
+
+          <div class="app-badges">
+            <span class="badge badge-platform">Web App</span>
+            <span class="badge badge-status">Live</span>
+          </div>
+        </div>
+
+        <div class="app-info">
+          <h2 class="app-name">Johar Script Studio</h2>
+          <p class="app-type">Font Translator &amp; Keyboard</p>
+          <p class="app-desc">
+            Real-time script transliteration aur virtual keyboard studio — Masaram Gondi, Gunjala Gondi, Ol Chiki, aur Devanagari typing ke liye offline-ready web tool.
+          </p>
+        </div>
+
+        <div class="app-tags">
+          <span>Transliterator</span>
+          <span>Virtual Keyboard</span>
+          <span>Offline Ready</span>
+        </div>
+
+        <div class="app-actions">
+          <!-- Yahan apna live Johar Script Studio URL daalein -->
+          <a
+            href="https://your-jss-url.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-launch"
+          >
+            Launch App ↗
+          </a>
+        </div>
+      </article>
+
+      <!-- Future App Placeholder -->
+      <article class="app-card app-card-soon">
+        <div class="app-card-top">
+          <div class="app-logo-wrap soon-icon">⚡</div>
+          <div class="app-badges">
+            <span class="badge badge-soon">In Development</span>
+          </div>
+        </div>
+        <div class="app-info">
+          <h2 class="app-name">More Tools Coming Soon</h2>
+          <p class="app-type">Utilities &amp; Experiments</p>
+          <p class="app-desc">
+            Naye web apps aur creative developer tools Johar Labs mein jald hi add kiye jayenge.
+          </p>
+        </div>
+      </article>
+
+    </section>
+  </main>
+
+  <!-- Existing UI/Scripts agar global header/menu js/ui.js se load hota ho -->
+  <script src="js/ui.js"></script>
+</body>
+</html>

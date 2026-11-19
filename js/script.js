@@ -2350,3 +2350,66 @@ async function addProductToCart(productId) {
     initPWA();
 
 })();
+
+// =========================================
+// CONTACT FORM — DIRECT EMAIL HANDLER
+// =========================================
+const contactForm = document.getElementById('contactForm');
+
+if (contactForm) {
+    const submitBtn = document.getElementById('contactSubmitBtn');
+    const formStatus = document.getElementById('formStatus');
+    const TARGET_EMAIL = 'hello@joharhorizons.com'; // Apna active email yahan set karein
+
+    contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const name = document.getElementById('contactName').value.trim();
+        const email = document.getElementById('contactEmail').value.trim();
+        const topic = document.getElementById('contactTopic').value;
+        const message = document.getElementById('contactMessage').value.trim();
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending...';
+        formStatus.textContent = '';
+        formStatus.className = 'form-status';
+
+        try {
+            const response = await fetch(`https://formsubmit.co/ajax/${TARGET_EMAIL}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    name,
+                    email,
+                    topic,
+                    message,
+                    _subject: `[Johar Horizons] ${topic} — from ${name}`,
+                    _replyto: email,
+                    _template: 'table'
+                })
+            });
+
+            if (response.ok) {
+                formStatus.textContent = 'Message sent successfully! Hum jald hi reply karenge.';
+                formStatus.classList.add('success');
+                contactForm.reset();
+            } else {
+                throw new Error('Submission failed');
+            }
+        } catch (err) {
+            // Fallback: Visitor ka default email app pre-filled khol dega
+            const subject = encodeURIComponent(`[Johar Horizons] ${topic} — ${name}`);
+            const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\nTopic: ${topic}\n\nMessage:\n${message}`);
+            window.location.href = `mailto:${TARGET_EMAIL}?subject=${subject}&body=${body}`;
+
+            formStatus.textContent = 'Opening your email app to send the message...';
+            formStatus.classList.add('success');
+        } finally {
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Send Message →';
+        }
+    });
+}

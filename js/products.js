@@ -1,4 +1,4 @@
-import { db } from "./config.js";
+import { db, resolveStorageUrl, addCacheBust } from "./config.js";
 import { collection, getDocs } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
 
 let allProducts = [];
@@ -7,20 +7,43 @@ document.addEventListener("DOMContentLoaded", () => {
     loadProductsAndFilters();
 });
 
+function getResolvedProductImage(product) {
+    if (!product) return "";
+
+    const candidates = [
+        ...(Array.isArray(product.images) ? product.images : []),
+        product.image,
+        product.imageUrl,
+        product.imageURL,
+        product.thumbnail,
+        product.thumbnailUrl,
+        product.pfp
+    ];
+
+    const rawImage = candidates.find(
+        (item) => typeof item === "string" && item.trim()
+    );
+
+    if (!rawImage) return "";
+
+    const resolved = resolveStorageUrl(rawImage);
+    return addCacheBust(resolved);
+}
+
 async function loadProductsAndFilters() {
     const container = document.getElementById("productsGrid");
-    
+
     try {
-        // Firestore se products collection get karna
         const snapshot = await getDocs(collection(db, "products"));
-        allProducts = snapshot.docs.map(doc => ({
-            id: doc.id,
-            ...doc.data()
-        })).filter(product => product.active !== false); // Active products only
+        allProducts = snapshot.docs
+            .map((doc) => ({
+                id: doc.id,
+                ...doc.data()
+            }))
+            .filter((product) => product.active !== false);
 
         populateFilters();
         renderProducts(allProducts);
-
     } catch (error) {
         console.error("Products load karne mein error aayi:", error);
         if (container) {
@@ -35,18 +58,17 @@ function populateFilters() {
 
     if (!branchFilter || !categoryFilter) return;
 
-    // Set map use karke unique branches aur categories nikalna
-    const branches = [...new Set(allProducts.map(p => p.branch).filter(Boolean))];
-    const categories = [...new Set(allProducts.map(p => p.category).filter(Boolean))];
+    const branches = [...new Set(allProducts.map((p) => p.branch).filter(Boolean))];
+    const categories = [...new Set(allProducts.map((p) => p.category).filter(Boolean))];
 
-    // Options inject karna
-    branchFilter.innerHTML = `<option value="all">All Branches</option>` + 
-        branches.map(branch => `<option value="${branch}">${branch}</option>`).join("");
+    branchFilter.innerHTML =
+        `<option value="all">All Branches</option>` +
+        branches.map((branch) => `<option value="${branch}">${branch}</option>`).join("");
 
-    categoryFilter.innerHTML = `<option value="all">All Categories</option>` + 
-        categories.map(category => `<option value="${category}">${category}</option>`).join("");
+    categoryFilter.innerHTML =
+        `<option value="all">All Categories</option>` +
+        categories.map((category) => `<option value="${category}">${category}</option>`).join("");
 
-    // Event listeners for change
     branchFilter.addEventListener("change", filterProducts);
     categoryFilter.addEventListener("change", filterProducts);
 }
@@ -57,14 +79,12 @@ function filterProducts() {
 
     let filtered = allProducts;
 
-    // Branch filter apply karna
     if (selectedBranch !== "all") {
-        filtered = filtered.filter(p => p.branch === selectedBranch);
+        filtered = filtered.filter((p) => p.branch === selectedBranch);
     }
 
-    // Category filter apply karna
     if (selectedCategory !== "all") {
-        filtered = filtered.filter(p => p.category === selectedCategory);
+        filtered = filtered.filter((p) => p.category === selectedCategory);
     }
 
     renderProducts(filtered);
@@ -81,43 +101,60 @@ function renderProducts(productsToRender) {
         return;
     }
 
-    // UI card rendering
-    productsToRender.forEach(p => {
-        const image = p.image || p.images?.[0] || "assets/logos/JH-Logo-White.png";
-        const price = Number(p.price || 0).toLocaleString("en-IN");
-        const isOutOfStock = p.stock !== undefined && Number(p.stock) <= 0;
+    container.innerHTML = productsToRender
+        .map((p) => {
+            const name = p.name || p.title || "Untitled Product";
+            const image = getResolvedProductImage(p);
+            const price = Number(p.price ?? p.salePrice ?? 0).toLocaleString("en-IN");
+            const isOutOfStock = p.stock !== undefined && p.stock !== null && Number(p.stock) <= 0;
 
-        container.innerHTML += `
-        <div class="product-card glass-panel" data-product-id="${p.id}" style="min-width: unset; max-width: unset; aspect-ratio: unset; height: auto;">
-            <button type="button" class="fav-icon" data-favorite="${p.id}" aria-label="Add to wishlist">
-                <i class="ri-heart-line"></i>
-            </button>
-            
-            <a href="product.html?id=${p.id}" class="product-img" style="aspect-ratio: 1; height: auto;">
-                <img src="${image}" alt="${p.name}" loading="lazy" style="object-fit: cover;">
-            </a>
-            
-            <div class="product-details" style="padding-top: 15px;">
-                <div>
-                    <h3 style="font-size: 1.1rem; margin-bottom: 5px;">${p.name}</h3>
-                    <p class="price" style="color: var(--green);"> ₹${price}</p>
-                    ${isOutOfStock ? `<small style="color:#ff5555;">Out of stock</small>` : ""}
-                </div>
-                
-                <button type="button" class="cart-add-btn" data-add-to-cart="${p.id}" ${isOutOfStock ? "disabled" : ""}>
-                    <i class="ri-shopping-cart-2-line"></i>
+            const imageHTML = image
+                ? `<img src="${image}" alt="${name}" loading="lazy" decoding="async" data-product-image>`
+                : `<div class="img-placeholder">JH</div>`;
+
+            return `
+            <div class="product-card glass-panel" data-product-id="${p.id}">
+                <button type="button" class="fav-icon" data-favorite="${p.id}" aria-label="Add to wishlist">
+                    <i class="ri-heart-line"></i>
                 </button>
+
+                <a href="product-details.html?id=${encodeURIComponent(p.id)}" class="product-img" aria-label="View ${name}">
+                    ${imageHTML}
+                </a>
+
+                <div class="product-details">
+                    <div class="product-meta">
+                        <h3>${name}</h3>
+                        <p class="price">₹${price}</p>
+                        ${isOutOfStock ? `<small class="stock-out">Out of stock</small>` : ""}
+                    </div>
+
+                    <button type="button" class="cart-add-btn" data-add-to-cart="${p.id}" ${isOutOfStock ? "disabled" : ""} aria-label="Add to cart">
+                        <i class="ri-shopping-cart-2-line"></i>
+                    </button>
+                </div>
             </div>
-        </div>
-        `;
+            `;
+        })
+        .join("");
+
+    // Broken image fallback
+    container.querySelectorAll("[data-product-image]").forEach((img) => {
+        img.onerror = () => {
+            img.onerror = null;
+            const placeholder = document.createElement("div");
+            placeholder.className = "img-placeholder";
+            placeholder.textContent = "JH";
+            img.replaceWith(placeholder);
+        };
     });
 
-    // Re-bind Add to Cart buttons (Integrating with your existing script.js cart logic)
-    container.querySelectorAll("[data-add-to-cart]").forEach(button => {
+    // Re-bind Add to Cart buttons
+    container.querySelectorAll("[data-add-to-cart]").forEach((button) => {
         button.onclick = async (event) => {
             event.preventDefault();
             event.stopPropagation();
-            if(window.addProductToCart) {
+            if (window.addProductToCart) {
                 await window.addProductToCart(button.dataset.addToCart);
             }
         };

@@ -1,0 +1,179 @@
+
+    /* Wider container on large screens so more big cards fit side-by-side */
+    .products-page-section {
+        max-width: 1560px;
+        margin: 0 auto;
+        padding: 40px 40px 70px;
+    }
+
+    /* Filters */
+    .filter-section {
+        display: flex;
+        gap: 15px;
+        margin-bottom: 32px;
+        flex-wrap: wrap;
+    }
+    .filter-select {
+        background: rgba(0, 0, 0, 0.35);
+        border: 1px solid var(--glass-border);
+        color: white;
+        padding: 12px 18px;
+        border-radius: 10px;
+        font-family: inherit;
+        outline: none;
+        min-width: 190px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+    .filter-select:focus,
+    .filter-select:hover {
+        border-color: var(--green);
+    }
+    .filter-select option {
+        background: var(--dark);
+        color: white;
+    }
+
+    /* Desktop Grid: Large Cards, 4-5 side-by-side on wide screens */
+    .dynamic-products-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(275px, 1fr));
+        gap: 26px;
+        width: 100%;
+    }
+
+    /* Override global carousel widths cleanly for Products Grid */
+    .dynamic-products-grid .product-card {
+        width: 100%;
+        min-width: 0;
+        max-width: none;
+        flex: unset;
+        aspect-ratio: auto;
+        height: 100%;
+        padding: 18px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .dynamic-products-grid .product-img {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 4 / 5;
+        margin-bottom: 16px;
+        overflow: hidden;
+    }
+
+    .dynamic-products-grid .product-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
+
+    .dynamic-products-grid .product-details {
+        gap: 10px;
+        align-items: flex-end;
+    }
+
+    .dynamic-products-grid .product-meta {
+        min-width: 0;
+        flex: 1;
+    }
+
+    .dynamic-products-grid .product-details h3 {
+        font-size: 1.05rem;
+        line-height: 1.35;
+        margin-bottom: 6px;
+    }
+
+    .dynamic-products-grid .stock-out {
+        display: block;
+        color: #ff5555;
+        font-size: 0.75rem;
+        margin-top: 2px;
+    }
+
+    /* Tablet (<= 1024px): 3 cards per row */
+    @media (max-width: 1024px) {
+        .products-page-section {
+            padding: 32px 24px 60px;
+        }
+        .dynamic-products-grid {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 18px;
+        }
+    }
+
+    /* Mobile (<= 768px): Exact 2 cards side-by-side, then stack downward */
+    @media (max-width: 768px) {
+        .products-page-section {
+            padding: 20px 12px 50px;
+        }
+
+        .filter-section {
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .filter-select {
+            flex: 1 1 calc(50% - 5px);
+            min-width: 0;
+            padding: 10px 12px;
+            font-size: 0.85rem;
+        }
+
+        .dynamic-products-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 12px;
+        }
+
+        .dynamic-products-grid .product-card {
+            width: 100%;
+            min-width: 0;
+            max-width: none;
+            padding: 10px;
+            border-radius: 13px;
+        }
+
+        .dynamic-products-grid .product-img {
+            aspect-ratio: 1 / 1;
+            margin-bottom: 10px;
+            border-radius: 9px;
+        }
+
+        .dynamic-products-grid .product-img img {
+            border-radius: 9px;
+        }
+
+        .dynamic-products-grid .fav-icon {
+            top: 16px;
+            right: 16px;
+            width: 30px;
+            height: 30px;
+            font-size: 0.92rem;
+            border-radius: 8px;
+        }
+
+        .dynamic-products-grid .product-details {
+            gap: 6px;
+        }
+
+        .dynamic-products-grid .product-details h3 {
+            font-size: 0.85rem;
+            line-height: 1.25;
+            margin-bottom: 3px;
+        }
+
+        .dynamic-products-grid .product-details .price {
+            font-size: 0.85rem;
+        }
+
+        .dynamic-products-grid .cart-add-btn {
+            width: 32px;
+            height: 32px;
+            font-size: 0.95rem;
+            margin-left: 0;
+            border-radius: 7px;
+        }
+    }

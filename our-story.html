@@ -13,54 +13,71 @@
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet"> 
 </head> 
 <body>     
-    <header class="header">         
-        <div class="header-brand" href="#">             
-            <div><img src="assets/logos/JH-Logo-V2-White.png.png" class="mini-logo" alt="Johar Horizons"></div>             
-            <span style="font-weight: bold;">JOHAR <b>HUB</b></span>         
-        </div>                  
-        <nav class="header-nav" id="navMenu">             
-            <div id="mobileAuthBlock" class="mobile-user-profile" style="display: none; flex-direction: column; gap: 10px;">                 
-                <div style="display: flex; align-items: center; gap: 15px;">                     
-                    <img src="" id="mobilePfp" class="user-pfp" alt="User" style="width: 45px; height: 45px; border-radius: 50%;">                     
-                    <div class="user-info" style="text-align: left;">                         
-                        <h4 id="mobileUserName" style="margin: 0; color: var(--green);">Loading...</h4>                         
-                        <p id="mobileEmail" style="font-size: 0.75rem; color: var(--muted); margin: 0;"></p>                     
-                    </div>                 
-                </div>                                  
-                <div style="display: flex; flex-direction: row; gap: 8px; margin-top: 10px; width: 100%;">                     
-                    <a href="profile.html" class="btn btn-outline" style="flex: 1; height: 40px; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; padding: 0 8px; white-space: nowrap;">                         
-                        <i class="ri-user-settings-line"></i> Manage                     
-                    </a>                     
-                    <a href="profile.html#my-orders" class="btn btn-outline" style="flex: 1; height: 40px; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; padding: 0 8px; white-space: nowrap;">                         
-                        <i class="ri-box-3-line"></i> Orders                     
-                    </a>                 
-                </div>                 
-                <a href="index.html">Home</a>                 
-                <a href="products.html">Products</a>                 
-                <a href="about.html">About</a>                 
-                <a href="index.html#contact">Contact</a>                 
-                <a href="auth.html" id="navLoginLink">Login / Sign Up</a>                                  
-                <a href="https://joharscriptstudio.netlify.app/index.html" class="script-studio-bubble" target="_blank">                     
-                    Explore Script Studio <i class="ri-arrow-right-up-line"></i>                 
-                </a>                 
-                <a href="#" id="mobileLogoutBtn" style="display: none; color: #ff4444; margin-top: 10px;">                     
-                    <i class="ri-logout-circle-line"></i> Logout                 
-                </a>             
-            </div>         
-        </nav>         
-        <div class="header-actions">             
-            <i class="ri-search-line icon-btn"></i>             
-            <div class="cart-wrapper icon-btn">                 
-                <i class="ri-shopping-cart-2-line"></i>                 
-                <span class="cart-badge"></span>             
-            </div>                          
-            <a href="auth.html" id="loginBtn" class="btn btn-outline">Get Started</a>                          
-            <a href="profile.html" id="desktopUserBadge" class="user-badge" style="display: none; align-items: center; gap: 8px;">                 
-                <img src="" id="desktopPfp" class="user-pfp-small" alt="Profile" style="width: 32px; height: 32px; border-radius: 50%;">                 
-                <span id="desktopUserName">Profile</span>             
-            </a>                          
-            <i class="ri-menu-line mobile-menu-btn"></i>         
-        </div>     
+    <header class="header">
+        <div class="header-brand" href="index.html">
+            <div><img src="assets/logos/JH-Logo-V2-White.png" class="mini-logo"></div>
+            <span style="font-weight: bold;">JOHAR <b>HORIZONS
+            
+            </b></span>
+        </div>
+        
+        <nav class="header-nav" id="navMenu">
+    <!-- Mobile Profile Block -->
+<div id="mobileAuthBlock" class="mobile-user-profile" style="display: none; flex-direction: column; gap: 10px;">
+    <div style="display: flex; align-items: center; gap: 15px;">
+        <img src="" id="mobilePfp" class="user-pfp" alt="User" style="width: 45px; height: 45px; border-radius: 50%;">
+        <div class="user-info" style="text-align: left;">
+            <h4 id="mobileUserName" style="margin: 0; color: var(--green);">Loading...</h4>
+            <p id="mobileEmail" style="font-size: 0.75rem; color: var(--muted); margin: 0;"></p>
+        </div>
+    </div>
+    
+    <!-- Action Links -->
+<div style="display: flex; flex-direction: row; gap: 8px; margin-top: 10px; width: 100%;">
+    <a href="profile.html" class="btn btn-outline" style="flex: 1; height: 40px; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; padding: 0 8px; white-space: nowrap;">
+        <i class="ri-user-settings-line"></i> Manage
+    </a>
+    <a href="profile.html#my-orders" class="btn btn-outline" style="flex: 1; height: 40px; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; padding: 0 8px; white-space: nowrap;">
+        <i class="ri-box-3-line"></i> Orders
+    </a>
+</div>
+
+    <a href="index.html">Home</a>
+    <a href="products.html">Products</a>
+    <a href="labs.html" class="nav-link menu-item">Apps &amp; Tools</a>
+    <a href="about.html">About</a>
+    <a href="index.html#contact">Contact</a>
+    <a href="auth.html" id="navLoginLink">Login / Sign Up</a>
+    
+    <!-- Naya Script Studio Bubble Capsule -->
+    <a href="https://joharscriptstudio.netlify.app/index.html" class="script-studio-bubble" target="_blank">
+        Explore Script Studio <i class="ri-arrow-right-up-line"></i>
+    </a>
+
+    <!-- Mobile Logout (As is) -->
+    <a href="#" id="mobileLogoutBtn" style="display: none; color: #ff4444; margin-top: 10px;">
+        <i class="ri-logout-circle-line"></i> Logout
+    </a>
+</nav>
+
+        <div class="header-actions">
+            <i class="ri-search-line icon-btn"></i>
+            <div class="cart-wrapper icon-btn">
+                <i class="ri-shopping-cart-2-line"></i>
+                <span class="cart-badge"></span>
+            </div>
+            
+            <!-- Get Started Button Linked to auth.html -->
+            <a href="auth.html" id="loginBtn" class="btn btn-outline">Get Started</a>
+            
+            <!-- Desktop User Badge (Hidden by default) -->
+            <a href="profile.html" id="desktopUserBadge" class="user-badge" style="display: none; align-items: center; gap: 8px;">
+                <img src="" id="desktopPfp" class="user-pfp-small" alt="Profile" style="width: 32px; height: 32px; border-radius: 50%;">
+                <span id="desktopUserName">Profile</span>
+            </a>
+            
+            <i class="ri-menu-line mobile-menu-btn"></i>
+        </div>
     </header> 
 
     <!-- ========================= BACKGROUND EFFECTS ========================= -->     
@@ -130,52 +147,69 @@
     </main>
 
     <!-- ========================= PROFESSIONAL FOOTER ========================= -->     
-    <footer class="footer-area">         
-        <div class="footer-grid">                          
-            <div class="footer-col brand-col">                 
-                <div class="footer-logo"><img src="assets/logos/JH-Logo-V2-White.png.png" class="footer-logo" alt="Johar Horizons Logo"></div>                 
-                <h2 class="footer-brand-name">JOHAR <span>HUB</span></h2>                 
-                <p class="copyright">&copy; 2026 Johar Horizons.<br>All rights reserved.</p>             
-            </div>             
-            <div class="footer-col dev-col">                 
-                <h3 class="footer-heading">About Developer</h3>                 
-                <p class="dev-name">Koitur Kumre Krishna</p>                 
-                <p class="dev-desc">"An unemployed guy with some badass skills from <span>Koyadhana, Pandhurna, Madhya Pradesh</span>" <i class="ri-fire-fill" style="color: var(--green);"></i></p>                                  
-                <a href="https://instagram.com/kumre_krishna_11" target="_blank" class="footer-link" style="margin-top: 15px; color: var(--green);">                     
-                    <i class="ri-instagram-line" style="font-size: 1.2rem;"></i> @kumre_krishna_11                 
-                </a>                 
-                <a href="https://instagram.com/pro.krishh11" target="_blank" class="footer-link" style="margin-top: 0px; color: var(--green);">                     
-                    <i class="ri-instagram-line" style="font-size: 1.2rem;"></i> @pro.krishh11                 
-                </a>             
-            </div>             
-            <div class="footer-col links-col">                 
-                <h3 class="footer-heading">Community</h3>                                  
-                <a href="https://youtube.com/@KoyaCommunity" target="_blank" class="footer-link">                     
-                    <i class="ri-youtube-fill" style="color: #ff0000; font-size: 1.2rem;"></i> KOYA COMMUNITY                 
-                </a>                 
-                <a href="https://instagram.com/official_koya_community" target="_blank" class="footer-link">                     
-                    <i class="ri-instagram-line" style="font-size: 1.2rem;"></i> @official_koya_community                 
-                </a>                                  
-                <a href="products.html" class="footer-link" style="margin-top: 10px;">                     
-                    <i class="ri-shopping-bag-line" style="font-size: 1.2rem;"></i> Johar Shop                 
-                </a>             
-            </div>             
-            <div class="footer-col links-col">                 
-                <h3 class="footer-heading">Connect</h3>                                  
-                <a href="https://instagram.com/joharhub.in" target="_blank" class="footer-link">                     
-                    <i class="ri-instagram-line" style="font-size: 1.2rem;"></i> Johar Horizons                 
-                </a>                 
-                <a href="https://instagram.com/johar.fashions_" target="_blank" class="footer-link">                     
-                    <i class="ri-instagram-line" style="font-size: 1.2rem;"></i> Johar Fashions                 
-                </a>                 
-                <a href="https://instagram.com/johar.digitals_" target="_blank" class="footer-link">                     
-                    <i class="ri-instagram-line" style="font-size: 1.2rem;"></i> Johar Digitals                 
-                </a>                 
-                <a href="https://github.com/dev-kumrekrishna" target="_blank" class="footer-link" style="margin-top: 10px;">                     
-                    <i class="ri-github-fill" style="font-size: 1.2rem;"></i> GitHub                 
-                </a>             
-            </div>         
-        </div>     
+    <footer class="footer-area">
+        <div class="footer-grid">
+            
+            <!-- Column 1: Brand & Copyright -->
+            <div class="footer-col brand-col">
+                <div class="footer-logo"><img src="assets/logos/JH-Logo-V2-White.png" class="footer-logo" alt="Johar Horizons Logo"></div>
+                <h2 class="footer-brand-name">JOHAR <span>HORIZONS</span></h2>
+                <p class="copyright">&copy; 2026 Johar Horizons.<br>All rights reserved.</p>
+            </div>
+
+            <!-- Column 2: About Developer -->
+            <div class="footer-col dev-col">
+                <h3 class="footer-heading">About Developer</h3>
+                <p class="dev-name">Koitur Kumre Krishna</p>
+                <p class="dev-desc">"An unemployed guy with some badass skills from <span>Koyadhana, Pandhurna, Madhya Pradesh</span>" <i class="ri-fire-fill" style="color: var(--green);"></i></p>
+                
+                <!-- Developer Social -->
+                <a href="https://instagram.com/kumre_krishna_11" target="_blank" class="footer-link" style="margin-top: 15px; color: var(--green);">
+                    <i class="ri-instagram-line" style="font-size: 1.2rem;"></i> @kumre_krishna_11
+                </a>
+
+                <a href="https://instagram.com/pro.krishh11" target="_blank" class="footer-link" style="margin-top: 0px; color: var(--green);">
+                    <i class="ri-instagram-line" style="font-size: 1.2rem;"></i> @pro.krishh11
+                </a>
+            </div>
+
+            <!-- Column 3: Community & Links -->
+            <div class="footer-col links-col">
+                <h3 class="footer-heading">Community</h3>
+                
+                <!-- Koya Community Links -->
+                <a href="https://youtube.com/@KoyaCommunity" target="_blank" class="footer-link">
+                    <i class="ri-youtube-fill" style="color: #ff0000; font-size: 1.2rem;"></i> KOYA COMMUNITY
+                </a>
+                <a href="https://instagram.com/official_koya_community" target="_blank" class="footer-link">
+                    <i class="ri-instagram-line" style="font-size: 1.2rem;"></i> @official_koya_community
+                </a>
+                
+                <a href="products.html" class="footer-link" style="margin-top: 10px;">
+                    <i class="ri-shopping-bag-line" style="font-size: 1.2rem;"></i> Johar Shop
+                </a>
+            </div>
+
+            <!-- Column 4: Connect (Johar Horizons Tree) -->
+            <div class="footer-col links-col">
+                <h3 class="footer-heading">Connect</h3>
+                
+                <!-- Johar Horizons Branches IG -->
+                <a href="https://instagram.com/joharHORIZONS.in" target="_blank" class="footer-link">
+                    <i class="ri-instagram-line" style="font-size: 1.2rem;"></i> Johar Horizons
+                </a>
+                <a href="https://instagram.com/johar.fashions_" target="_blank" class="footer-link">
+                    <i class="ri-instagram-line" style="font-size: 1.2rem;"></i> Johar Fashions
+                </a>
+                <a href="https://instagram.com/johar.digitals_" target="_blank" class="footer-link">
+                    <i class="ri-instagram-line" style="font-size: 1.2rem;"></i> Johar Digitals
+                </a>
+                <a href="https://github.com/dev-kumrekrishna" target="_blank" class="footer-link" style="margin-top: 10px;">
+                    <i class="ri-github-fill" style="font-size: 1.2rem;"></i> GitHub
+                </a>
+            </div>
+
+        </div>
     </footer>     
     <script type="module" src="js/auth-state.js"></script>     
     <script type="module" src="js/ui.js"></script>     

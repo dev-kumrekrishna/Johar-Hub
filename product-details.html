@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details | Johar Horizons</title>
+    <link rel="icon" type="image/png" href="assets/icons/favicon.png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Remix Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/product-details.css">
+</head>
+<body class="pd-body">
+
+    <!-- ========================= HEADER ========================= -->
+    <header class="header">
+        <a class="header-brand" href="index.html">
+            <div><img src="assets/logos/JH-Logo-V2-White.png" class="mini-logo" alt="Johar Horizons Logo"></div>
+            <span style="font-weight: bold;">JOHAR <b>HORIZONS</b></span>
+        </a>
+
+        <nav class="header-nav" id="navMenu">
+            <div id="mobileAuthBlock" class="mobile-user-profile" style="display: none; flex-direction: column; gap: 10px;">
+                <div style="display: flex; align-items: center; gap: 15px;">
+                    <img src="" id="mobilePfp" class="user-pfp" alt="User" style="width: 45px; height: 45px; border-radius: 50%;">
+                    <div class="user-info" style="text-align: left;">
+                        <h4 id="mobileUserName" style="margin: 0; color: var(--green);">Loading...</h4>
+                        <p id="mobileEmail" style="font-size: 0.75rem; color: var(--muted); margin: 0;"></p>
+                    </div>
+                </div>
+
+                <div style="display: flex; flex-direction: row; gap: 8px; margin-top: 10px; width: 100%;">
+                    <a href="profile.html" class="btn btn-outline" style="flex: 1; height: 40px; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; padding: 0 8px; white-space: nowrap;">
+                        <i class="ri-user-settings-line"></i> Manage
+                    </a>
+                    <a href="profile.html#my-orders" class="btn btn-outline" style="flex: 1; height: 40px; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; padding: 0 8px; white-space: nowrap;">
+                        <i class="ri-box-3-line"></i> Orders
+                    </a>
+                </div>
+            </div>
+
+            <a href="index.html">Home</a>
+            <a href="products.html" class="active">Products</a>
+            <a href="labs.html" class="nav-link menu-item">Apps &amp; Tools</a>
+            <a href="about.html">About</a>
+            <a href="index.html#contact">Contact</a>
+            <a href="auth.html" id="navLoginLink">Login / Sign Up</a>
+
+            <a href="https://joharscriptstudio.netlify.app/index.html" class="script-studio-bubble" target="_blank">
+                Explore Script Studio <i class="ri-arrow-right-up-line"></i>
+            </a>
+
+            <a href="#" id="mobileLogoutBtn" style="display: none; color: #ff4444; margin-top: 10px;">
+                <i class="ri-logout-circle-line"></i> Logout
+            </a>
+        </nav>
+
+        <div class="header-actions">
+            <i class="ri-search-line icon-btn"></i>
+            <div class="cart-wrapper icon-btn">
+                <i class="ri-shopping-cart-2-line"></i>
+                <span class="cart-badge"></span>
+            </div>
+
+            <a href="auth.html" id="loginBtn" class="btn btn-outline">Get Started</a>
+
+            <a href="profile.html" id="desktopUserBadge" class="user-badge" style="display: none; align-items: center; gap: 8px;">
+                <img src="" id="desktopPfp" class="user-pfp-small" alt="Profile" style="width: 32px; height: 32px; border-radius: 50%;">
+                <span id="desktopUserName">Profile</span>
+            </a>
+
+            <i class="ri-menu-line mobile-menu-btn"></i>
+        </div>
+    </header>
+
+    <div class="bg-glow glow-top"></div>
+    <div class="bg-glow glow-bottom"></div>
+
+    <!-- ========================= MAIN CONTENT ========================= -->
+    <main class="pd-main">
+
+        <!-- Breadcrumb -->
+        <nav class="pd-breadcrumb" aria-label="Breadcrumb">
+            <a href="index.html">Home</a>
+            <i class="ri-arrow-right-s-line"></i>
+            <a href="products.html">Products</a>
+            <i class="ri-arrow-right-s-line"></i>
+            <span id="pdBreadcrumbName">Loading...</span>
+        </nav>
+
+        <!-- Loading State -->
+        <section id="pdLoader" class="pd-state-box">
+            <i class="ri-loader-4-line ri-spin pd-loader-icon"></i>
+            <p>Loading product details...</p>
+        </section>
+
+        <!-- Error / Not Found State -->
+        <section id="pdError" class="pd-state-box" style="display: none;">
+            <img src="assets/pop-up/something-is-wrong.png" alt="Product Not Found" class="pd-error-img">
+            <h2>Product Not Found</h2>
+            <p>This product is currently unavailable or the link is invalid.</p>
+            <a href="products.html" class="btn btn-primary">Explore All Products <i class="ri-arrow-right-line"></i></a>
+        </section>
+
+        <!-- ========================= PRODUCT DETAIL GRID ========================= -->
+        <section id="pdContent" class="pd-layout" style="display: none;">
+
+            <!-- LEFT COLUMN: Sticky Gallery + Desktop CTA -->
+            <div class="pd-left">
+                <div class="pd-gallery-card">
+                    <div class="pd-thumbs" id="pdThumbs"></div>
+
+                    <div class="pd-stage">
+                        <span class="pd-discount-pill" id="pdDiscountPill" style="display: none;"></span>
+
+                        <div class="pd-stage-actions">
+                            <button type="button" class="pd-circle-btn" id="pdWishlistBtn" aria-label="Add to wishlist">
+                                <i class="ri-heart-line"></i>
+                            </button>
+                            <button type="button" class="pd-circle-btn" id="pdShareBtn" aria-label="Share product">
+                                <i class="ri-share-forward-line"></i>
+                            </button>
+                        </div>
+
+                        <img id="pdMainImg" src="" alt="Product Image" class="pd-main-img">
+                        <div id="pdImgFallback" class="pd-img-fallback" style="display: none;">JH</div>
+                    </div>
+                </div>
+
+                <!-- Desktop Action Buttons -->
+                <div class="pd-desktop-cta">
+                    <button type="button" class="pd-btn pd-btn-cart" id="pdAddCartBtn">
+                        <i class="ri-shopping-cart-2-line"></i> Add to Cart
+                    </button>
+                    <button type="button" class="pd-btn pd-btn-buy" id="pdBuyNowBtn">
+                        <i class="ri-rocket-2-fill"></i> Buy Now
+                    </button>
+                </div>
+            </div>
+
+            <!-- RIGHT COLUMN: Strictly Admin-Provided Details -->
+            <div class="pd-right">
+
+                <!-- Dynamic Badges (Hidden if empty in DB) -->
+                <div class="pd-meta-badges" id="pdMetaBadges" style="display: none;">
+                    <span class="pd-badge pd-badge-branch" id="pdBranch" style="display: none;"></span>
+                    <span class="pd-badge pd-badge-cat" id="pdCategory" style="display: none;"></span>
+                    <span class="pd-badge pd-badge-stock" id="pdStockBadge" style="display: none;"></span>
+                </div>
+
+                <!-- Title -->
+                <h1 class="pd-title" id="pdTitle"></h1>
+
+                <!-- Real Database Rating Summary -->
+                <div class="pd-rating-row" id="pdRatingRow">
+                    <span class="pd-rating-pill" id="pdRatingPill" style="display: none;"></span>
+                    <span class="pd-rating-count" id="pdRatingCount">No ratings yet</span>
+                </div>
+
+                <!-- Price Box -->
+                <div class="pd-price-box">
+                    <div class="pd-price-main">
+                        <span class="pd-price" id="pdPrice">₹0</span>
+                        <span class="pd-mrp" id="pdMrp" style="display: none;"></span>
+                        <span class="pd-off-text" id="pdOffText" style="display: none;"></span>
+                    </div>
+                </div>
+
+                <!-- Size / Variant Selector (ONLY shown if sizes exist in Firestore) -->
+                <div class="pd-option-block" id="pdSizeBlock" style="display: none;">
+                    <div class="pd-option-head">
+                        <span>Select Size</span>
+                        <small id="pdSelectedSizeText"></small>
+                    </div>
+                    <div class="pd-size-list" id="pdSizeList"></div>
+                </div>
+
+                <!-- Quantity Selector -->
+                <div class="pd-option-block">
+                    <div class="pd-option-head">
+                        <span>Quantity</span>
+                        <small id="pdQtySubtotal"></small>
+                    </div>
+                    <div class="pd-qty-stepper">
+                        <button type="button" id="pdQtyMinus" aria-label="Decrease quantity"><i class="ri-subtract-line"></i></button>
+                        <span id="pdQtyValue">1</span>
+                        <button type="button" id="pdQtyPlus" aria-label="Increase quantity"><i class="ri-add-line"></i></button>
+                    </div>
+                </div>
+
+                <!-- Shiprocket Delivery Banner -->
+                <div class="sr-mini-banner">
+                    <div class="sr-mini-logo">
+                        <i class="ri-rocket-2-fill"></i>
+                        <span>Fulfilled via <strong>Shiprocket</strong> Logistics</span>
+                    </div>
+                    <small>Live courier selection &amp; instant AWB generation at checkout</small>
+                </div>
+
+                <!-- Product Highlights (ONLY shown if admin added highlights/features) -->
+                <div class="pd-card-panel" id="pdHighlightsPanel" style="display: none;">
+                    <h2 class="pd-panel-heading"><i class="ri-sparkling-line"></i> Product Highlights</h2>
+                    <ul class="pd-highlights-list" id="pdHighlights"></ul>
+                </div>
+
+                <!-- Product Description (ONLY shown if admin added description) -->
+                <div class="pd-card-panel" id="pdDescPanel" style="display: none;">
+                    <h2 class="pd-panel-heading"><i class="ri-file-text-line"></i> Product Description</h2>
+                    <p class="pd-description" id="pdDescription"></p>
+                </div>
+
+                <!-- Specifications Table (ONLY real fields from Firestore) -->
+                <div class="pd-card-panel" id="pdSpecsPanel" style="display: none;">
+                    <h2 class="pd-panel-heading"><i class="ri-list-settings-line"></i> Specifications</h2>
+                    <div class="pd-specs-table" id="pdSpecsTable"></div>
+                </div>
+
+                <!-- ========================= RATINGS & REVIEWS (DATABASE ONLY) ========================= -->
+                <div class="pd-card-panel pd-reviews-panel" id="pdReviewsSection">
+                    <div class="pd-reviews-head">
+                        <h2 class="pd-panel-heading" style="margin: 0;">
+                            <i class="ri-star-smile-line"></i> Ratings &amp; Reviews
+                        </h2>
+                        <span class="pd-verified-note">
+                            <i class="ri-shield-check-line"></i> Verified Buyers Only
+                        </span>
+                    </div>
+
+                    <!-- Summary Bar -->
+                    <div class="pd-review-summary" id="pdReviewSummary">
+                        <div class="pd-review-score-box">
+                            <strong id="pdReviewBigAvg">—</strong>
+                            <div class="pd-review-stars-display" id="pdReviewStarsDisplay"></div>
+                            <span id="pdReviewTotalText">0 verified ratings</span>
+                        </div>
+                        <div class="pd-rating-bars" id="pdRatingBars"></div>
+                    </div>
+
+                    <!-- Review Eligibility Notice OR Review Form -->
+                    <div id="pdReviewEligibilityBox" class="pd-review-eligibility"></div>
+
+                    <form id="pdReviewForm" class="pd-review-form" style="display: none;">
+                        <h4>Rate this product</h4>
+                        <div class="pd-star-picker" id="pdStarPicker" role="radiogroup" aria-label="Select rating">
+                            <button type="button" data-star="1" aria-label="1 star"><i class="ri-star-line"></i></button>
+                            <button type="button" data-star="2" aria-label="2 stars"><i class="ri-star-line"></i></button>
+                            <button type="button" data-star="3" aria-label="3 stars"><i class="ri-star-line"></i></button>
+                            <button type="button" data-star="4" aria-label="4 stars"><i class="ri-star-line"></i></button>
+                            <button type="button" data-star="5" aria-label="5 stars"><i class="ri-star-line"></i></button>
+                            <span id="pdSelectedRatingLabel">Select stars</span>
+                        </div>
+
+                        <input type="text" id="pdReviewTitle" maxlength="80" placeholder="Review headline (optional)">
+                        <textarea id="pdReviewComment" rows="3" maxlength="600" placeholder="Share your experience with this product..." required></textarea>
+
+                        <button type="submit" class="pd-btn pd-btn-buy pd-review-submit" id="pdSubmitReviewBtn">
+                            Submit Verified Review <i class="ri-send-plane-fill"></i>
+                        </button>
+                    </form>
+
+                    <!-- Real Reviews List -->
+                    <div class="pd-reviews-list" id="pdReviewsList">
+                        <p class="pd-no-reviews">No reviews yet. Reviews appear here after verified buyers receive their orders.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ========================= SIMILAR PRODUCTS ========================= -->
+        <section id="similarSection" class="pd-reco-section" style="display: none;">
+            <div class="pd-reco-header">
+                <div>
+                    <p class="section-label">CURATED FOR YOU</p>
+                    <h2>Similar Products</h2>
+                </div>
+                <a href="products.html" class="view-all">View all <i class="ri-arrow-right-line"></i></a>
+            </div>
+            <div class="pd-reco-grid" id="similarProductsGrid"></div>
+        </section>
+
+        <!-- ========================= YOU MIGHT ALSO LIKE ========================= -->
+        <section id="alsoLikeSection" class="pd-reco-section" style="display: none;">
+            <div class="pd-reco-header">
+                <div>
+                    <p class="section-label">MORE FROM JOHAR SHOP</p>
+                    <h2>You Might Also Like</h2>
+                </div>
+                <a href="products.html" class="view-all">Explore shop <i class="ri-arrow-right-line"></i></a>
+            </div>
+            <div class="pd-reco-grid" id="alsoLikeGrid"></div>
+        </section>
+
+    </main>
+
+    <!-- ========================= MOBILE STICKY BOTTOM BAR ========================= -->
+    <div class="pd-mobile-bar" id="pdMobileBar" style="display: none;">
+        <button type="button" class="pd-btn pd-btn-cart" id="pdMobileAddCart">
+            <i class="ri-shopping-cart-2-line"></i> Add to Cart
+        </button>
+        <button type="button" class="pd-btn pd-btn-buy" id="pdMobileBuyNow">
+            <i class="ri-rocket-2-fill"></i> Buy Now
+        </button>
+    </div>
+
+    <!-- ========================= SHIPROCKET-THEMED CHECKOUT MODAL ========================= -->
+    <div class="sr-modal-overlay" id="srModalOverlay" aria-hidden="true">
+        <div class="sr-modal-box" role="dialog" aria-labelledby="srModalTitle">
+
+            <!-- Shiprocket Top Header -->
+            <div class="sr-header">
+                <div class="sr-brand">
+                    <div class="sr-brand-icon"><i class="ri-rocket-2-fill"></i></div>
+                    <div>
+                        <h3 id="srModalTitle">Shiprocket Checkout</h3>
+                        <p>Johar Horizons • Express Order Workflow</p>
+                    </div>
+                </div>
+                <button type="button" class="sr-close-btn" id="srCloseModal" aria-label="Close checkout">
+                    <i class="ri-close-line"></i>
+                </button>
+            </div>
+
+            <!-- 3-Step Progress Indicator -->
+            <div class="sr-stepper" id="srStepper">
+                <div class="sr-step active" data-step="1"><span>1</span> Address</div>
+                <div class="sr-step-line"></div>
+                <div class="sr-step" data-step="2"><span>2</span> Courier</div>
+                <div class="sr-step-line"></div>
+                <div class="sr-step" data-step="3"><span>3</span> Payment</div>
+            </div>
+
+            <!-- Order Item Mini Summary -->
+            <div class="sr-item-strip" id="srItemStrip">
+                <img id="srSummaryImg" src="" alt="Product">
+                <div class="sr-item-info">
+                    <h4 id="srSummaryName"></h4>
+                    <p id="srSummaryMeta"></p>
+                </div>
+                <strong id="srSummaryTotal">₹0</strong>
+            </div>
+
+            <!-- STEP 1: ADDRESS -->
+            <form id="srStep1Form" class="sr-step-panel active">
+                <div class="sr-form-row">
+                    <div class="sr-field">
+                        <label for="srFullName">Full Name</label>
+                        <input type="text" id="srFullName" placeholder="e.g. Kumre Krishna" required>
+                    </div>
+                    <div class="sr-field">
+                        <label for="srPhone">Mobile Number</label>
+                        <input type="tel" id="srPhone" placeholder="10-digit mobile number" required>
+                    </div>
+                </div>
+
+                <div class="sr-field">
+                    <label for="srAddress">Complete Delivery Address</label>
+                    <textarea id="srAddress" rows="2" placeholder="House No., Street, Village / Area, Landmark" required></textarea>
+                </div>
+
+                <div class="sr-form-row sr-form-row-3">
+                    <div class="sr-field">
+                        <label for="srCity">City / District</label>
+                        <input type="text" id="srCity" placeholder="e.g. Pandhurna" required>
+                    </div>
+                    <div class="sr-field">
+                        <label for="srState">State</label>
+                        <input type="text" id="srState" placeholder="e.g. Madhya Pradesh" required>
+                    </div>
+                    <div class="sr-field">
+                        <label for="srPincode">Pincode</label>
+                        <input type="text" id="srPincode" maxlength="6" inputmode="numeric" placeholder="480334" required>
+                    </div>
+                </div>
+
+                <button type="submit" class="sr-primary-btn">
+                    Continue to Shipping <i class="ri-arrow-right-line"></i>
+                </button>
+            </form>
+
+            <!-- STEP 2: SHIPROCKET COURIER SELECTION -->
+            <div id="srStep2Panel" class="sr-step-panel">
+                <div class="sr-panel-subtitle">
+                    <span>Available Shiprocket Courier Partners for <strong id="srPinDisplay"></strong></span>
+                </div>
+
+                <div class="sr-courier-list" id="srCourierList"></div>
+
+                <div class="sr-step-actions">
+                    <button type="button" class="sr-secondary-btn" id="srBackToStep1">
+                        <i class="ri-arrow-left-line"></i> Back
+                    </button>
+                    <button type="button" class="sr-primary-btn" id="srGoToStep3">
+                        Proceed to Payment <i class="ri-arrow-right-line"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- STEP 3: PAYMENT -->
+            <div id="srStep3Panel" class="sr-step-panel">
+                <div class="sr-panel-subtitle">
+                    <span>Select Payment Method</span>
+                </div>
+
+                <div class="sr-payment-list" id="srPaymentList">
+                    <label class="sr-pay-option active">
+                        <input type="radio" name="srPaymentMethod" value="Cash on Delivery (COD)" checked>
+                        <div class="sr-pay-icon"><i class="ri-hand-coin-line"></i></div>
+                        <div class="sr-pay-text">
+                            <strong>Cash on Delivery (COD)</strong>
+                            <small>Pay via cash or UPI when your parcel arrives</small>
+                        </div>
+                    </label>
+
+                    <label class="sr-pay-option">
+                        <input type="radio" name="srPaymentMethod" value="UPI (Simulated Prepaid)">
+                        <div class="sr-pay-icon"><i class="ri-qr-code-line"></i></div>
+                        <div class="sr-pay-text">
+                            <strong>UPI / QR (GPay, PhonePe, Paytm)</strong>
+                            <small>Instant verification via Shiprocket Checkout</small>
+                        </div>
+                    </label>
+
+                    <label class="sr-pay-option">
+                        <input type="radio" name="srPaymentMethod" value="Card (Simulated Prepaid)">
+                        <div class="sr-pay-icon"><i class="ri-bank-card-line"></i></div>
+                        <div class="sr-pay-text">
+                            <strong>Credit / Debit Card</strong>
+                            <small>Visa, Mastercard, RuPay supported</small>
+                        </div>
+                    </label>
+                </div>
+
+                <!-- Order Bill Summary -->
+                <div class="sr-bill-card">
+                    <div class="sr-bill-row">
+                        <span>Subtotal (<span id="srBillQty">1</span> item)</span>
+                        <span id="srBillSubtotal">₹0</span>
+                    </div>
+                    <div class="sr-bill-row">
+                        <span>Shiprocket Shipping (<span id="srBillCourier"></span>)</span>
+                        <span id="srBillShipping" class="sr-free">FREE</span>
+                    </div>
+                    <div class="sr-bill-row sr-bill-total">
+                        <span>Total Payable</span>
+                        <strong id="srBillTotal">₹0</strong>
+                    </div>
+                </div>
+
+                <div class="sr-step-actions">
+                    <button type="button" class="sr-secondary-btn" id="srBackToStep2">
+                        <i class="ri-arrow-left-line"></i> Back
+                    </button>
+                    <button type="button" class="sr-primary-btn" id="srPlaceOrderBtn">
+                        Confirm &amp; Place Order <i class="ri-check-double-line"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- PROCESSING STATE -->
+            <div id="srProcessingPanel" class="sr-step-panel sr-processing-panel">
+                <div class="sr-rocket-pulse"><i class="ri-rocket-2-fill"></i></div>
+                <h3 id="srProcessTitle">Connecting to Shiprocket...</h3>
+                <p id="srProcessDesc">Verifying delivery pincode and generating your AWB tracking number.</p>
+            </div>
+
+            <!-- ORDER CONFIRMED STATE -->
+            <div id="srSuccessPanel" class="sr-step-panel sr-success-panel">
+                <div class="sr-success-badge"><i class="ri-checkbox-circle-fill"></i></div>
+                <h3>Order Confirmed!</h3>
+                <p>Your shipment has been registered with Shiprocket.</p>
+
+                <div class="sr-awb-card">
+                    <div><span>Order ID</span><strong id="srConfirmOrderId"></strong></div>
+                    <div><span>AWB Tracking</span><strong id="srConfirmAwb"></strong></div>
+                    <div><span>Courier Partner</span><strong id="srConfirmCourier"></strong></div>
+                    <div><span>Estimated Delivery</span><strong id="srConfirmEta"></strong></div>
+                </div>
+
+                <div class="sr-step-actions">
+                    <button type="button" class="sr-secondary-btn" id="srContinueShopping">Continue Shopping</button>
+                    <a href="profile.html#my-orders" class="sr-primary-btn" style="text-align: center;">
+                        Track in My Orders <i class="ri-arrow-right-line"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Footer Trust Badge -->
+            <div class="sr-footer-bar">
+                <i class="ri-shield-check-fill"></i>
+                <span>100% Secured by <strong>Shiprocket</strong> Checkout (Demo Simulation)</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================= FOOTER ========================= -->
+    <footer class="footer-area">
+        <div class="footer-grid">
+            <div class="footer-col brand-col">
+                <div class="footer-logo"><img src="assets/logos/JH-Logo-V2-White.png" class="footer-logo" alt="Johar Horizons Logo"></div>
+                <h2 class="footer-brand-name">JOHAR <span>HORIZONS</span></h2>
+                <p class="copyright">&copy; 2026 Johar Horizons.<br>All rights reserved.</p>
+            </div>
+            <div class="footer-col dev-col">
+                <h3 class="footer-heading">About Developer</h3>
+                <p class="dev-name">Koitur Kumre Krishna</p>
+                <p class="dev-desc">"An unemployed guy with some badass skills from <span>Koyadhana, Pandhurna, Madhya Pradesh</span>" <i class="ri-fire-fill" style="color: var(--green);"></i></p>
+                <a href="https://instagram.com/kumre_krishna_11" target="_blank" class="footer-link" style="margin-top: 15px; color: var(--green);">
+                    <i class="ri-instagram-line" style="font-size: 1.2rem;"></i> @kumre_krishna_11
+                </a>
+            </div>
+            <div class="footer-col links-col">
+                <h3 class="footer-heading">Community</h3>
+                <a href="https://youtube.com/@KoyaCommunity" target="_blank" class="footer-link">
+                    <i class="ri-youtube-fill" style="color: #ff0000; font-size: 1.2rem;"></i> KOYA COMMUNITY
+                </a>
+                <a href="products.html" class="footer-link" style="margin-top: 10px;">
+                    <i class="ri-shopping-bag-line" style="font-size: 1.2rem;"></i> Johar Shop
+                </a>
+            </div>
+            <div class="footer-col links-col">
+                <h3 class="footer-heading">Connect</h3>
+                <a href="https://instagram.com/joharHORIZONS.in" target="_blank" class="footer-link">
+                    <i class="ri-instagram-line" style="font-size: 1.2rem;"></i> Johar Horizons
+                </a>
+                <a href="https://instagram.com/johar.fashions_" target="_blank" class="footer-link">
+                    <i class="ri-instagram-line" style="font-size: 1.2rem;"></i> Johar Fashions
+                </a>
+                <a href="https://instagram.com/johar.digitals_" target="_blank" class="footer-link">
+                    <i class="ri-instagram-line" style="font-size: 1.2rem;"></i> Johar Digitals
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script type="module" src="js/config.js"></script>
+    <script src="js/script.js"></script>
+    <script type="module" src="js/ui.js"></script>
+    <script type="module" src="js/product-details.js"></script>
+</body>
+</html>

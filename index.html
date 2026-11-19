@@ -27,7 +27,7 @@
     
     <!-- ========================= HEADER ========================= -->
     <header class="header">
-        <div class="header-brand" href="#">
+        <div class="header-brand" href="index.html">
             <div><img src="assets/logos/JH-Logo-V2-White.png" class="mini-logo"></div>
             <span style="font-weight: bold;">JOHAR <b>HORIZONS
             
@@ -57,8 +57,9 @@
 
     <a href="index.html">Home</a>
     <a href="products.html">Products</a>
+    <a href="labs.html" class="nav-link menu-item">Apps &amp; Tools</a>
     <a href="about.html">About</a>
-    <a href="#contact">Contact</a>
+    <a href="index.html#contact">Contact</a>
     <a href="auth.html" id="navLoginLink">Login / Sign Up</a>
     
     <!-- Naya Script Studio Bubble Capsule -->
@@ -211,6 +212,90 @@
     </div>
         
     </section>
+
+    <section id="contact" class="contact-section">
+  <div class="contact-container">
+
+    <!-- Left: Info & Direct Channels -->
+    <div class="contact-info">
+      <span class="contact-eyebrow">GET IN TOUCH</span>
+      <h2 class="contact-title">Let's Build Something <span>Meaningful</span></h2>
+      <p class="contact-desc">
+        Johar Digitals, Fashions, Sports, ya custom web projects — kisi bhi query, collaboration, ya order support ke liye direct connect karein.
+      </p>
+
+      <div class="contact-cards">
+        <a href="mailto:hello@joharhorizons.com" class="contact-card">
+          <div class="contact-icon">✉</div>
+          <div>
+            <h4>Email Us</h4>
+            <p>hello@joharhorizons.com</p>
+          </div>
+        </a>
+
+        <a href="https://wa.me/916263310235" target="_blank" rel="noopener noreferrer" class="contact-card">
+          <div class="contact-icon">💬</div>
+          <div>
+            <h4>WhatsApp Support</h4>
+            <p>+91 62633 10235</p>
+          </div>
+        </a>
+
+        <div class="contact-card">
+          <div class="contact-icon">📍</div>
+          <div>
+            <h4>Location</h4>
+            <p>Nandanwadi, Pandhurna, Madhya Pradesh, India</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: Glass Contact Form -->
+    <form
+  class="contact-form"
+  id="contactForm"
+  action="https://formsubmit.co/hello@joharhorizons.com"
+  method="POST"
+>
+  <input type="hidden" name="_subject" value="New Message from Johar Horizons!" />
+  <input type="hidden" name="_template" value="table" />
+  <input type="hidden" name="_captcha" value="false" />
+  <input type="text" name="_honey" style="display: none;" />
+
+  <div class="form-row">
+    <div class="form-group">
+      <label for="contactName">Your Name</label>
+      <input type="text" id="contactName" name="name" placeholder="e.g. Kumre Krishna" required />
+    </div>
+    <div class="form-group">
+      <label for="contactEmail">Email Address</label>
+      <input type="email" id="contactEmail" name="email" placeholder="you@example.com" required />
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="contactTopic">Topic</label>
+    <select id="contactTopic" name="topic">
+      <option value="General Inquiry">General Inquiry</option>
+      <option value="Johar Digitals">Johar Digitals</option>
+      <option value="Johar Fashions">Johar Fashions</option>
+      <option value="Johar Sports">Johar Sports</option>
+      <option value="Johar Labs / Apps">Johar Labs &amp; Tools</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="contactMessage">Message</label>
+    <textarea id="contactMessage" name="message" rows="4" placeholder="Apna message ya project details likhein..." required></textarea>
+  </div>
+
+  <button type="submit" class="contact-submit-btn" id="contactSubmitBtn">Send Message →</button>
+  <p id="formStatus" class="form-status" aria-live="polite"></p>
+</form>
+
+  </div>
+</section>
 
     <!-- ========================= PROFESSIONAL FOOTER ========================= -->
     <footer class="footer-area">
